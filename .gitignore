@@ -1,0 +1,30 @@
+# OS
+.DS_Store
+Thumbs.db
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Env & secrets
+.env
+.env.*
+*.pem
+*.key
+netlify.toml.local
+
+# Node (if tooling is added later)
+node_modules/
+npm-debug.log*
+package-lock.json.bak
+
+# Build output
+build/
+dist/
+.netlify/
+
+# Python
+__pycache__/
+*.pyc
