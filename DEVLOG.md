@@ -55,3 +55,60 @@ work") was filler. Cut hard, including two devices that were mine rather than hi
   rule and no rule is unused.
 
 `index.html` went from 31,375 to 19,548 bytes — about 38% less page.
+
+## 2026-08-21 — Session 1 (cont.): actually matching the reference, plus real logos
+
+Samuele: "I asked you to replicate this design, but it's actually completely
+different." Correct. Session 1 took the reference's *structure* but deliberately
+swapped its palette for a cool grey/cobalt scheme, on the reasoning that a
+control-panel look suited an automation specialist. That reasoning was mine, not
+his brief. He asked twice for the reference design, so the divergence was wrong.
+
+Rather than work from a prose description again (the original mistake — the first
+WebFetch returned "off-white with warm yellow accents", which is what produced
+the wrong palette), this pass drove a real browser to sebastian-wittig.design and
+read the computed styles off the live DOM:
+
+- cream `#F5EFDF` ground, white `#FFFFFF` for one alternating section
+- brown `#4B3E39` text, dark brown `#30231E` for buttons and the contact block
+- yellow `#E9CB55` accent (the reference paints the second half of its rotating
+  H1 in it — "I DESIGN FOR **FINANCE**")
+- Inter everywhere; Merriweather only for quotes; 9999px pill buttons; 12px cards
+- section labels are small 16px uppercase Inter 500, NOT big headlines; item
+  titles are 32px Inter 600. That inversion is most of why the reference reads
+  the way it does, and the earlier build had it backwards.
+
+Committed to a single light theme like the reference, painting every colour
+explicitly so the page still holds on a dark host background.
+
+### Client logos
+Found each company's real site by search, then pulled its mark. Three treatments,
+because the source files are not alike:
+- `hypefury`, `grillpark`, `italianindie` were black-on-white with no alpha. A
+  script makes near-neutral bright pixels transparent using a soft ramp
+  (210–245) so the type keeps its antialiasing instead of jagging.
+- `financer`, `fbisol` ship as white-on-transparent SVGs — invisible on cream
+  under grayscale, so they get `brightness(0)`. Both are plain wordmarks, so a
+  silhouette loses nothing.
+- the rest are coloured artwork and get `grayscale(1)`, which preserves internal
+  detail that a flat silhouette would erase.
+
+### Two things caught only by rendering it
+- `.nav a` (specificity 0,1,1) was beating `.pill` (0,1,0), so the header
+  button's label rendered brown-on-brown and was unreadable. Exactly the
+  cascade collision to watch for. Fixed with `.nav a.pill`.
+- SOS Automazioni and Italian Indie are Samuele's own ventures, not clients.
+  They were sitting in a wall captioned "Clients I build for". Removed from the
+  wall (eight real clients now fill a 4×2 grid) and kept in Work under "My own".
+
+Also replaced the hero's `blur(250px)` layer with equivalent gradients — at that
+radius Chromium promotes it to a very large composited layer for no visual gain.
+
+### Still open
+- `Dream Travel Agency` and `Bmark` were matched by search, not confirmed by
+  Samuele. dreamtravelagency.it fits (it runs enrolment-based student trips,
+  which matches the CV's "customer enrolments"), and bmark.it is a marketing
+  agency, which fits the Facebook Ads work — but both need his confirmation
+  that they are the right companies.
+- Using client logos is normal for a portfolio but is their trademark; worth a
+  quick heads-up to each before the site goes public.
