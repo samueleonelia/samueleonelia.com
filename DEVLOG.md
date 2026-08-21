@@ -161,3 +161,22 @@ what was asked for, but it is the weaker opening for selling.
 Note: screenshot capture stopped responding in the browser tooling partway
 through this pass, so the last checks were done by measuring the rendered
 geometry rather than by looking at an image.
+
+## 2026-08-21 — Session 1 (cont.): Dream Travel logo fix
+
+Samuele reported the Dream Travel logo missing. It was: measuring the rendered
+geometry showed it at **0x0** while every other logo had a real size.
+
+Cause: `dreamtravel.svg` declares only a `viewBox`, no `width`/`height`. Without
+intrinsic dimensions it collapses to zero as a flex item under `width:auto`.
+`financer.svg` and `fbisol.svg` both carry explicit width/height, which is why
+they were unaffected. Fixed by writing `width="294.63" height="238.57"` onto the
+SVG root, taken from its own viewBox.
+
+Second, related problem: the card logo cap was 26px tall / 96px wide, which suits
+wide wordmarks but crushes the squarish illustrated marks — Dream Travel is a
+detailed 21-path drawing that turns to mush at 32px across. Added a `.tall`
+modifier (44px tall, 88px wide, slightly higher opacity) for Dream Travel, Grill
+Park, Acarent and SOS Automazioni, and raised the logo row to 44px to fit it.
+
+Verified all nine render with real dimensions and clear the name pill.

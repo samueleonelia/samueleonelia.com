@@ -143,12 +143,16 @@ h1 .accent{color:var(--yellow)}
 }
 .job:hover{background:var(--cream)}
 .job-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
-.job-logo{height:34px;display:flex;align-items:center;flex:0 1 auto;min-width:0}
+.job-logo{height:44px;display:flex;align-items:center;flex:0 1 auto;min-width:0}
+/* wordmarks are wide and read fine small; the squarish illustrated marks
+   (Dream Travel, Grill Park, Acarent, SOS) vanish at that size, so they get
+   height instead of width via .tall */
 .job-logo img{
   max-height:26px;max-width:96px;width:auto;object-fit:contain;
   filter:grayscale(1);opacity:.62;transition:opacity .25s ease,filter .25s ease;
 }
 .job-logo img.inv{filter:brightness(0);opacity:.58}
+.job-logo img.tall{max-height:44px;max-width:88px;opacity:.75}
 .job:hover .job-logo img{opacity:1;filter:grayscale(0)}
 .job:hover .job-logo img.inv{filter:brightness(0);opacity:.9}
 .job h3{
@@ -240,7 +244,7 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 
         <article class="job rv">
           <div class="job-top">
-            <div class="job-logo"><img src="assets/logos/sosautomazioni.avif" alt="SOS Automazioni" loading="lazy"></div>
+            <div class="job-logo"><img src="assets/logos/sosautomazioni.avif" class="tall" alt="SOS Automazioni" loading="lazy"></div>
             <h3>SOS Automazioni</h3>
           </div>
           <p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p>
@@ -264,7 +268,7 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 
         <article class="job rv">
           <div class="job-top">
-            <div class="job-logo"><img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy"></div>
+            <div class="job-logo"><img src="assets/logos/dreamtravel.svg" class="tall" alt="Dream Travel Agency" loading="lazy"></div>
             <h3>Dream Travel Agency</h3>
           </div>
           <p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p>
@@ -280,7 +284,7 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 
         <article class="job rv">
           <div class="job-top">
-            <div class="job-logo"><img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy"></div>
+            <div class="job-logo"><img src="assets/logos/grillpark.png" class="tall" alt="Grill Park Ferrara" loading="lazy"></div>
             <h3>Grill Park Ferrara</h3>
           </div>
           <p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p>
@@ -288,7 +292,7 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 
         <article class="job rv">
           <div class="job-top">
-            <div class="job-logo"><img src="assets/logos/acarent.png" alt="Acarent" loading="lazy"></div>
+            <div class="job-logo"><img src="assets/logos/acarent.png" class="tall" alt="Acarent" loading="lazy"></div>
             <h3>Acarent</h3>
           </div>
           <p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p>
