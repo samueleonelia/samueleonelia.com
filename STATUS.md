@@ -14,9 +14,9 @@ Page structure: hero → work → services → contact.
 | Repo, `.gitignore` | Done |
 | Design matched to sebastian-wittig.design | Done — tokens read off the live site |
 | Hero (rotating two-tone headline) | Done |
-| Work: 9 cards, 3 columns, logo each | Done — ordered by engagement length |
+| Work: 9 cards, 3 columns | Done — logo top-left, client name in a yellow pill top-right, ordered by engagement length |
 | Services | Done — 4 items |
-| Contact (dark brown) + footer | Done |
+| Contact (dark brown) + footer | Done — footer matches sosautomazioni.com's legal line |
 | About section | Removed at Samuele's request |
 | Client logo wall | Removed — logos live on the project cards |
 | Stats table | Removed at Samuele's request |
@@ -39,6 +39,7 @@ Page structure: hero → work → services → contact.
   grey circle at card size, and it now leads the Work grid.
 - Portrait is the 600x600 CV headshot; a larger original would look better.
 - Not yet tested on a real phone or in Safari.
+- Long client names ('Grill Park Ferrara') make a wide pill; fine at 3-up, worth re-checking at tablet width.
 
 ## Blocked on Samuele
 

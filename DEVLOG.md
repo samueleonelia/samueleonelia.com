@@ -144,3 +144,20 @@ afterwards that no class is used without a rule and no rule is unused.
 Worth flagging: ordering by engagement length puts SOS Automazioni — his own
 company — in the first card, ahead of Hypefury, his biggest-name client. That is
 what was asked for, but it is the weaker opening for selling.
+
+## 2026-08-21 — Session 1 (cont.): client name becomes the yellow pill
+
+- Removed the yellow stat pills from the work cards (they only appeared on two
+  of nine, which read as inconsistent).
+- The client name now *is* the yellow pill, sitting top-right of each card with
+  the logo top-left. Kept it marked up as `<h3>` rather than a `<span>` so each
+  card still has a real heading for screen readers and search engines — only its
+  styling changed.
+- Narrowed the card logo to 96px max width and set the pill to `nowrap` so the
+  two never collide inside a 3-up column. Verified across all nine cards at
+  1400px: every pill sits right of its logo, flush to the card's right edge, no
+  overflow.
+
+Note: screenshot capture stopped responding in the browser tooling partway
+through this pass, so the last checks were done by measuring the rendered
+geometry rather than by looking at an image.

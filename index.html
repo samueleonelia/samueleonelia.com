@@ -142,20 +142,22 @@ h1 .accent{color:var(--yellow)}
   display:flex;flex-direction:column;gap:12px;transition:background .25s ease;
 }
 .job:hover{background:var(--cream)}
-.job-logo{height:34px;display:flex;align-items:center;margin-bottom:6px}
+.job-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.job-logo{height:34px;display:flex;align-items:center;flex:0 1 auto;min-width:0}
 .job-logo img{
-  max-height:28px;max-width:120px;width:auto;object-fit:contain;
+  max-height:26px;max-width:96px;width:auto;object-fit:contain;
   filter:grayscale(1);opacity:.62;transition:opacity .25s ease,filter .25s ease;
 }
 .job-logo img.inv{filter:brightness(0);opacity:.58}
 .job:hover .job-logo img{opacity:1;filter:grayscale(0)}
 .job:hover .job-logo img.inv{filter:brightness(0);opacity:.9}
-.job p{color:var(--brown-90);font-size:.98rem}
-.res{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
-.res span{
-  font-size:.8rem;font-weight:500;color:var(--brown-dark);
-  background:var(--yellow-light);border-radius:9999px;padding:5px 12px;
+.job h3{
+  display:inline-flex;align-items:center;
+  background:var(--yellow-light);color:var(--brown-dark);
+  border-radius:9999px;padding:8px 17px;
+  font-size:.95rem;font-weight:600;letter-spacing:-.015em;line-height:1.25;white-space:nowrap;flex:0 0 auto;
 }
+.job p{color:var(--brown-90);font-size:.98rem}
 
 /* ---------- services ---------- */
 .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -237,58 +239,74 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
       <div class="jobs">
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/sosautomazioni.avif" alt="SOS Automazioni" loading="lazy"></div>
-          <h3>SOS Automazioni</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/sosautomazioni.avif" alt="SOS Automazioni" loading="lazy"></div>
+            <h3>SOS Automazioni</h3>
+          </div>
           <p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p>
-          <div class="res"><span>~5,000 downloads / episode</span></div>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy"></div>
-          <h3>Hypefury</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy"></div>
+            <h3>Hypefury</h3>
+          </div>
           <p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p>
-          <div class="res"><span>40,000 subscribers</span><span>~40% open rate</span></div>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="Financer.com" loading="lazy"></div>
-          <h3>Financer.com</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="Financer.com" loading="lazy"></div>
+            <h3>Financer.com</h3>
+          </div>
           <p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy"></div>
-          <h3>Dream Travel Agency</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy"></div>
+            <h3>Dream Travel Agency</h3>
+          </div>
           <p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy"></div>
-          <h3>La Cofacceria</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy"></div>
+            <h3>La Cofacceria</h3>
+          </div>
           <p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy"></div>
-          <h3>Grill Park Ferrara</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy"></div>
+            <h3>Grill Park Ferrara</h3>
+          </div>
           <p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/acarent.png" alt="Acarent" loading="lazy"></div>
-          <h3>Acarent</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/acarent.png" alt="Acarent" loading="lazy"></div>
+            <h3>Acarent</h3>
+          </div>
           <p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/bmark.png" alt="Bmark" loading="lazy"></div>
-          <h3>Bmark</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/bmark.png" alt="Bmark" loading="lazy"></div>
+            <h3>Bmark</h3>
+          </div>
           <p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p>
         </article>
 
         <article class="job rv">
-          <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="F. Bisol" loading="lazy"></div>
-          <h3>F. Bisol</h3>
+          <div class="job-top">
+            <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="F. Bisol" loading="lazy"></div>
+            <h3>F. Bisol</h3>
+          </div>
           <p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p>
         </article>
 
