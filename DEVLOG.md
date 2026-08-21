@@ -112,3 +112,35 @@ radius Chromium promotes it to a very large composited layer for no visual gain.
   that they are the right companies.
 - Using client logos is normal for a portfolio but is their trademark; worth a
   quick heads-up to each before the site goes public.
+
+## 2026-08-21 — Session 1 (cont.): cuts, and Work as a 3-column grid
+
+Samuele's review, applied verbatim:
+
+- **Cut the "Most businesses don't need more software…" pull quote.** His word for
+  it was "bullshit". It was my line, not his, and it was doing consultant-speak
+  work rather than saying anything.
+- **Cut "English and Italian, from Padova, for clients across Europe and the US."**
+  Marked irrelevant. The footer and contact block already carry the location.
+- **Cut the stats table under About** ("doesn't make any sense"). It was right:
+  those four numbers came from two specific engagements (Hypefury, SOS
+  Automazioni) but were presented as if they described his practice as a whole.
+  Nothing is lost — 40,000 / ~40% still sit on the Hypefury card, and the
+  19,000 / 200+ figures are in the SOS card's copy.
+- **Then: cut the entire About section, and the "Clients I build for" logo wall.**
+  The wall was redundant once every project card carries its own client logo,
+  and dropping it removed the awkward SOS-Automazioni-in-a-client-wall problem
+  for good.
+- **Work rebuilt as a 3-column card grid, dates removed, ordered by length of
+  engagement**: SOS Automazioni (2013) → Hypefury (2022) → Financer.com (2022–25)
+  → the 2025 cohort → F. Bisol (2026). Nine cards fill three rows exactly.
+
+Page is now hero → work → services → contact. `index.html` is 16.9 KB, down from
+22.5 KB. Removed the CSS the deleted sections owned (`.clients`, `.logo-wall`,
+`.logo-cell`, `.prose`, `.split`, `.stats`, `.quote`) and dropped Merriweather
+from the font request, since the pull quote was its only consumer — verified
+afterwards that no class is used without a rule and no rule is unused.
+
+Worth flagging: ordering by engagement length puts SOS Automazioni — his own
+company — in the first card, ahead of Hypefury, his biggest-name client. That is
+what was asked for, but it is the weaker opening for selling.

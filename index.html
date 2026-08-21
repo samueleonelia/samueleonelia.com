@@ -7,12 +7,12 @@
 <meta name="description" content="Automation &amp; AI specialist in Padova, Italy. I turn manual work into systems that run themselves.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* ==========================================================================
    Palette and type lifted from sebastian-wittig.design:
    cream #F5EFDF ground, brown #4B3E39 text, dark brown #30231E, yellow #E9CB55,
-   Inter everywhere, Merriweather for quotes, 9999px pill buttons.
+   Inter everywhere, 9999px pill buttons.
    Committed single (light) theme, like the reference — every colour is painted
    explicitly so the page holds on a dark host background.
    ========================================================================== */
@@ -30,7 +30,6 @@
   --yellow-light:#F6DD7A;
 
   --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --serif:Merriweather,Georgia,serif;
 
   --pad:clamp(20px,5vw,72px);
   --maxw:1240px;
@@ -124,73 +123,38 @@ h1 .accent{color:var(--yellow)}
 }
 @media (max-width:920px){.portrait{max-width:340px}}
 
-/* ---------- clients / logo wall ---------- */
-.clients{background:var(--cream);padding-top:clamp(16px,2vw,32px);padding-bottom:var(--sec)}
-.logo-wall{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;
-}
-@media (max-width:900px){.logo-wall{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.logo-wall{grid-template-columns:repeat(2,1fr)}}
-.logo-cell{
-  background:var(--cream);display:flex;align-items:center;justify-content:center;
-  padding:30px 24px;min-height:112px;transition:background .25s ease;
-}
-.logo-cell:hover{background:var(--tint)}
-/* Two treatments, because the source marks are not alike:
-   - default: grayscale keeps internal detail (white type inside a coloured badge
-     survives, which a flat silhouette would erase)
-   - .inv: for marks supplied as white-on-transparent, which grayscale would make
-     invisible on cream — these are plain wordmarks, so a silhouette is correct */
-.logo-cell img{
-  max-height:38px;max-width:136px;width:auto;object-fit:contain;
-  filter:grayscale(1);opacity:.78;transition:opacity .25s ease,filter .25s ease;
-}
-.logo-cell img.inv{filter:brightness(0);opacity:.7}
-.logo-cell:hover img{opacity:1;filter:grayscale(0)}
-.logo-cell:hover img.inv{filter:brightness(0);opacity:.95}
-.logo-cell.sq img{max-height:54px;max-width:60px}
 
 /* ---------- generic section ---------- */
 .sec{padding-block:var(--sec)}
 .sec.white{background:var(--white)}
-.split{display:grid;grid-template-columns:210px minmax(0,1fr);gap:clamp(20px,4vw,56px)}
-@media (max-width:820px){.split{grid-template-columns:1fr;gap:16px}}
 
-.prose{max-width:58ch;display:flex;flex-direction:column;gap:20px}
-.prose p{font-size:clamp(1.05rem,1.2vw,1.2rem);color:var(--brown-90)}
-.prose strong{color:var(--brown-dark);font-weight:600}
-.quote{
-  font-family:var(--serif);font-size:clamp(1.15rem,1.5vw,1.35rem);line-height:1.55;
-  color:var(--brown-dark);border-left:3px solid var(--yellow);padding-left:22px;margin:4px 0;
-}
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:clamp(40px,5vw,60px)}
-.stat{background:var(--cream);padding:26px 22px}
-.stat b{display:block;font-size:clamp(2rem,3.4vw,2.75rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--brown-dark);font-variant-numeric:tabular-nums}
-.stat span{display:block;margin-top:10px;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:-.01em;color:var(--brown-40);line-height:1.45}
 
 /* ---------- work ---------- */
-.jobs{display:flex;flex-direction:column}
-.job{
-  display:grid;grid-template-columns:150px minmax(0,1fr) 128px;gap:clamp(18px,3vw,44px);
-  align-items:start;padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);
+.jobs{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;
 }
-.job:last-child{border-bottom:1px solid var(--line)}
-@media (max-width:880px){.job{grid-template-columns:1fr;gap:12px}.job-logo{order:-1}}
-.job-when{font-size:.9rem;font-weight:500;color:var(--brown-40);font-variant-numeric:tabular-nums;padding-top:.35em}
-.job h3{margin-bottom:10px}
-.job p{max-width:56ch;color:var(--brown-90)}
-.job-logo{display:flex;align-items:center;justify-content:flex-end}
-@media (max-width:880px){.job-logo{justify-content:flex-start}}
-.job-logo img{max-height:30px;max-width:118px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.6}
-.job-logo img.inv{filter:brightness(0);opacity:.55}
-.job-logo.sq img{max-height:42px;max-width:44px}
-.res{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+@media (max-width:980px){.jobs{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.jobs{grid-template-columns:1fr}}
+.job{
+  background:var(--white);padding:clamp(24px,2.6vw,32px);
+  display:flex;flex-direction:column;gap:12px;transition:background .25s ease;
+}
+.job:hover{background:var(--cream)}
+.job-logo{height:34px;display:flex;align-items:center;margin-bottom:6px}
+.job-logo img{
+  max-height:28px;max-width:120px;width:auto;object-fit:contain;
+  filter:grayscale(1);opacity:.62;transition:opacity .25s ease,filter .25s ease;
+}
+.job-logo img.inv{filter:brightness(0);opacity:.58}
+.job:hover .job-logo img{opacity:1;filter:grayscale(0)}
+.job:hover .job-logo img.inv{filter:brightness(0);opacity:.9}
+.job p{color:var(--brown-90);font-size:.98rem}
+.res{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
 .res span{
-  font-size:.82rem;font-weight:500;color:var(--brown-dark);
-  background:var(--yellow-light);border-radius:9999px;padding:5px 13px;
+  font-size:.8rem;font-weight:500;color:var(--brown-dark);
+  background:var(--yellow-light);border-radius:9999px;padding:5px 12px;
 }
 
 /* ---------- services ---------- */
@@ -240,7 +204,6 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
   <div class="wrap bar-in">
     <a class="brand" href="#top">Samuele Onelia</a>
     <nav class="nav">
-      <a href="#about">About</a>
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a class="pill" href="#contact">Get in touch</a>
@@ -268,128 +231,65 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
     </div>
   </section>
 
-  <section class="clients">
-    <div class="wrap">
-      <h2 class="eyebrow rv">Clients I build for</h2>
-      <div class="logo-wall rv">
-        <div class="logo-cell"><img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/logos/financer.svg" class="inv" alt="Financer.com" loading="lazy"></div>
-        <div class="logo-cell sq"><img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy"></div>
-        <div class="logo-cell sq"><img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy"></div>
-        <div class="logo-cell sq"><img src="assets/logos/acarent.png" alt="Acarent" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/logos/bmark.png" alt="Bmark" loading="lazy"></div>
-        <div class="logo-cell"><img src="assets/logos/fbisol.svg" class="inv" alt="F. Bisol" loading="lazy"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="sec">
-    <div class="wrap">
-      <div class="split rv">
-        <h2 class="eyebrow">About me</h2>
-        <div class="prose">
-          <p class="quote">Most businesses don't need more software. They need the software they already pay for to talk to itself.</p>
-          <p>I connect the tools a company already uses through their APIs, and I design AI pipelines with <strong>verification gates and a human in the loop</strong>, so nothing goes out unchecked.</p>
-          <p>The results are unglamorous and worth a lot: an order that files itself, a report that arrives without anyone building it, a shift schedule that sorts itself out on Tuesday morning.</p>
-          <p>English and Italian, from Padova, for clients across Europe and the US.</p>
-        </div>
-      </div>
-      <div class="stats rv">
-        <div class="stat"><b>40,000</b><span>Subscribers managed</span></div>
-        <div class="stat"><b>~40%</b><span>Average open rate</span></div>
-        <div class="stat"><b>19,000</b><span>YouTube subscribers grown</span></div>
-        <div class="stat"><b>200+</b><span>Founders interviewed</span></div>
-      </div>
-    </div>
-  </section>
-
   <section id="work" class="sec white">
     <div class="wrap">
       <h2 class="eyebrow rv">Work</h2>
       <div class="jobs">
 
         <article class="job rv">
-          <p class="job-when">2022 — present</p>
-          <div>
-            <h3>Hypefury</h3>
-            <p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p>
-            <div class="res"><span>40,000 subscribers</span><span>~40% open rate</span></div>
-          </div>
-          <div class="job-logo"><img src="assets/logos/hypefury.png" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/sosautomazioni.avif" alt="SOS Automazioni and Italian Indie" loading="lazy"></div>
+          <h3>SOS Automazioni &amp; Italian Indie</h3>
+          <p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p>
+          <div class="res"><span>~5,000 downloads / episode</span></div>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2025 — present</p>
-          <div>
-            <h3>Dream Travel Agency</h3>
-            <p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p>
-          </div>
-          <div class="job-logo sq"><img src="assets/logos/dreamtravel.svg" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy"></div>
+          <h3>Hypefury</h3>
+          <p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p>
+          <div class="res"><span>40,000 subscribers</span><span>~40% open rate</span></div>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2025 — present</p>
-          <div>
-            <h3>La Cofacceria</h3>
-            <p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p>
-          </div>
-          <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="Financer.com" loading="lazy"></div>
+          <h3>Financer.com</h3>
+          <p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2025 — present</p>
-          <div>
-            <h3>Grill Park Ferrara</h3>
-            <p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p>
-          </div>
-          <div class="job-logo sq"><img src="assets/logos/grillpark.png" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy"></div>
+          <h3>Dream Travel Agency</h3>
+          <p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2025 — present</p>
-          <div>
-            <h3>Acarent</h3>
-            <p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p>
-          </div>
-          <div class="job-logo sq"><img src="assets/logos/acarent.png" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy"></div>
+          <h3>La Cofacceria</h3>
+          <p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2025 — present</p>
-          <div>
-            <h3>Bmark</h3>
-            <p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p>
-          </div>
-          <div class="job-logo"><img src="assets/logos/bmark.png" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy"></div>
+          <h3>Grill Park Ferrara</h3>
+          <p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2026 — present</p>
-          <div>
-            <h3>F. Bisol</h3>
-            <p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p>
-          </div>
-          <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/acarent.png" alt="Acarent" loading="lazy"></div>
+          <h3>Acarent</h3>
+          <p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2022 — 2025</p>
-          <div>
-            <h3>Financer.com</h3>
-            <p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p>
-          </div>
-          <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/bmark.png" alt="Bmark" loading="lazy"></div>
+          <h3>Bmark</h3>
+          <p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p>
         </article>
 
         <article class="job rv">
-          <p class="job-when">2013 — present</p>
-          <div>
-            <h3>SOS Automazioni &amp; Italian Indie</h3>
-            <p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p>
-            <div class="res"><span>~5,000 downloads / episode</span></div>
-          </div>
-          <div class="job-logo sq"><img src="assets/logos/sosautomazioni.avif" alt="" loading="lazy"></div>
+          <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="F. Bisol" loading="lazy"></div>
+          <h3>F. Bisol</h3>
+          <p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p>
         </article>
 
       </div>
