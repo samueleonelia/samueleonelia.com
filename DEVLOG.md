@@ -239,3 +239,27 @@ disables the height transition.
 
 Side effect worth noting: the Work section collapsed from ~1460px to about 700px,
 which changes the page's proportions considerably.
+
+## 2026-08-21 — Session 1 (cont.): new portrait, and a latent aspect-ratio bug
+
+Samuele supplied a new headshot. It was pasted into the conversation rather than
+saved to disk, so it did not exist as a file anywhere on the machine — a search
+of Downloads/Desktop/Pictures/temp turned up only a *different* shot of him
+(`Copilot_20260821_120722.png`: navy blazer, office background), which was
+correctly not used. Recovered the real one from the system clipboard via
+AppleScript (`the clipboard as «class PNGf»`), 1029x1529.
+
+Cropped to a 900x900 square at (47, 90)-(947, 990): centred on the face rather
+than the frame, with headroom above the hair and the crop running down through
+neck, collar and shoulders — the classic headshot framing he asked for. Saved as
+a progressive JPEG at quality 88, 103 KB. Replaces the 600x600 crop lifted from
+the CV. `object-position` returned to `center`, since it was only nudged to
+`20%` to compensate for the old crop's framing.
+
+**Bug found while verifying, present since the first build:** the portrait was
+rendering 335x900 — a tall rectangle, not the intended square. `.portrait img`
+set `width:100%` and `aspect-ratio:1/1` but never `height`, so the `height` HTML
+attribute (there for layout stability) applied as a presentational hint, and an
+explicit height beats `aspect-ratio`. Fixed with `height:auto`. This had been
+wrong through every screenshot in this session and was never spotted, because a
+tall portrait beside a big headline looks plausible. Now verified square: 335x335.
