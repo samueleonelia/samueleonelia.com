@@ -25,3 +25,33 @@
 - The phone number is public on the page. Samuele may want it removed.
 - No favicon, no OG/social share image, no `netlify.toml` yet.
 - Portrait is the CV headshot, 600×600 and slightly soft at large sizes. A higher-resolution original would help.
+
+## 2026-08-21 — Session 1 (cont.): streamlining
+
+Samuele's read: the page was crammed, and the availability badge ("taking on new
+work") was filler. Cut hard, including two devices that were mine rather than his:
+
+- **Removed the status ticker** under the portrait. It was the page's one flourish,
+  but it invented statuses ("queued", "compiling") that were never facts.
+- **Removed the "By hand → Now" pair from every project card.** It was a good
+  structural idea, but the left half was always my inference from the CV rather
+  than something Samuele told me. Cutting it halves the text per card *and*
+  removes the site's only unverified claims. Each card is now one sentence.
+- Removed the seven hero skill pills (the services section already says this),
+  the second CTA button, the per-card tech chips (the mono `kind` label in the
+  card meta already carries that signal), and the explanatory paragraph under
+  every section heading.
+- Kept only result chips that carry a real number.
+- Stats trimmed from five to four; dropped "13 years doing this" as filler.
+- Cut the pharmacist origin line from About — Samuele had already excluded the
+  pharmacy from scope, and it applied to the narrative too.
+- Work heading went from "Every project below started as somebody's boring
+  Tuesday" to the plain "What I've built, and who for." Cute framing is exactly
+  what he was asking me to cut.
+- Card list restyled from floating boxes to hairline-separated rows, which suits
+  nine short entries better than nine cards did.
+- Deleted the now-dead CSS (`.avail`, `.dot`, `.tag`, `.ticker`, `.flow`,
+  `.chip`) rather than leaving it orphaned. Verified no class is used without a
+  rule and no rule is unused.
+
+`index.html` went from 31,375 to 19,548 bytes — about 38% less page.

@@ -10,11 +10,11 @@ Mockup: https://claude.ai/code/artifact/8112620f-a4ed-4353-b8c5-86e414ff3e64
 |---|---|
 | Repo, `.gitignore` | Done |
 | Design system (colours, type, light + dark) | Done |
-| Hero + status ticker | Done |
+| Hero | Done — trimmed to headline, one line, one button |
 | Client marquee | Done — text names, no logos |
 | About + numbers | Done |
-| Work: 9 case-study cards | Done — copy needs Samuele's fact-check |
-| Services | Done |
+| Work: 9 cards | Done — one line each, no invented before/after |
+| Services | Done — 4 items, SEO removed |
 | Contact + footer | Done |
 | Responsive down to mobile | Done — not yet tested on a real phone |
 | Favicon | Not started |
@@ -24,19 +24,17 @@ Mockup: https://claude.ai/code/artifact/8112620f-a4ed-4353-b8c5-86e414ff3e64
 
 ## Next
 
-1. Samuele reviews the mockup and says what to change.
-2. Fact-check every "By hand" line in the project cards.
-3. Decide whether the phone number stays public.
-4. Favicon + OG image, then deploy to Netlify and point the domain.
+1. Samuele reviews the streamlined copy and says what still needs cutting.
+2. Decide whether the phone number stays public.
+3. Favicon + OG image, then deploy to Netlify and point the domain.
 
 ## Known issues
 
-- "By hand" lines in the cards are inferred from the CV, not confirmed by Samuele.
 - Portrait is the 600×600 CV headshot; a larger original would look better in the hero.
 - Not yet tested on a real phone or in Safari.
 
 ## Blocked on Samuele
 
 - Approval of the design direction (or a redirect).
-- Fact-check of the project card copy.
 - Netlify site + domain details when we get to deploying.
+- A GitHub remote: none exists yet, so this repo is only on this Mac.
