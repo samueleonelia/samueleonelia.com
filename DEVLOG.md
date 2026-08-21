@@ -180,3 +180,31 @@ modifier (44px tall, 88px wide, slightly higher opacity) for Dream Travel, Grill
 Park, Acarent and SOS Automazioni, and raised the logo row to 44px to fit it.
 
 Verified all nine render with real dimensions and clear the name pill.
+
+## 2026-08-21 — Session 1 (cont.): project list rebuilt as the reference's big-type list
+
+Samuele: use the design from the reference's About area for the project list.
+
+`.section-about` itself turned out to be a scroll-driven video stage with a
+sticky canvas, a rotating badge and a giant yellow circle — not a list at all.
+The list design in that part of the page is the **history / customers** pattern,
+and that is what was replicated:
+
+- `.hist-row` items, 156px tall, stacked in a plain `flex-direction: column`
+- item name as an **h3 at 64px, weight 600**, in brown `#4B3E39`
+- one small 16px line underneath (the reference uses it for the employer; here
+  it carries the project description)
+- **no borders between rows** — the reference separates purely by rhythm
+
+Applied to the nine projects, replacing the 3-column card grid. The client logo
+moved to the right of each row.
+
+Two deliberate departures, both worth reverting if he disagrees:
+- **Kept a very faint hairline between rows** (`box-shadow: 0 -1px 0` at 8%
+  alpha). The reference's rows carry a name plus one short line and are airy;
+  ours carry 2–4 line descriptions, and with nine of them pure spacing muddles
+  where one project ends and the next begins.
+- **Dropped the yellow name pill.** The client name is now a 64px headline, so a
+  pill repeating the same name directly above it was pure duplication.
+
+`.tall` logos get 64px here (up from 44px) since the rows are much taller.
