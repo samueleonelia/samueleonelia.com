@@ -208,3 +208,34 @@ Two deliberate departures, both worth reverting if he disagrees:
   pill repeating the same name directly above it was pure duplication.
 
 `.tall` logos get 64px here (up from 44px) since the rows are much taller.
+
+## 2026-08-21 — Session 1 (cont.): project rows reveal on hover / click
+
+Samuele: description and logo should appear on hover and click, like the
+reference.
+
+Inspected the reference's customers list to find the real mechanism rather than
+guess: each row's markup contains a sibling `.cust-hover` block holding that
+client's logo, sitting at `display:none` until the row is hovered. The row shows
+nothing but the name until then. Reproduced that:
+
+- Each project row is now just the 64px name by default.
+- The description and the client logo live in a `.job-reveal` block, collapsed.
+- Collapse/expand uses `grid-template-rows: 0fr -> 1fr` on a wrapper with
+  `overflow:hidden`, which animates real height without hard-coding a
+  `max-height` that would clip the longer descriptions (SOS Automazioni's runs
+  four lines) or overshoot the short ones.
+
+Three triggers, not one:
+- `:hover` for mouse
+- `:focus-within` plus a visible focus ring on the toggle, for keyboard
+- a click/tap handler toggling `.open`, because `:hover` never fires on touch —
+  without it the descriptions would be unreachable on a phone
+
+The name is a real `<button>` inside the `<h3>` (not the h3 itself — a button may
+only contain phrasing content), carrying `aria-expanded` and `aria-controls`, so
+the state is announced rather than merely visual. `prefers-reduced-motion`
+disables the height transition.
+
+Side effect worth noting: the Work section collapsed from ~1460px to about 700px,
+which changes the page's proportions considerably.

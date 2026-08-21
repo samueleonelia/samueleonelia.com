@@ -14,7 +14,7 @@ Page structure: hero → work → services → contact.
 | Repo, `.gitignore` | Done |
 | Design matched to sebastian-wittig.design | Done — tokens read off the live site |
 | Hero (rotating two-tone headline) | Done |
-| Work: 9 cards, 3 columns | Done — logo top-left, client name in a yellow pill top-right, ordered by engagement length |
+| Work: 9 rows, big-type list | Done — 64px names; description + logo reveal on hover/click/focus; ordered by engagement length |
 | Services | Done — 4 items |
 | Contact (dark brown) + footer | Done — footer matches sosautomazioni.com's legal line |
 | About section | Removed at Samuele's request |
