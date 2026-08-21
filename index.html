@@ -7,228 +7,230 @@
 <meta name="description" content="Automation &amp; AI specialist in Padova, Italy. I turn manual work into systems that run themselves.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400&display=swap">
 <style>
-/* ---------- tokens: light is the base, complete ---------- */
+/* ==========================================================================
+   Palette and type lifted from sebastian-wittig.design:
+   cream #F5EFDF ground, brown #4B3E39 text, dark brown #30231E, yellow #E9CB55,
+   Inter everywhere, Merriweather for quotes, 9999px pill buttons.
+   Committed single (light) theme, like the reference — every colour is painted
+   explicitly so the page holds on a dark host background.
+   ========================================================================== */
 :root{
-  --ground:#ECEDEF;
-  --surface:#FFFFFF;
-  --ink:#0F1319;
-  --body:#454C57;
-  --muted:#79818E;
-  --line:#D6D9DF;
-  --line-soft:#E3E5EA;
-  --accent:#1B44E8;
-  --accent-ink:#1536BE;
-  --signal:#1B8A57;
-  --shadow-lift:0 2px 4px rgba(15,19,25,.06), 0 26px 54px -22px rgba(15,19,25,.34);
+  --cream:#F5EFDF;
+  --white:#FFFFFF;
+  --brown-dark:#30231E;
+  --brown:#4B3E39;
+  --brown-90:rgba(75,62,57,.9);
+  --brown-80:rgba(75,62,57,.8);
+  --brown-40:rgba(75,62,57,.4);
+  --tint:rgba(75,62,57,.05);
+  --line:rgba(75,62,57,.12);
+  --yellow:#E9CB55;
+  --yellow-light:#F6DD7A;
 
-  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:Merriweather,Georgia,serif;
 
-  --pad:clamp(20px,5vw,64px);
-  --gap-section:clamp(72px,11vw,148px);
-  --maxw:1180px;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --ground:#0B0D11;
-    --surface:#13161C;
-    --ink:#F1F3F6;
-    --body:#B2B9C4;
-    --muted:#7B838F;
-    --line:#252A33;
-    --line-soft:#1D222A;
-    --accent:#7A94FF;
-    --accent-ink:#9DB0FF;
-    --signal:#43CE8D;
-    --shadow-lift:0 2px 4px rgba(0,0,0,.55), 0 26px 54px -22px rgba(0,0,0,.9);
-  }
-}
-:root[data-theme="dark"]{
-  --ground:#0B0D11;
-  --surface:#13161C;
-  --ink:#F1F3F6;
-  --body:#B2B9C4;
-  --muted:#7B838F;
-  --line:#252A33;
-  --line-soft:#1D222A;
-  --accent:#7A94FF;
-  --accent-ink:#9DB0FF;
-  --signal:#43CE8D;
-  --shadow-lift:0 2px 4px rgba(0,0,0,.55), 0 26px 54px -22px rgba(0,0,0,.9);
+  --pad:clamp(20px,5vw,72px);
+  --maxw:1240px;
+  --sec:clamp(72px,10vw,136px);
 }
 
-/* ---------- base ---------- */
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  background:var(--ground);
-  color:var(--body);
+  background:var(--cream);
+  color:var(--brown);
   font-family:var(--sans);
-  font-size:clamp(15px,.42vw + 14px,17px);
-  line-height:1.62;
+  font-size:clamp(15px,.4vw + 14px,17px);
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-
-.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
-
-h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.022em;line-height:1.02}
-h1{font-size:clamp(2.6rem,6.4vw,5rem)}
-h2{font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.05}
-h3{font-size:clamp(1.25rem,1.5vw,1.5rem);font-weight:700;letter-spacing:-.015em;line-height:1.15}
 p{margin:0}
+:focus-visible{outline:2px solid var(--brown-dark);outline-offset:3px;border-radius:4px}
 
-.lab{
-  font-family:var(--mono);font-size:.7rem;font-weight:500;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:2}
+
+/* section label — the reference's H2: small, uppercase, tight */
+.eyebrow{
+  font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:-.02em;
+  color:var(--brown-90);margin:0 0 clamp(28px,4vw,52px);
+}
+/* item title — the reference's H3 */
+h3{
+  font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;letter-spacing:-.025em;
+  line-height:1.15;color:var(--brown-dark);margin:0;text-wrap:balance;
 }
 
-/* ---------- top bar ---------- */
-.bar{
-  position:sticky;top:0;z-index:50;
-  background:color-mix(in srgb,var(--ground) 82%,transparent);
-  backdrop-filter:saturate(160%) blur(14px);
-  -webkit-backdrop-filter:saturate(160%) blur(14px);
-  border-bottom:1px solid var(--line-soft);
+/* ---------- header ---------- */
+.bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--cream) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:74px}
+.brand{font-weight:600;font-size:1.05rem;letter-spacing:-.02em;color:var(--brown-dark);text-decoration:none}
+.nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px)}
+.nav a{font-size:.95rem;font-weight:500;text-transform:uppercase;letter-spacing:-.02em;color:var(--brown-80);text-decoration:none;transition:color .18s ease}
+.nav a:hover{color:var(--brown-dark)}
+.nav a.pill{color:var(--cream)}
+.nav a.pill:hover{color:var(--cream)}
+@media (max-width:680px){.nav a:not(.pill){display:none}}
+
+.pill{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--brown-dark);color:var(--cream);border:1px solid rgba(245,239,223,.2);
+  border-radius:9999px;padding:12px 24px;font-size:.9rem;font-weight:600;letter-spacing:-.01em;
+  text-decoration:none;text-transform:none;transition:transform .18s ease,background .18s ease;
 }
-.bar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
-.brand{font-family:var(--display);font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
-.nav{display:flex;gap:clamp(14px,2.4vw,30px);align-items:center}
-.nav a{
-  font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;color:var(--muted);padding:4px 0;border-bottom:1px solid transparent;
-  transition:color .18s ease,border-color .18s ease;
-}
-.nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
-.nav .hire{color:var(--accent);border-bottom-color:color-mix(in srgb,var(--accent) 35%,transparent)}
-@media (max-width:620px){.nav a:not(.hire){display:none}}
+.pill:hover{background:var(--brown);transform:translateY(-1px);color:var(--cream)}
 
 /* ---------- hero ---------- */
-.hero{padding-top:clamp(52px,8vw,104px);padding-bottom:clamp(44px,6vw,80px)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(28px,5vw,64px);align-items:end}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr;align-items:start}}
-
-.hero .lab{display:block;margin-bottom:24px}
-.hero h1{margin-bottom:26px}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.lede{max-width:48ch;font-size:1.1rem}
-
-.btn{
-  display:inline-flex;align-items:center;gap:9px;text-decoration:none;margin-top:34px;
-  font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
-  padding:13px 20px;border-radius:2px;border:1px solid var(--ink);
-  background:var(--ink);color:var(--ground);transition:transform .16s ease,box-shadow .16s ease;
+.hero{position:relative;padding-top:clamp(40px,6vw,80px);padding-bottom:clamp(56px,7vw,96px);overflow:hidden}
+/* the reference's blurred radial: white -> cream, blur(250px), pill-round */
+/* Same soft white->cream haze as the reference, but painted as gradients.
+   The original is a blur(250px) layer; at that radius Chromium promotes it to a
+   huge composited layer that janks on scroll, and gradients are visually equal. */
+.glow{
+  position:absolute;inset:-20% -10% auto -10%;height:min(1000px,110vh);
+  background:radial-gradient(ellipse 58% 52% at 50% 22%,var(--white) 0%,rgba(255,255,255,.55) 42%,rgba(255,255,255,0) 72%);
+  z-index:0;pointer-events:none;
 }
-.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+.glow-2{
+  position:absolute;top:2%;right:-10%;width:min(680px,80vw);height:min(680px,80vw);
+  background:radial-gradient(circle at 50% 50%,rgba(246,221,122,.55) 0%,rgba(246,221,122,.22) 38%,rgba(246,221,122,0) 70%);
+  z-index:0;pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(32px,5vw,64px);align-items:center}
+@media (max-width:920px){.hero-grid{grid-template-columns:1fr}}
+
+h1{
+  font-size:clamp(2.5rem,6.2vw,4.7rem);font-weight:700;letter-spacing:-.04em;line-height:1.02;
+  color:var(--brown);margin:0 0 clamp(22px,3vw,30px);text-transform:uppercase;
+}
+h1 .line{display:block;overflow:hidden}
+h1 .accent{color:var(--yellow)}
+.rot{display:inline-block;transition:opacity .45s ease,transform .45s ease}
+.rot.out{opacity:0;transform:translateY(-.32em)}
+
+.lede{max-width:44ch;font-size:clamp(1.02rem,1.1vw,1.15rem);color:var(--brown-90)}
+.hero .pill{margin-top:clamp(28px,3.5vw,38px);padding:15px 30px;font-size:.95rem}
 
 .portrait{position:relative}
 .portrait img{
-  width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 22%;
-  border-radius:2px;filter:grayscale(1) contrast(1.04);transition:filter .5s ease;
+  width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 20%;
+  border-radius:12px;
 }
-.portrait:hover img{filter:grayscale(0) contrast(1)}
-.portrait::before{
-  content:"";position:absolute;inset:auto -14px -14px auto;width:62%;height:62%;
-  border-right:1px solid var(--accent);border-bottom:1px solid var(--accent);opacity:.55;
-}
-@media (max-width:900px){.portrait{max-width:300px}}
+@media (max-width:920px){.portrait{max-width:340px}}
 
-/* ---------- marquee ---------- */
-.marquee{
-  border-block:1px solid var(--line-soft);padding:20px 0;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+/* ---------- clients / logo wall ---------- */
+.clients{background:var(--cream);padding-top:clamp(16px,2vw,32px);padding-bottom:var(--sec)}
+.logo-wall{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;
 }
-.marquee-track{display:flex;width:max-content;animation:slide 42s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-50%)}}
-.marquee-group{display:flex;align-items:center;gap:clamp(28px,4vw,54px);padding-right:clamp(28px,4vw,54px)}
-.marquee-group span{
-  font-family:var(--mono);font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--muted);white-space:nowrap;
+@media (max-width:900px){.logo-wall{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.logo-wall{grid-template-columns:repeat(2,1fr)}}
+.logo-cell{
+  background:var(--cream);display:flex;align-items:center;justify-content:center;
+  padding:30px 24px;min-height:112px;transition:background .25s ease;
 }
-.marquee-group span::after{content:"◇";margin-left:clamp(28px,4vw,54px);color:var(--line)}
+.logo-cell:hover{background:var(--tint)}
+/* Two treatments, because the source marks are not alike:
+   - default: grayscale keeps internal detail (white type inside a coloured badge
+     survives, which a flat silhouette would erase)
+   - .inv: for marks supplied as white-on-transparent, which grayscale would make
+     invisible on cream — these are plain wordmarks, so a silhouette is correct */
+.logo-cell img{
+  max-height:38px;max-width:136px;width:auto;object-fit:contain;
+  filter:grayscale(1);opacity:.78;transition:opacity .25s ease,filter .25s ease;
+}
+.logo-cell img.inv{filter:brightness(0);opacity:.7}
+.logo-cell:hover img{opacity:1;filter:grayscale(0)}
+.logo-cell:hover img.inv{filter:brightness(0);opacity:.95}
+.logo-cell.sq img{max-height:54px;max-width:60px}
 
-/* ---------- sections ---------- */
-section{padding-block:var(--gap-section)}
-.split{display:grid;grid-template-columns:170px minmax(0,1fr);gap:clamp(18px,3vw,44px)}
-@media (max-width:760px){.split{grid-template-columns:1fr;gap:12px}}
-.split > .lab{padding-top:.55em}
-.sec-head{margin-bottom:clamp(34px,5vw,62px)}
+/* ---------- generic section ---------- */
+.sec{padding-block:var(--sec)}
+.sec.white{background:var(--white)}
+.split{display:grid;grid-template-columns:210px minmax(0,1fr);gap:clamp(20px,4vw,56px)}
+@media (max-width:820px){.split{grid-template-columns:1fr;gap:16px}}
 
-.prose{max-width:60ch;display:flex;flex-direction:column;gap:18px}
-.prose p{font-size:1.05rem}
-.prose strong{color:var(--ink);font-weight:600}
+.prose{max-width:58ch;display:flex;flex-direction:column;gap:20px}
+.prose p{font-size:clamp(1.05rem,1.2vw,1.2rem);color:var(--brown-90)}
+.prose strong{color:var(--brown-dark);font-weight:600}
+.quote{
+  font-family:var(--serif);font-size:clamp(1.15rem,1.5vw,1.35rem);line-height:1.55;
+  color:var(--brown-dark);border-left:3px solid var(--yellow);padding-left:22px;margin:4px 0;
+}
 
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-top:clamp(40px,5vw,64px)}
-.stat{background:var(--ground);padding:24px 20px}
-.stat b{
-  display:block;font-family:var(--display);font-weight:800;color:var(--ink);
-  font-size:clamp(1.9rem,3.4vw,2.7rem);line-height:1;letter-spacing:-.03em;
-  font-variant-numeric:tabular-nums;
-}
-.stat span{display:block;margin-top:10px;font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:clamp(40px,5vw,60px)}
+.stat{background:var(--cream);padding:26px 22px}
+.stat b{display:block;font-size:clamp(2rem,3.4vw,2.75rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--brown-dark);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:10px;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:-.01em;color:var(--brown-40);line-height:1.45}
 
 /* ---------- work ---------- */
-.cards{display:flex;flex-direction:column;gap:1px;background:var(--line-soft);border-block:1px solid var(--line-soft)}
-.card{
-  background:var(--ground);padding:clamp(24px,3vw,34px) 0;
-  display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(18px,3vw,44px);
-  transition:background .2s ease;
+.jobs{display:flex;flex-direction:column}
+.job{
+  display:grid;grid-template-columns:150px minmax(0,1fr) 128px;gap:clamp(18px,3vw,44px);
+  align-items:start;padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);
 }
-.card:hover{background:var(--surface)}
-@media (max-width:820px){.card{grid-template-columns:1fr;gap:12px}}
-.card-meta{display:flex;flex-direction:column;gap:6px}
-.card-meta .kind{font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-ink)}
-.card-meta .yr{font-family:var(--mono);font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.card h3{margin-bottom:8px}
-.card p{max-width:62ch}
-.res{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.job:last-child{border-bottom:1px solid var(--line)}
+@media (max-width:880px){.job{grid-template-columns:1fr;gap:12px}.job-logo{order:-1}}
+.job-when{font-size:.9rem;font-weight:500;color:var(--brown-40);font-variant-numeric:tabular-nums;padding-top:.35em}
+.job h3{margin-bottom:10px}
+.job p{max-width:56ch;color:var(--brown-90)}
+.job-logo{display:flex;align-items:center;justify-content:flex-end}
+@media (max-width:880px){.job-logo{justify-content:flex-start}}
+.job-logo img{max-height:30px;max-width:118px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.6}
+.job-logo img.inv{filter:brightness(0);opacity:.55}
+.job-logo.sq img{max-height:42px;max-width:44px}
+.res{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .res span{
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;color:var(--signal);
-  border:1px solid color-mix(in srgb,var(--signal) 35%,var(--line));border-radius:100px;padding:4px 10px;
+  font-size:.82rem;font-weight:500;color:var(--brown-dark);
+  background:var(--yellow-light);border-radius:9999px;padding:5px 13px;
 }
 
 /* ---------- services ---------- */
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
-.svc-item{background:var(--ground);padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:10px}
-.svc-item h3{font-size:1.1rem}
-.svc-item p{font-size:.96rem;max-width:36ch}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.svc-item{background:var(--cream);padding:clamp(26px,3vw,34px);display:flex;flex-direction:column;gap:12px}
+.sec.white .svc-item{background:var(--white)}
+.svc-item h3{font-size:clamp(1.2rem,1.6vw,1.4rem)}
+.svc-item p{color:var(--brown-90);font-size:.98rem;max-width:34ch}
 
 /* ---------- contact ---------- */
-.contact{border-top:1px solid var(--line-soft)}
-.big-link{
-  font-family:var(--display);font-weight:800;letter-spacing:-.03em;color:var(--ink);
-  font-size:clamp(1.7rem,5.2vw,3.4rem);text-decoration:none;line-height:1.08;
-  display:inline-block;border-bottom:2px solid var(--line);padding-bottom:4px;
-  transition:color .2s ease,border-color .2s ease;overflow-wrap:anywhere;
+.contact{background:var(--brown-dark);color:rgba(245,239,223,.8);padding-block:var(--sec)}
+.contact .eyebrow{color:rgba(245,239,223,.9)}
+.contact h2{
+  font-size:clamp(2rem,4.6vw,3.4rem);font-weight:700;letter-spacing:-.035em;line-height:1.05;
+  color:var(--cream);margin:0 0 clamp(26px,3vw,36px);text-wrap:balance;
 }
-.big-link:hover{color:var(--accent);border-bottom-color:var(--accent)}
-.contact-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:22px;margin-top:clamp(32px,5vw,52px)}
-.crow .lab{display:block;margin-bottom:8px}
-.crow a,.crow p{font-size:1rem;color:var(--ink);text-decoration:none}
-.crow a{border-bottom:1px solid var(--line);transition:border-color .2s ease,color .2s ease}
-.crow a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.contact h2 em{font-style:normal;color:var(--yellow)}
+.mail{
+  display:inline-block;font-size:clamp(1.15rem,2.4vw,1.9rem);font-weight:600;letter-spacing:-.03em;
+  color:var(--cream);text-decoration:none;border-bottom:2px solid rgba(245,239,223,.3);
+  padding-bottom:3px;overflow-wrap:anywhere;transition:border-color .2s ease,color .2s ease;
+}
+.mail:hover{color:var(--yellow);border-bottom-color:var(--yellow)}
+.crows{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin-top:clamp(34px,4vw,50px)}
+.crow span{display:block;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:-.01em;color:rgba(245,239,223,.4);margin-bottom:8px}
+.crow a,.crow p{color:var(--cream);font-size:1rem;text-decoration:none}
+.crow a:hover{color:var(--yellow)}
 
-footer{border-top:1px solid var(--line-soft);padding-block:26px}
+footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);padding-block:26px}
 .foot-in{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
-.foot-in p{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted)}
+.foot-in p{font-size:.85rem;color:rgba(245,239,223,.4)}
 
 /* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
-  .marquee-track{animation:none}
-  .btn:hover{transform:none}
+  .rot{transition:none}
+  .pill:hover{transform:none}
 }
 </style>
 </head>
@@ -238,179 +240,197 @@ footer{border-top:1px solid var(--line-soft);padding-block:26px}
   <div class="wrap bar-in">
     <a class="brand" href="#top">Samuele Onelia</a>
     <nav class="nav">
-      <a href="#work">Work</a>
       <a href="#about">About</a>
+      <a href="#work">Work</a>
       <a href="#services">Services</a>
-      <a class="hire" href="#contact">Get in touch</a>
+      <a class="pill" href="#contact">Get in touch</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
 
-  <div class="hero wrap">
-    <div class="hero-grid">
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="glow-2"></div>
+    <div class="wrap hero-grid">
       <div>
-        <span class="lab">Automation &amp; AI — Padova, Italy</span>
-        <h1>I turn manual work into systems that <em>run themselves</em>.</h1>
+        <h1>
+          <span class="line"><span class="rot" id="r1">I automate</span></span>
+          <span class="line"><span class="rot accent" id="r2">the boring work</span></span>
+        </h1>
         <p class="lede">I take the work your team still does by hand and rebuild it as software that runs on its own.</p>
-        <a class="btn" href="#contact">Start a project</a>
+        <a class="pill" href="#contact">Start a project</a>
       </div>
       <div class="portrait">
         <img src="assets/portrait.jpg" alt="Samuele Onelia" width="600" height="600">
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="marquee" aria-label="Selected clients">
-    <div class="marquee-track" id="mq"></div>
-  </div>
-
-  <section id="about" class="wrap">
-    <div class="split rv">
-      <p class="lab">About</p>
-      <div class="prose">
-        <h2>Most businesses don't need more software. They need the software they already pay for to talk to itself.</h2>
-        <p>I connect the tools a company already uses through their APIs, and I design AI pipelines with <strong>verification gates and a human in the loop</strong>, so nothing goes out unchecked.</p>
-        <p>The results are unglamorous and worth a lot: an order that files itself, a report that arrives without anyone building it, a shift schedule that sorts itself out on Tuesday morning.</p>
-        <p>English and Italian, from Padova, for clients across Europe and the US.</p>
+  <section class="clients">
+    <div class="wrap">
+      <h2 class="eyebrow rv">Clients I build for</h2>
+      <div class="logo-wall rv">
+        <div class="logo-cell"><img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy"></div>
+        <div class="logo-cell"><img src="assets/logos/financer.svg" class="inv" alt="Financer.com" loading="lazy"></div>
+        <div class="logo-cell sq"><img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy"></div>
+        <div class="logo-cell"><img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy"></div>
+        <div class="logo-cell sq"><img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy"></div>
+        <div class="logo-cell sq"><img src="assets/logos/acarent.png" alt="Acarent" loading="lazy"></div>
+        <div class="logo-cell"><img src="assets/logos/bmark.png" alt="Bmark" loading="lazy"></div>
+        <div class="logo-cell"><img src="assets/logos/fbisol.svg" class="inv" alt="F. Bisol" loading="lazy"></div>
       </div>
-    </div>
-
-    <div class="stats rv">
-      <div class="stat"><b>40,000</b><span>Subscribers managed</span></div>
-      <div class="stat"><b>~40%</b><span>Average open rate</span></div>
-      <div class="stat"><b>19,000</b><span>YouTube subscribers grown</span></div>
-      <div class="stat"><b>200+</b><span>Founders interviewed</span></div>
     </div>
   </section>
 
-  <section id="work" class="wrap">
-    <div class="split sec-head rv">
-      <p class="lab">Selected work</p>
-      <h2>What I've built, and who for.</h2>
-    </div>
-
-    <div class="cards">
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">Email &amp; lifecycle</span><span class="yr">2022 — present</span></div>
-        <div>
-          <h3>Hypefury</h3>
-          <p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p>
-          <div class="res"><span>40,000 subscribers</span><span>~40% open rate</span></div>
+  <section id="about" class="sec">
+    <div class="wrap">
+      <div class="split rv">
+        <h2 class="eyebrow">About me</h2>
+        <div class="prose">
+          <p class="quote">Most businesses don't need more software. They need the software they already pay for to talk to itself.</p>
+          <p>I connect the tools a company already uses through their APIs, and I design AI pipelines with <strong>verification gates and a human in the loop</strong>, so nothing goes out unchecked.</p>
+          <p>The results are unglamorous and worth a lot: an order that files itself, a report that arrives without anyone building it, a shift schedule that sorts itself out on Tuesday morning.</p>
+          <p>English and Italian, from Padova, for clients across Europe and the US.</p>
         </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">Custom CRM</span><span class="yr">2025 — present</span></div>
-        <div>
-          <h3>Dream Travel Agency</h3>
-          <p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">CRM + WhatsApp bot</span><span class="yr">2025 — present</span></div>
-        <div>
-          <h3>La Cofacceria</h3>
-          <p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">Operations</span><span class="yr">2025 — present</span></div>
-        <div>
-          <h3>Grill Park Ferrara</h3>
-          <p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">AI agent</span><span class="yr">2025 — present</span></div>
-        <div>
-          <h3>Acarent</h3>
-          <p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">Reporting</span><span class="yr">2025 — present</span></div>
-        <div>
-          <h3>Bmark</h3>
-          <p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">Sales analytics</span><span class="yr">2026 — present</span></div>
-        <div>
-          <h3>FBisol</h3>
-          <p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">Content &amp; migration</span><span class="yr">2022 — 2025</span></div>
-        <div>
-          <h3>Financer.com</h3>
-          <p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p>
-        </div>
-      </article>
-
-      <article class="card rv">
-        <div class="card-meta"><span class="kind">My own</span><span class="yr">2013 — present</span></div>
-        <div>
-          <h3>SOS Automazioni &amp; Italian Indie</h3>
-          <p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p>
-          <div class="res"><span>~5,000 downloads / episode</span></div>
-        </div>
-      </article>
-
+      </div>
+      <div class="stats rv">
+        <div class="stat"><b>40,000</b><span>Subscribers managed</span></div>
+        <div class="stat"><b>~40%</b><span>Average open rate</span></div>
+        <div class="stat"><b>19,000</b><span>YouTube subscribers grown</span></div>
+        <div class="stat"><b>200+</b><span>Founders interviewed</span></div>
+      </div>
     </div>
   </section>
 
-  <section id="services" class="wrap">
-    <div class="split sec-head rv">
-      <p class="lab">Services</p>
-      <h2>Four things. They usually arrive together.</h2>
+  <section id="work" class="sec white">
+    <div class="wrap">
+      <h2 class="eyebrow rv">Work</h2>
+      <div class="jobs">
+
+        <article class="job rv">
+          <p class="job-when">2022 — present</p>
+          <div>
+            <h3>Hypefury</h3>
+            <p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p>
+            <div class="res"><span>40,000 subscribers</span><span>~40% open rate</span></div>
+          </div>
+          <div class="job-logo"><img src="assets/logos/hypefury.png" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2025 — present</p>
+          <div>
+            <h3>Dream Travel Agency</h3>
+            <p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p>
+          </div>
+          <div class="job-logo sq"><img src="assets/logos/dreamtravel.svg" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2025 — present</p>
+          <div>
+            <h3>La Cofacceria</h3>
+            <p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p>
+          </div>
+          <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2025 — present</p>
+          <div>
+            <h3>Grill Park Ferrara</h3>
+            <p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p>
+          </div>
+          <div class="job-logo sq"><img src="assets/logos/grillpark.png" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2025 — present</p>
+          <div>
+            <h3>Acarent</h3>
+            <p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p>
+          </div>
+          <div class="job-logo sq"><img src="assets/logos/acarent.png" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2025 — present</p>
+          <div>
+            <h3>Bmark</h3>
+            <p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p>
+          </div>
+          <div class="job-logo"><img src="assets/logos/bmark.png" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2026 — present</p>
+          <div>
+            <h3>F. Bisol</h3>
+            <p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p>
+          </div>
+          <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2022 — 2025</p>
+          <div>
+            <h3>Financer.com</h3>
+            <p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p>
+          </div>
+          <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <p class="job-when">2013 — present</p>
+          <div>
+            <h3>SOS Automazioni &amp; Italian Indie</h3>
+            <p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p>
+            <div class="res"><span>~5,000 downloads / episode</span></div>
+          </div>
+          <div class="job-logo sq"><img src="assets/logos/sosautomazioni.avif" alt="" loading="lazy"></div>
+        </article>
+
+      </div>
     </div>
-    <div class="svc rv">
-      <div class="svc-item">
-        <h3>Process automation</h3>
-        <p>I connect the tools you already use, so work moves between them without anyone copying it across.</p>
-      </div>
-      <div class="svc-item">
-        <h3>AI agents</h3>
-        <p>Multi-agent pipelines with verification gates and a human in the loop.</p>
-      </div>
-      <div class="svc-item">
-        <h3>Email marketing</h3>
-        <p>Campaigns, newsletters and large lists, run end to end.</p>
-      </div>
-      <div class="svc-item">
-        <h3>Copywriting &amp; ghostwriting</h3>
-        <p>Sales copy and long-form newsletters, in English and Italian, in your voice.</p>
+  </section>
+
+  <section id="services" class="sec">
+    <div class="wrap">
+      <h2 class="eyebrow rv">What I do</h2>
+      <div class="svc rv">
+        <div class="svc-item">
+          <h3>Process automation</h3>
+          <p>I connect the tools you already use, so work moves between them without anyone copying it across.</p>
+        </div>
+        <div class="svc-item">
+          <h3>AI agents</h3>
+          <p>Multi-agent pipelines with verification gates and a human in the loop.</p>
+        </div>
+        <div class="svc-item">
+          <h3>Email marketing</h3>
+          <p>Campaigns, newsletters and large lists, run end to end.</p>
+        </div>
+        <div class="svc-item">
+          <h3>Copywriting &amp; ghostwriting</h3>
+          <p>Sales copy and long-form newsletters, in English and Italian, in your voice.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="contact" class="contact">
     <div class="wrap">
-      <div class="split sec-head rv">
-        <p class="lab">Contact</p>
-        <h2>Tell me the job nobody wants to do.</h2>
-      </div>
-      <div class="split rv">
-        <span></span>
-        <div>
-          <a class="big-link" href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a>
-          <div class="contact-rows">
-            <div class="crow"><span class="lab">Phone</span><a href="tel:+393485843362">+39 348 584 3362</a></div>
-            <div class="crow"><span class="lab">LinkedIn</span><a href="https://www.linkedin.com/in/samueleonelia/" target="_blank" rel="noopener">in/samueleonelia</a></div>
-            <div class="crow"><span class="lab">Based in</span><p>Padova, Italy</p></div>
-            <div class="crow"><span class="lab">Languages</span><p>Italian, English</p></div>
-          </div>
+      <h2 class="eyebrow rv">Contact</h2>
+      <div class="rv">
+        <h2>Tell me the job <em>nobody wants to do</em>.</h2>
+        <a class="mail" href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a>
+        <div class="crows">
+          <div class="crow"><span>Phone</span><a href="tel:+393485843362">+39 348 584 3362</a></div>
+          <div class="crow"><span>LinkedIn</span><a href="https://www.linkedin.com/in/samueleonelia/" target="_blank" rel="noopener">in/samueleonelia</a></div>
+          <div class="crow"><span>Based in</span><p>Padova, Italy</p></div>
+          <div class="crow"><span>Languages</span><p>Italian, English</p></div>
         </div>
       </div>
     </div>
@@ -427,16 +447,27 @@ footer{border-top:1px solid var(--line-soft);padding-block:26px}
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   var y = document.getElementById("yr");
   if (y) y.textContent = new Date().getFullYear();
 
-  /* client marquee — duplicated once so the -50% loop is seamless */
-  var clients = ["Hypefury","Financer.com","Dream Travel Agency","La Cofacceria","Grill Park Ferrara","Acarent","Bmark","FBisol","SOS Automazioni","Italian Indie"];
-  var mq = document.getElementById("mq");
-  if (mq){
-    var group = '<div class="marquee-group">' + clients.map(function(c){ return "<span>"+c+"</span>"; }).join("") + "</div>";
-    mq.innerHTML = group + group;
+  /* rotating two-tone headline, like the reference's "I DESIGN FOR / FINANCE" */
+  var phrases = [
+    ["I automate", "the boring work"],
+    ["I build",    "custom CRMs"],
+    ["I design",   "AI agents"],
+    ["I write",    "the emails"]
+  ];
+  var r1 = document.getElementById("r1"), r2 = document.getElementById("r2"), i = 0;
+  if (r1 && r2 && !reduce){
+    setInterval(function(){
+      r1.classList.add("out"); r2.classList.add("out");
+      setTimeout(function(){
+        i = (i + 1) % phrases.length;
+        r1.textContent = phrases[i][0];
+        r2.textContent = phrases[i][1];
+        r1.classList.remove("out"); r2.classList.remove("out");
+      }, 450);
+    }, 3200);
   }
 
   /* scroll reveal */
