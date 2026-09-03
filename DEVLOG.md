@@ -281,3 +281,36 @@ to the circle and resized to 512x512.
 Kept in `grayscale(1)` like the other eight marks: the blue reduces to a dark
 grey and the cream letters stay light, so "SOS" reads clearly. Full brand blue is
 one line away if he would rather it stood out.
+
+## 2026-09-03 — Work rows: spacing, logo size, and a sticky-hover bug
+
+Samuele: description closer to the brand name, logo bigger, more empty space on
+the right — then reported that hover states were not clearing.
+
+**Layout**
+- Columns are now fixed at `360px | 1fr | 230px` rather than `1fr | 1.15fr | auto`.
+  With `auto` on the logo column, *every row sized its own columns around its own
+  logo*, so the descriptions started at a different x on each row. They now all
+  align at 508px, and the description sits ~120px closer to the name than before.
+- Right gutter of up to 84px, so the logos no longer run to the content edge.
+
+**Logos**
+- Given a fixed box (`215x64`, or `150x112` for the squarish marks) with
+  `object-fit: contain` instead of `max-width`/`max-height`. Several are SVGs
+  with small intrinsic sizes — Financer is 180x32 — and under max-* rules they
+  simply rendered at that size and never scaled up. They now fill the box:
+  Financer went 180x32 -> 215x38, Hypefury -> 215x41, SOS/Grill Park -> 112x112.
+
+**Sticky hover — two separate causes, both real**
+1. `:focus-within` matched after a *mouse* click, not just keyboard focus, so
+   clicking a name pinned that row open permanently. Replaced with
+   `:has(.job-toggle:focus-visible)`, which ignores mouse clicks. Kept in its own
+   rule block rather than in the shared selector list: an invalid selector kills
+   the entire rule it sits in, so a browser without `:has()` would otherwise have
+   lost the hover reveal too.
+2. The `.open` class added on click never came off on desktop. Added a
+   `mouseleave` handler that clears it and resets `aria-expanded`. Touch devices
+   never fire `mouseleave`, so tap-to-open still works there.
+
+Verified by driving the pointer: hover opens, click holds, moving away closes and
+resets aria on every row.

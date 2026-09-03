@@ -138,17 +138,22 @@ h1 .accent{color:var(--yellow)}
    are revealed on hover / focus / tap. They keep their space while hidden, so
    the list never reflows as you move down it.                                */
 .jobs{display:flex;flex-direction:column}
+/* Fixed name and logo columns, so the three columns line up down the whole
+   list. With fr units and an `auto` logo column, each row sized its columns
+   around its own logo and the descriptions did not align row to row.        */
 .job{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) auto;
-  gap:clamp(18px,3vw,44px);align-items:center;
+  display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr) 230px;
+  column-gap:clamp(14px,1.8vw,26px);row-gap:14px;align-items:center;
   padding-block:clamp(18px,2.2vw,28px);
-  padding-inline:clamp(12px,1.4vw,20px);
-  margin-inline:calc(-1 * clamp(12px,1.4vw,20px));
+  padding-left:clamp(12px,1.4vw,20px);
+  padding-right:clamp(16px,4vw,84px);
+  margin-left:calc(-1 * clamp(12px,1.4vw,20px));
   border-radius:8px;
   transition:background-color .25s ease;
 }
 .job + .job{box-shadow:0 -1px 0 var(--line-soft)}
-.job:hover,.job:focus-within,.job.open{background:var(--cream)}
+.job:hover,.job.open{background:var(--cream)}
+.job:has(.job-toggle:focus-visible){background:var(--cream)}
 @media (max-width:820px){
   .job{grid-template-columns:1fr;gap:14px;align-items:start}
   .job-logo{justify-content:flex-start}
@@ -174,19 +179,27 @@ h1 .accent{color:var(--yellow)}
   transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s;
 }
 .job-desc{transform:translateY(6px)}
-.job:hover .job-desc,.job:focus-within .job-desc,.job.open .job-desc,
-.job:hover .job-logo,.job:focus-within .job-logo,.job.open .job-logo{
+.job:hover .job-desc,.job:hover .job-logo,
+.job.open .job-desc,.job.open .job-logo{
+  opacity:1;visibility:visible;transform:none;
+  transition:opacity .3s ease,transform .3s ease,visibility 0s;
+}
+.job:has(.job-toggle:focus-visible) .job-desc,
+.job:has(.job-toggle:focus-visible) .job-logo{
   opacity:1;visibility:visible;transform:none;
   transition:opacity .3s ease,transform .3s ease,visibility 0s;
 }
 .job-desc p{font-size:1rem;color:var(--brown-90);max-width:46ch}
 .job-logo{display:flex;align-items:center;justify-content:flex-end}
+/* A fixed box plus object-fit, rather than max-width/max-height: several of
+   these are SVGs with small intrinsic sizes (Financer is 180x32) which would
+   otherwise render at that size and never scale up to fill the column.      */
 .job-logo img{
-  max-height:34px;max-width:150px;width:auto;object-fit:contain;
+  width:215px;height:64px;object-fit:contain;object-position:right center;
   filter:grayscale(1);opacity:.75;
 }
 .job-logo img.inv{filter:brightness(0);opacity:.7}
-.job-logo img.tall{max-height:64px;max-width:110px;opacity:.85}
+.job-logo img.tall{width:150px;height:112px;opacity:.85}
 
 @media (prefers-reduced-motion:reduce){
   .job-desc,.job-logo{transition:none}
@@ -406,10 +419,16 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
   /* project rows: click or tap toggles the detail open, since :hover never
      fires on touch. Hover and keyboard focus are handled in CSS. */
   document.querySelectorAll(".job-toggle").forEach(function(btn){
+    var row = btn.closest(".job");
     btn.addEventListener("click", function(){
-      var row = btn.closest(".job");
       var open = row.classList.toggle("open");
       btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    row.addEventListener("mouseleave", function(){
+      if (row.classList.contains("open")){
+        row.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
     });
   });
 
