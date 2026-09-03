@@ -263,3 +263,21 @@ attribute (there for layout stability) applied as a presentational hint, and an
 explicit height beats `aspect-ratio`. Fixed with `height:auto`. This had been
 wrong through every screenshot in this session and was never spotted, because a
 tall portrait beside a big headline looks plausible. Now verified square: 335x335.
+
+## 2026-08-21 — Session 1 (cont.): real SOS Automazioni logo
+
+Samuele supplied the correct mark (`~/Downloads/29.png`, 1080x1080): a blue
+circle with cream "SOS" lettering. The earlier file was a favicon crop that
+flattened to a featureless grey disc.
+
+The source had an opaque cream background (255,247,235) very close to — but not
+the same as — the site's cream (#F5EFDF), which would have shown as a faint
+square behind the circle. Rather than colour-key the background (the lettering
+inside the circle is the same cream, so a global key would have punched holes in
+the letters), the circle's outer edge was measured from the centre row and column
+and an antialiased circular alpha mask applied at 4x supersampling, then cropped
+to the circle and resized to 512x512.
+
+Kept in `grayscale(1)` like the other eight marks: the blue reduces to a dark
+grey and the cream letters stay light, so "SOS" reads clearly. Full brand blue is
+one line away if he would rather it stood out.

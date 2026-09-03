@@ -35,8 +35,7 @@ Page structure: hero → work → services → contact.
 ## Known issues
 
 - Dream Travel Agency and Bmark logos matched by web search, unconfirmed.
-- SOS Automazioni's only available mark is a square icon; it reads as a plain
-  grey circle at card size, and it now leads the Work grid.
+- Logos are shown greyscale for consistency; SOS is brand blue underneath.
 - Portrait is the 600x600 CV headshot; a larger original would look better.
 - Not yet tested on a real phone or in Safari.
 - Long client names ('Grill Park Ferrara') make a wide pill; fine at 3-up, worth re-checking at tablet width.
