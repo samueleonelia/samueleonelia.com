@@ -374,3 +374,16 @@ On embed vs image: an X embed needs `platform.twitter.com`, which the Artifact
 CSP blocks — it would render on Netlify but never in the mockup preview. It also
 loads third-party tracking and breaks if the post is ever deleted. The image is
 the more robust choice here.
+
+## 2026-09-03 — Thread section trimmed, and the section colour rhythm fixed
+
+- Removed the "Said about the work" eyebrow and the explanatory note beneath the
+  headline, per Samuele. The section is now headline + link + screenshot.
+- Screenshot enlarged from 470px to 680px wide, and re-exported at the source's
+  native 1206px rather than the downscaled 940px, so it renders at 1.78 source
+  pixels per CSS pixel and the tweet text is properly readable.
+- **Colour break:** the thread section and the services section were both cream
+  and ran together with no visible boundary. Services is now `sec white`, giving
+  the page a clean alternation: hero cream, work white, thread cream, services
+  white, contact dark brown. The existing `.sec.white .svc-item` rule already
+  handled the tiles, so no extra CSS was needed.
