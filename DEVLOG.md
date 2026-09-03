@@ -417,3 +417,33 @@ terminal to authorize Netlify's GitHub app for webhooks and deploy keys, and
 exits 13 in a non-TTY shell. Setting `GITHUB_TOKEN` did not bypass the prompt.
 Until it is linked in the Netlify UI, deploys are manual:
 `netlify deploy --prod --dir public`.
+
+## 2026-09-03 — HTTPS and the custom domain
+
+Samuele reported the site opening only over http, and the netlify.app subdomain
+not redirecting. Same root cause both times.
+
+DNS at Hover was already correct (apex A -> 75.2.60.5, www CNAME ->
+samueleonelia.netlify.app) and http served fine. The failure was that no
+certificate existed for the domain: the edge was still presenting Netlify's
+`*.netlify.app` wildcard, so `curl` failed with error 60, "no alternative
+certificate subject name matches target host name". And Netlify will not redirect
+its own subdomain to a custom domain until that domain is verified *with* HTTPS —
+so the missing certificate caused the second symptom too.
+
+`provisionSiteTLSCertificate` returned `null` on every attempt. Calling the REST
+endpoint directly showed HTTP 200 with a null body: the request was accepted, the
+certificate simply had not been issued yet, because DNS had only just propagated.
+Nothing was wrong with the configuration; it needed time. Issued about a minute
+after the watcher started.
+
+- Let's Encrypt certificate for `CN=samueleonelia.com`, valid to 2 Dec 2026.
+- `force_ssl` enabled, so http 301s to https.
+- The netlify.app subdomain still did not redirect on its own, so an explicit
+  301 was added to `netlify.toml` rather than relying on implicit behaviour.
+
+Verified: netlify.app, www, and http apex all 301 to https://samueleonelia.com;
+apex serves 200; DEVLOG/STATUS/netlify.toml still 404 on the live domain; all
+nine project rows and both images serve over https.
+
+**Live: https://samueleonelia.com**

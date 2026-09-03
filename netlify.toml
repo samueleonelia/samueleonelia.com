@@ -3,6 +3,15 @@
 [build]
   publish = "public"
 
+# Netlify did not redirect the .netlify.app subdomain to the custom domain on
+# its own, so state it explicitly. Keeps one canonical address for SEO and stops
+# the two URLs competing.
+[[redirects]]
+  from = "https://samueleonelia.netlify.app/*"
+  to = "https://samueleonelia.com/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
