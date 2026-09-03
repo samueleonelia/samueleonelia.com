@@ -11,14 +11,15 @@ import pathlib
 import re
 
 root = pathlib.Path(__file__).resolve().parent.parent
-src = (root / "index.html").read_text(encoding="utf-8")
+site = root / "public"          # what Netlify publishes
+src = (site / "index.html").read_text(encoding="utf-8")
 
 # inline every local asset referenced with src="..."
 def inline(match):
     path = match.group(1)
     if path.startswith(("http", "data:", "//")):
         return match.group(0)
-    f = root / path
+    f = site / path
     if not f.exists():
         raise SystemExit(f"missing asset: {path}")
     mime = mimetypes.guess_type(path)[0] or "application/octet-stream"
