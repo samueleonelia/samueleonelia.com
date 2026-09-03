@@ -387,3 +387,33 @@ the more robust choice here.
   the page a clean alternation: hero cream, work white, thread cream, services
   white, contact dark brown. The existing `.sec.white .svc-item` rule already
   handled the tiles, so no extra CSS was needed.
+
+## 2026-09-03 — Deployed to Netlify
+
+**GitHub:** https://github.com/samueleonelia/samueleonelia.com — **private**, per
+Samuele. This matters beyond the usual reasons: `DEVLOG.md` records him calling a
+line of my copy "bullshit", notes that the Dream Travel and Bmark logos were
+matched by web search and never confirmed, and lists my own bugs. First off-machine
+backup of this project.
+
+**Publish directory.** Netlify serves every file in the directory it publishes, so
+with the site at the repo root `DEVLOG.md` would have been readable at
+`/DEVLOG.md` on the live site — a private repo would not have prevented that,
+because it is the deploy that leaks, not the repo. The site moved to `public/`,
+and `netlify.toml` publishes only that. Verified live: DEVLOG.md, STATUS.md,
+netlify.toml, tools/ and build/ all return 404, while every asset returns 200.
+
+**Live:** https://samueleonelia.netlify.app (14 files, security headers applied,
+one-year immutable cache on /assets/*). Nine project rows and nine logos confirmed
+in the served HTML.
+
+**Custom domain.** `samueleonelia.com` + `www` alias registered on the Netlify
+side. DNS is at Hover (ns1/ns2.hover.com) with no A record, no MX and no TXT — the
+domain is entirely unused, so nothing can break and no mail is at risk. Samuele
+must add two records at Hover; I have no access there.
+
+**Continuous deployment is NOT wired yet.** `netlify init` requires an interactive
+terminal to authorize Netlify's GitHub app for webhooks and deploy keys, and
+exits 13 in a non-TTY shell. Setting `GITHUB_TOKEN` did not bypass the prompt.
+Until it is linked in the Netlify UI, deploys are manual:
+`netlify deploy --prod --dir public`.

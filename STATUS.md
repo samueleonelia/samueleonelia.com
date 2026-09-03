@@ -1,49 +1,53 @@
 # STATUS — samueleonelia.com
 
-Phase: **mockup, awaiting review** · Branch: `main` · Last updated: 2026-08-21
+Phase: **deployed to a temporary URL, domain pending DNS** · Branch: `main` · Last updated: 2026-09-03
 
-Mockup: https://claude.ai/code/artifact/8112620f-a4ed-4353-b8c5-86e414ff3e64
-Local: open `index.html` (refresh the tab after any change)
+- Live: https://samueleonelia.netlify.app
+- Repo: https://github.com/samueleonelia/samueleonelia.com (private)
+- Netlify admin: https://app.netlify.com/projects/samueleonelia
+- Mockup artifact: https://claude.ai/code/artifact/8112620f-a4ed-4353-b8c5-86e414ff3e64
 
-Page structure: hero → work → services → contact.
+Page structure: hero → work → thread → services → contact.
+Local file is now `public/index.html`.
 
 ## Feature areas
 
 | Area | State |
 |---|---|
-| Repo, `.gitignore` | Done |
-| Design matched to sebastian-wittig.design | Done — tokens read off the live site |
+| Design matched to sebastian-wittig.design | Done |
 | Hero (rotating two-tone headline) | Done |
-| Work: 9 rows, big-type list | Done — 64px names; description + logo reveal on hover/click/focus; ordered by engagement length |
+| Work: 9 rows, name-only until hover | Done — dark hover, white knockout logos |
+| Hypefury thread section | Done |
 | Services | Done — 4 items |
-| Contact (dark brown) + footer | Done — footer matches sosautomazioni.com's legal line |
-| About section | Removed at Samuele's request |
-| Client logo wall | Removed — logos live on the project cards |
-| Stats table | Removed at Samuele's request |
-| Responsive | Done — not yet tested on a real phone |
+| Contact + footer | Done |
+| GitHub repo | Done — private |
+| Netlify site + first deploy | Done |
+| Publish dir isolates working files | Done — verified 404 live |
+| Custom domain (Netlify side) | Done |
+| **DNS at Hover** | **Blocked on Samuele** |
+| **GitHub auto-deploy** | **Blocked — needs the Netlify UI** |
 | Favicon | Not started |
 | OG / social share image | Not started |
-| Netlify deploy + domain | Not started |
 
 ## Next
 
-1. Samuele reviews the trimmed page.
-2. Confirm Dream Travel Agency and Bmark are the right companies (matched by search).
-3. Decide whether the phone number stays public.
-4. Favicon + OG image, then deploy to Netlify and point the domain.
+1. Samuele adds two DNS records at Hover (see below).
+2. Samuele links the repo in the Netlify UI so pushes auto-deploy.
+3. Favicon + OG image.
+4. Confirm Dream Travel Agency and Bmark are the right companies.
+
+## DNS records to add at Hover
+
+| Type | Host | Value |
+|---|---|---|
+| A | @ | 75.2.60.5 |
+| CNAME | www | samueleonelia.netlify.app |
+
+No MX or TXT records exist on the domain, so nothing else is at risk.
 
 ## Known issues
 
 - Dream Travel Agency and Bmark logos matched by web search, unconfirmed.
-- Logos are shown greyscale for consistency; SOS is brand blue underneath.
-- Portrait is the 600x600 CV headshot; a larger original would look better.
+- Yannick Veys has not been told the X thread is going on the site.
+- Deploys are manual until GitHub is linked: `netlify deploy --prod --dir public`.
 - Not yet tested on a real phone or in Safari.
-- Long client names ('Grill Park Ferrara') make a wide pill; fine at 3-up, worth re-checking at tablet width.
-
-## Blocked on Samuele
-
-- Approval of the page.
-- Confirming the two uncertain client identities.
-- Permission from clients to display their logos (normal practice, but their marks).
-- Netlify site + domain details when we get to deploying.
-- A GitHub remote: none exists yet, so this repo is only on this Mac.
