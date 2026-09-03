@@ -342,3 +342,35 @@ on a cream rounded plate, so every mark stays exactly as it is and legible.
 Trade-off noted: because each row reserves the space its hidden description will
 need, resting rows carry visible empty space under the name. That is the price of
 not having the list jump.
+
+## 2026-09-03 — Inverted logos, and the Hypefury thread
+
+**Financer logo was invisible — my bug.** A CSS `filter` applies to the whole
+element including its background, so `brightness(0)` on the `.inv` logos turned
+the cream plate black as well: black artwork on a black plate. The plate is gone.
+
+**Logos are now white silhouettes on transparent**, per Samuele:
+`brightness(0) invert(1)` flattens any artwork to black then to white, so it
+works for the dark marks and the white-artwork SVGs alike and `.inv` is no longer
+a special case.
+
+Two marks broke under that treatment exactly as expected, because their lettering
+sits *inside* a filled shape: SOS became a plain white disc and La Cofacceria a
+white blob. Fixed in the image files rather than in CSS, by knocking the light
+interior areas out to transparent with a soft luminance threshold (SOS: cream
+lettering at luminance 237 inside a blue disc at 84, cut at 185; La Cofacceria:
+dark lettering on an orange plaque at 170, cut at 110). The silhouette now shows
+the lettering as holes onto the dark row. All nine verified legible.
+
+**Hypefury thread** added as a "Said about the work" section between Work and
+Services. Samuele's point stands: the third tweet is meaningless without the
+first two, so the whole exchange is shown rather than a single pulled quote.
+The screenshot is used as an image, cropped, resized to 940px (2x its ~470px
+display width) and linked to the original post, with alt text transcribing the
+exchange since a screenshot is unreadable to screen readers and to anyone who
+cannot load images.
+
+On embed vs image: an X embed needs `platform.twitter.com`, which the Artifact
+CSP blocks — it would render on Netlify but never in the mockup preview. It also
+loads third-party tracking and breaks if the post is ever deleted. The image is
+the more robust choice here.
