@@ -71,6 +71,7 @@ h3{
 .bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--cream) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .bar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:74px}
 .brand{font-weight:600;font-size:1.05rem;letter-spacing:-.02em;color:var(--brown-dark);text-decoration:none}
+.brand-emoji{font-size:.95em;margin-left:1px;line-height:1;display:inline-block;vertical-align:-1px}
 .nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px)}
 .nav a{font-size:.95rem;font-weight:500;text-transform:uppercase;letter-spacing:-.02em;color:var(--brown-80);text-decoration:none;transition:color .18s ease}
 .nav a:hover{color:var(--brown-dark)}
@@ -227,7 +228,7 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="brand" href="#top">Samuele Onelia</a>
+    <a class="brand" href="#top">Samuele Onelia <span class="brand-emoji" aria-hidden="true">🤠</span></a>
     <nav class="nav">
       <a href="#work">Work</a>
       <a href="#services">Services</a>
