@@ -447,3 +447,31 @@ apex serves 200; DEVLOG/STATUS/netlify.toml still 404 on the live domain; all
 nine project rows and both images serve over https.
 
 **Live: https://samueleonelia.com**
+
+## 2026-09-03 — Favicon, and the iubenda policy links
+
+**Favicon** built from the portrait: tight circular crop on the head,
+(150,60)-(750,660) of the 900px image, since the full headshot framing leaves the
+face unreadable at 16-32px. Checked legible down to 32px. `favicon.ico` carries
+16/32/48; `apple-touch-icon.png` is composited on cream rather than transparent,
+because iOS rounds a solid tile itself and transparent corners would show the
+user's wallpaper.
+
+**Auto-deploy is linked but blocked.** Netlify is connected to the repo
+(provider github, branch main, publish dir public) and git-triggered builds do
+fire — but they fail with "Build blocked: Unrecognized Git contributor. This plan
+allows only verified account members to push to private repos." The commit email
+matches the Netlify account exactly, so that is not the cause; `getCurrentUser`
+returns an empty `email_addresses` list, so the account appears to have no
+verified email for Netlify to match against. Deploys stay manual until that is
+resolved: `netlify deploy --prod --dir public`.
+
+**iubenda policy links.** Both supplied snippets carry an identical loader, so it
+is included once. The links initially rendered as white badges with a green icon,
+bold 11px near-black type — invisible on the dark footer. Removing the
+`iubenda-white` class did nothing, because `cdn.iubenda.com/iubenda_badge.css`
+targets `.iubenda-embed` itself and loads after our stylesheet. Reading their CSS
+showed every rule is guarded by `:not(.iubenda-nostyle)` and the icon by
+`:not(.no-brand)` — their supported opt-out. Adding `iubenda-nostyle no-brand`
+switches the skin off at source, so the links inherit the footer's styling with
+no `!important` anywhere, and the modal still opens.

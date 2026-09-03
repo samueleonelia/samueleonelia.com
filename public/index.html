@@ -263,6 +263,18 @@ h1 .accent{color:var(--yellow)}
 footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);padding-block:26px}
 .foot-in{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
 .foot-in p{font-size:.85rem;color:rgba(245,239,223,.4)}
+.foot-legal{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+/* iubenda-nostyle + no-brand switch off their badge stylesheet and its icon at
+   source (every rule in iubenda_badge.css is guarded by :not(.iubenda-nostyle)),
+   so these need no !important and inherit the footer's own styling. The modal
+   still opens — that comes from .iubenda-embed. */
+.foot-legal a{
+  font-size:.85rem;color:rgba(245,239,223,.55);text-decoration:none;cursor:pointer;
+  border-bottom:1px solid rgba(245,239,223,.2);padding-bottom:1px;
+  transition:color .2s ease,border-color .2s ease;
+}
+.foot-legal a:hover{color:var(--cream);border-bottom-color:var(--cream)}
+.foot-legal a:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
@@ -430,9 +442,16 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 <footer>
   <div class="wrap foot-in">
     <p>© <span id="yr">2026</span> · Samuele Onelia</p>
+    <nav class="foot-legal">
+      <a href="https://www.iubenda.com/privacy-policy/10145367" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a>
+      <a href="https://www.iubenda.com/privacy-policy/10145367/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
+    </nav>
     <p>P. IVA 04589970245</p>
   </div>
 </footer>
+
+<!-- iubenda: one loader serves both policy links -->
+<script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 
 <script>
 (function(){
