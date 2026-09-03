@@ -134,43 +134,53 @@ h1 .accent{color:var(--yellow)}
 
 
 /* ---------- work ----------
-   Reference behaviour: each row shows only its name; the detail (here the
-   description plus the client logo) lives in a block that is hidden until the
-   row is hovered. Revealed on hover, on keyboard focus, and on click/tap, so
-   it also works on touch, where :hover never fires.                          */
+   Three columns: client name (always visible), description, logo. The last two
+   are revealed on hover / focus / tap. They keep their space while hidden, so
+   the list never reflows as you move down it.                                */
 .jobs{display:flex;flex-direction:column}
-.job{padding-block:clamp(18px,2.2vw,28px)}
+.job{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) auto;
+  gap:clamp(18px,3vw,44px);align-items:center;
+  padding-block:clamp(18px,2.2vw,28px);
+  padding-inline:clamp(12px,1.4vw,20px);
+  margin-inline:calc(-1 * clamp(12px,1.4vw,20px));
+  border-radius:8px;
+  transition:background-color .25s ease;
+}
 .job + .job{box-shadow:0 -1px 0 var(--line-soft)}
+.job:hover,.job:focus-within,.job.open{background:var(--cream)}
+@media (max-width:820px){
+  .job{grid-template-columns:1fr;gap:14px;align-items:start}
+  .job-logo{justify-content:flex-start}
+}
 
 .job h3{margin:0}
 .job-toggle{
   appearance:none;background:none;border:0;padding:0;margin:0;width:100%;
   font:inherit;text-align:left;cursor:pointer;color:var(--brown);
-  font-size:clamp(1.9rem,4.6vw,4rem);font-weight:600;letter-spacing:-.035em;
-  line-height:1.06;transition:color .25s ease;
+  font-size:clamp(1.6rem,3.4vw,2.9rem);font-weight:600;letter-spacing:-.03em;
+  line-height:1.08;transition:color .25s ease;
 }
+/* a clearly visible shift, not a near-identical brown */
 .job:hover .job-toggle,
+.job.open .job-toggle,
 .job-toggle:focus-visible{color:var(--brown-dark)}
 .job-toggle:focus-visible{outline:2px solid var(--brown-dark);outline-offset:6px;border-radius:4px}
 
-/* 0fr -> 1fr animates the height without needing a fixed max-height */
-.job-reveal{
-  display:grid;grid-template-rows:0fr;opacity:0;
-  transition:grid-template-rows .45s cubic-bezier(.2,.7,.3,1),opacity .3s ease;
+/* visibility (not just opacity) so collapsed rows stay out of the
+   accessibility tree and match aria-expanded="false" */
+.job-desc,.job-logo{
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s;
 }
-.job-reveal-in{overflow:hidden;min-height:0}
-.job:hover .job-reveal,
-.job:focus-within .job-reveal,
-.job.open .job-reveal{grid-template-rows:1fr;opacity:1}
-
-.job-reveal-in{
-  display:grid;grid-template-columns:minmax(0,1fr) auto;
-  gap:clamp(20px,4vw,56px);align-items:center;
+.job-desc{transform:translateY(6px)}
+.job:hover .job-desc,.job:focus-within .job-desc,.job.open .job-desc,
+.job:hover .job-logo,.job:focus-within .job-logo,.job.open .job-logo{
+  opacity:1;visibility:visible;transform:none;
+  transition:opacity .3s ease,transform .3s ease,visibility 0s;
 }
-@media (max-width:760px){.job-reveal-in{grid-template-columns:1fr;gap:16px}}
-.job-reveal p{padding-top:14px;max-width:62ch;font-size:1rem;color:var(--brown-90)}
-.job-logo{display:flex;align-items:center;justify-content:flex-end;padding-top:14px}
-@media (max-width:760px){.job-logo{justify-content:flex-start}}
+.job-desc p{font-size:1rem;color:var(--brown-90);max-width:46ch}
+.job-logo{display:flex;align-items:center;justify-content:flex-end}
 .job-logo img{
   max-height:34px;max-width:150px;width:auto;object-fit:contain;
   filter:grayscale(1);opacity:.75;
@@ -179,7 +189,8 @@ h1 .accent{color:var(--yellow)}
 .job-logo img.tall{max-height:64px;max-width:110px;opacity:.85}
 
 @media (prefers-reduced-motion:reduce){
-  .job-reveal{transition:none}
+  .job-desc,.job-logo{transition:none}
+  .job-desc{transform:none}
 }
 
 /* ---------- services ---------- */
@@ -263,92 +274,56 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-1">SOS Automazioni</button></h3>
-          <div class="job-reveal" id="job-1">
-            <div class="job-reveal-in">
-              <p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p>
-              <div class="job-logo"><img src="assets/logos/sosautomazioni.png" class="tall" alt="SOS Automazioni" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-1"><p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p></div>
+          <div class="job-logo"><img src="assets/logos/sosautomazioni.png" class="tall" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-2">Hypefury</button></h3>
-          <div class="job-reveal" id="job-2">
-            <div class="job-reveal-in">
-              <p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p>
-              <div class="job-logo"><img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-2"><p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p></div>
+          <div class="job-logo"><img src="assets/logos/hypefury.png" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-3">Financer.com</button></h3>
-          <div class="job-reveal" id="job-3">
-            <div class="job-reveal-in">
-              <p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p>
-              <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="Financer.com" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-3"><p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p></div>
+          <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-4">Dream Travel Agency</button></h3>
-          <div class="job-reveal" id="job-4">
-            <div class="job-reveal-in">
-              <p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p>
-              <div class="job-logo"><img src="assets/logos/dreamtravel.svg" class="tall" alt="Dream Travel Agency" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-4"><p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p></div>
+          <div class="job-logo"><img src="assets/logos/dreamtravel.svg" class="tall" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-5">La Cofacceria</button></h3>
-          <div class="job-reveal" id="job-5">
-            <div class="job-reveal-in">
-              <p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p>
-              <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-5"><p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p></div>
+          <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-6">Grill Park Ferrara</button></h3>
-          <div class="job-reveal" id="job-6">
-            <div class="job-reveal-in">
-              <p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p>
-              <div class="job-logo"><img src="assets/logos/grillpark.png" class="tall" alt="Grill Park Ferrara" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-6"><p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p></div>
+          <div class="job-logo"><img src="assets/logos/grillpark.png" class="tall" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-7">Acarent</button></h3>
-          <div class="job-reveal" id="job-7">
-            <div class="job-reveal-in">
-              <p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p>
-              <div class="job-logo"><img src="assets/logos/acarent.png" class="tall" alt="Acarent" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-7"><p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p></div>
+          <div class="job-logo"><img src="assets/logos/acarent.png" class="tall" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-8">Bmark</button></h3>
-          <div class="job-reveal" id="job-8">
-            <div class="job-reveal-in">
-              <p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p>
-              <div class="job-logo"><img src="assets/logos/bmark.png" alt="Bmark" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-8"><p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p></div>
+          <div class="job-logo"><img src="assets/logos/bmark.png" alt="" loading="lazy"></div>
         </article>
 
         <article class="job rv">
           <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-9">F. Bisol</button></h3>
-          <div class="job-reveal" id="job-9">
-            <div class="job-reveal-in">
-              <p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p>
-              <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="F. Bisol" loading="lazy"></div>
-            </div>
-          </div>
+          <div class="job-desc" id="job-9"><p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p></div>
+          <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="" loading="lazy"></div>
         </article>
 
       </div>
