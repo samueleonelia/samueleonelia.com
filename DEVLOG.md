@@ -314,3 +314,31 @@ the right — then reported that hover states were not clearing.
 
 Verified by driving the pointer: hover opens, click holds, moving away closes and
 resets aria on every row.
+
+## 2026-09-03 — Brand line: two-state row, dark hover
+
+New behaviour per Samuele: at rest only the client name, large; on hover the name
+shrinks to a small bold headline with the description beneath it and the logo on
+the right.
+
+- Rebuilt with `grid-template-areas: "name logo" / "desc logo"`, so name and
+  description share a column without needing a wrapper element.
+- Name animates 46px/600 -> 18px/700 on open.
+
+**Row-height jump.** Shrinking the name made every row 14px shorter when opened,
+so rows below shifted up as the pointer moved down the list. No pure-CSS fix
+worked cleanly (reserving the large name's height differs per row, since some
+names wrap to two lines and some do not), so a small script measures each row at
+rest and pins it with `min-height`, re-measuring after web fonts load and on
+resize. Verified: shift is now 0px on all nine rows.
+
+**Dark hover background.** `--brown-dark` with cream text. This broke the logos:
+on a dark row a flat cream silhouette erases the artwork inside four of the nine
+marks (SOS loses its lettering entirely; Cofacceria, Grill Park and Dream Travel
+become blobs), and a plain `invert()` turns brand colours into wrong ones —
+Cofacceria's orange goes blue, SOS's blue goes orange. Instead each logo now sits
+on a cream rounded plate, so every mark stays exactly as it is and legible.
+
+Trade-off noted: because each row reserves the space its hidden description will
+need, resting rows carry visible empty space under the name. That is the price of
+not having the list jump.
