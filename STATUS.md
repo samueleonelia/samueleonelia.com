@@ -4,6 +4,7 @@ Phase: **v2 — brief** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Las
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
 - v2 plan: `plans/v2.md`
+- Mockup E (phone-friendly artifact): https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
 - Repo: https://github.com/samueleonelia/samueleonelia.com (private)
 - Netlify admin: https://app.netlify.com/projects/samueleonelia
 

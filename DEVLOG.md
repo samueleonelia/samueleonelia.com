@@ -526,3 +526,7 @@ accent words, a live automation log over the portrait instead of the hours
 grid, before → after project cards. Log lines describe real project types with
 no invented counts. Checked at phone width (344px pane): log wrapped and cut a
 line in half, fixed with single-line rows and a top fade; no sideways scroll.
+
+Published mockup E as a private artifact so Samuele can review it on his phone:
+https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx (images inlined, sections visible at rest).
+Stopped here at his request; next step is his verdict on E.
