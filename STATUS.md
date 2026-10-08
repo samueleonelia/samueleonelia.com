@@ -12,7 +12,8 @@ Phase: **v2 — brief** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Las
 | Phase | State |
 |---|---|
 | Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
-| 1. Brief | **Waiting on Samuele** — questions in `plans/v2.md` |
+| 1. Brief | Mostly done: modern design, for clients + followers |
+| 3a. Pick a design direction | **Waiting on Samuele** — `explorations/` A, B or C |
 | 2. Structure (sections + text) | Not started |
 | 3. Design | Not started |
 | 4. Build into `v2/` | Not started |
@@ -32,12 +33,13 @@ Phase: **v2 — brief** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Las
 
 ## Next
 
-1. Samuele answers the brief questions in `plans/v2.md`.
-2. Draft the v2 section list and text.
+1. Samuele picks direction A, B or C (or a mix).
+2. Samuele names the project "extras" and the follow channels.
+3. Draft the v2 section list, then build the chosen direction into `v2/`.
 
 ## Blocked on Samuele
 
-- The v2 brief.
+- Design direction, project extras, follow channels.
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.
 - Tell Yannick Veys the X thread is on the site.

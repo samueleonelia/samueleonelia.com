@@ -499,3 +499,11 @@ and copy pieces across without git. Cost is a duplicated ~1 MB of images.
 are manual, and the next one uses `--dir v1`. Launch becomes "set
 `publish = "v2"` and deploy". `tools/build-mockup.py` now takes the version
 (`v1`/`v2`, default `v2`) and writes `build/mockup-<version>.html`.
+
+**Brief + three design directions.** Samuele wants a more modern design; the
+audience is clients and possible followers; projects stay with some extras.
+Built three throwaway mockups in `explorations/` (not published) with real
+copy and assets: A dark studio, B Swiss editorial, C soft bento. They load
+images via `../v2/assets`, so they need a server: `.claude/launch.json` runs
+`python3 -m http.server 8765` (gitignored). Opening them as plain files left
+the images blank. All three checked in the browser pane.

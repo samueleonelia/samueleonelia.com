@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A · Dark studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#0A0A0B;--card:#131315;--line:#232326;--text:#EDEDED;--muted:#8A8A90;--accent:#D4FF3A;--mono:"Geist Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Geist,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:auto;padding:0 clamp(16px,4vw,48px)}
+.mono{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+nav{display:flex;justify-content:space-between;align-items:center;height:72px;border-bottom:1px solid var(--line)}
+nav b{font-weight:600}
+nav .links{display:flex;gap:28px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-size:14px}
+.btn{background:var(--accent);color:#0A0A0B!important;padding:10px 18px;border-radius:8px;font-weight:600}
+.hero{padding:clamp(64px,10vw,140px) 0 80px;display:grid;grid-template-columns:1.6fr 1fr;gap:48px;align-items:end}
+.status{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:6px 12px;margin-bottom:28px}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+h1{font-size:clamp(44px,7vw,96px);line-height:.95;letter-spacing:-.045em;margin:0 0 28px;font-weight:600}
+h1 span{color:var(--muted)}
+.lede{font-size:19px;color:var(--muted);max-width:42ch;line-height:1.55}
+.portrait{border-radius:16px;overflow:hidden;border:1px solid var(--line);filter:grayscale(1) contrast(1.05)}
+.portrait img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+section{padding:80px 0;border-top:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;margin-bottom:32px}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s}
+.card:hover{border-color:var(--accent)}
+.card.big{grid-column:span 2}
+.card img{height:34px;width:auto;max-width:140px;object-fit:contain;object-position:left;filter:brightness(0) invert(1);opacity:.85}
+.card h3{margin:20px 0 8px;font-size:20px;font-weight:600;letter-spacing:-.02em}
+.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.svc div{border-top:1px solid var(--accent);padding-top:16px}
+.svc h3{font-size:17px;margin:10px 0 6px;font-weight:600}
+.svc p{color:var(--muted);font-size:14px;margin:0;line-height:1.5}
+.cta{text-align:center;padding:120px 0}
+.cta h2{font-size:clamp(36px,5vw,64px);letter-spacing:-.04em;margin:0 0 24px;font-weight:600}
+.cta a{color:var(--accent);font-size:22px}
+@media(max-width:860px){.hero,.bento,.svc{grid-template-columns:1fr}.card.big{grid-column:auto}nav .links a:not(.btn){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><b>Samuele Onelia</b><div class="links"><a href="#">Work</a><a href="#">Services</a><a class="btn" href="#">Get in touch</a></div></nav>
+<div class="hero">
+  <div>
+    <div class="status mono"><i></i>Available for new projects</div>
+    <h1>I automate<br><span>the boring work.</span></h1>
+    <p class="lede">I take the work your team still does by hand and rebuild it as software that runs on its own.</p>
+  </div>
+  <div class="portrait"><img src="../v2/assets/portrait.jpg" alt=""></div>
+</div>
+<section>
+  <div class="head"><span class="mono">[01] Selected work</span><span class="mono">9 companies</span></div>
+  <div class="bento">
+    <div class="card big"><img src="../v2/assets/logos/hypefury.png" alt=""><div><h3>Hypefury</h3><p>Every email this SaaS sends, campaigns, newsletter, the whole list, run and ghostwritten.</p></div></div>
+    <div class="card"><img src="../v2/assets/logos/sosautomazioni.png" alt=""><div><h3>SOS Automazioni</h3><p>My own media business: 19k subscribers, 200+ podcast episodes.</p></div></div>
+    <div class="card"><img src="../v2/assets/logos/lacofacceria.png" alt=""><div><h3>La Cofacceria</h3><p>Custom CRM plus a WhatsApp ordering chatbot.</p></div></div>
+    <div class="card"><img src="../v2/assets/logos/grillpark.png" alt=""><div><h3>Grill Park Ferrara</h3><p>Staffing and reservation automations.</p></div></div>
+    <div class="card"><img src="../v2/assets/logos/financer.svg" alt=""><div><h3>Financer.com</h3><p>IT + US content, two migrations to Ghost.</p></div></div>
+  </div>
+</section>
+<section>
+  <div class="head"><span class="mono">[02] What I do</span></div>
+  <div class="svc">
+    <div><span class="mono">01</span><h3>Process automation</h3><p>Your tools, connected. Nobody copies data across.</p></div>
+    <div><span class="mono">02</span><h3>AI agents</h3><p>Multi-agent pipelines with a human in the loop.</p></div>
+    <div><span class="mono">03</span><h3>Email marketing</h3><p>Campaigns, newsletters, large lists, end to end.</p></div>
+    <div><span class="mono">04</span><h3>Copywriting</h3><p>English and Italian, in your voice.</p></div>
+  </div>
+</section>
+<div class="cta"><span class="mono">[03] Contact</span><h2>Tell me the job nobody wants to do.</h2><a href="#">samueleonelia@gmail.com →</a></div>
+</div>
+</body>
+</html>

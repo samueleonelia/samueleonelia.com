@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C · Soft bento</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--bg:#EFEFEC;--card:#fff;--ink:#16161A;--muted:#6E6E76;--accent:#3D5AFE;--accent-soft:#E3E8FF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:auto;padding:16px clamp(16px,3vw,32px) 48px}
+nav{display:flex;justify-content:space-between;align-items:center;background:var(--card);border-radius:99px;padding:10px 10px 10px 24px;margin-bottom:12px}
+nav b{font-weight:700}
+nav .links{display:flex;gap:6px}
+nav a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;padding:10px 16px;border-radius:99px}
+nav a.btn{background:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.c{background:var(--card);border-radius:24px;padding:28px}
+.hero{grid-column:span 3;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:space-between;min-height:440px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:13px;padding:7px 14px;border-radius:99px;align-self:flex-start}
+h1{font-size:clamp(40px,5.6vw,76px);line-height:1;letter-spacing:-.04em;font-weight:800;margin:24px 0}
+h1 span{color:var(--accent)}
+.lede{font-size:18px;color:var(--muted);max-width:44ch;line-height:1.55;margin:0}
+.photo{padding:0;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.stat b{display:block;font-size:44px;letter-spacing:-.04em;font-weight:800}
+.stat span{color:var(--muted);font-size:14px}
+.dark{background:var(--ink);color:#fff}
+.dark .stat span,.dark span{color:#A5A5AE}
+h2{font-size:15px;font-weight:600;color:var(--muted);margin:36px 8px 14px}
+.work .c{display:flex;flex-direction:column;gap:14px;transition:transform .2s}
+.work .c:hover{transform:translateY(-3px)}
+.logo{height:56px;border-radius:14px;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:10px}
+.logo img{max-height:36px;max-width:120px;object-fit:contain}
+.work h3{margin:0;font-size:18px;letter-spacing:-.02em}
+.work p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.svc .c h3{margin:0 0 8px;font-size:18px}
+.svc .c p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.ic{width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:28px}
+.cta{grid-column:span 4;background:var(--accent);color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding:clamp(28px,4vw,48px)}
+.cta h3{font-size:clamp(28px,3.6vw,44px);letter-spacing:-.035em;margin:0;font-weight:800;max-width:16ch}
+.cta a{background:#fff;color:var(--accent);padding:16px 26px;border-radius:99px;text-decoration:none;font-weight:700}
+@media(max-width:860px){.grid{grid-template-columns:1fr 1fr}.hero,.cta{grid-column:span 2}nav .links a:not(.btn){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><b>Samuele Onelia</b><div class="links"><a href="#">Work</a><a href="#">Services</a><a class="btn" href="#">Get in touch</a></div></nav>
+<div class="grid">
+  <div class="c hero">
+    <span class="chip">● Automation &amp; AI · Padova</span>
+    <div><h1>I automate the <span>boring work.</span></h1>
+    <p class="lede">I take the work your team still does by hand and rebuild it as software that runs on its own.</p></div>
+  </div>
+  <div class="c photo"><img src="../v2/assets/portrait.jpg" alt=""></div>
+  <div class="c stat"><b>9</b><span>companies automated</span></div>
+  <div class="c stat"><b>19k</b><span>YouTube subscribers co-grown</span></div>
+  <div class="c stat"><b>200+</b><span>founder interviews on the podcast</span></div>
+  <div class="c stat dark"><b>IT / EN</b><span>Works in both languages</span></div>
+</div>
+<h2>Selected work</h2>
+<div class="grid work">
+  <div class="c"><div class="logo"><img src="../v2/assets/logos/hypefury.png" alt=""></div><h3>Hypefury</h3><p>Every email this SaaS sends, run and ghostwritten.</p></div>
+  <div class="c"><div class="logo"><img src="../v2/assets/logos/lacofacceria.png" alt=""></div><h3>La Cofacceria</h3><p>Custom CRM and a WhatsApp ordering chatbot.</p></div>
+  <div class="c"><div class="logo"><img src="../v2/assets/logos/grillpark.png" alt=""></div><h3>Grill Park Ferrara</h3><p>Automated staffing and reservations.</p></div>
+  <div class="c"><div class="logo"><img src="../v2/assets/logos/financer.svg" alt="" style="filter:invert(1)"></div><h3>Financer.com</h3><p>Content and two migrations to Ghost.</p></div>
+</div>
+<h2>What I do</h2>
+<div class="grid svc">
+  <div class="c"><div class="ic">01</div><h3>Process automation</h3><p>Your tools, connected. Nobody copies data across.</p></div>
+  <div class="c"><div class="ic">02</div><h3>AI agents</h3><p>Multi-agent pipelines with a human in the loop.</p></div>
+  <div class="c"><div class="ic">03</div><h3>Email marketing</h3><p>Campaigns, newsletters, large lists.</p></div>
+  <div class="c"><div class="ic">04</div><h3>Copywriting</h3><p>English and Italian, in your voice.</p></div>
+  <div class="c cta"><h3>Tell me the job nobody wants to do.</h3><a href="#">Start a project →</a></div>
+</div>
+</div>
+</body>
+</html>
