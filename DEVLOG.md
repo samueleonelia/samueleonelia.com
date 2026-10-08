@@ -475,3 +475,18 @@ showed every rule is guarded by `:not(.iubenda-nostyle)` and the icon by
 `:not(.no-brand)` — their supported opt-out. Adding `iubenda-nostyle no-brand`
 switches the skin off at source, so the links inherit the footer's styling with
 no `!important` anywhere, and the modal still opens.
+
+## 2026-10-08 — v2 started
+
+Samuele wants a new version of the site. Set up so the live site can't break
+while v2 is built:
+
+- Tagged the current live site `v1.0`.
+- New branch `v2`. v2 edits `public/` in place on that branch instead of a
+  second `v2/` folder. Why: one copy of the assets, git already keeps v1, and
+  merging `v2` into `main` is the whole launch step.
+- Previews go to Netlify draft URLs (`netlify deploy --dir public`, no `--prod`).
+  Only a `--prod` deploy from `main` touches the live site.
+- Plan with phases and the open brief questions: `plans/v2.md`.
+
+Next: Samuele answers the brief (why v2, who it's for, what changes, what stays).

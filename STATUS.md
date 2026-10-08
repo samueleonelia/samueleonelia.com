@@ -1,53 +1,48 @@
 # STATUS — samueleonelia.com
 
-Phase: **live on the custom domain** · Branch: `main` · Last updated: 2026-09-03
+Phase: **v2 — brief** · Branch: `v2` (main = live v1) · Last updated: 2026-10-08
 
-- Live: https://samueleonelia.com (netlify.app, www and http all 301 here)
+- Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
+- v2 plan: `plans/v2.md`
 - Repo: https://github.com/samueleonelia/samueleonelia.com (private)
 - Netlify admin: https://app.netlify.com/projects/samueleonelia
-- Mockup artifact: https://claude.ai/code/artifact/8112620f-a4ed-4353-b8c5-86e414ff3e64
 
-Page structure: hero → work → thread → services → contact.
-Local file is now `public/index.html`.
+## v2 phases
 
-## Feature areas
+| Phase | State |
+|---|---|
+| Setup (tag v1.0, `v2` branch, plan) | Done |
+| 1. Brief | **Waiting on Samuele** — questions in `plans/v2.md` |
+| 2. Structure (sections + text) | Not started |
+| 3. Design | Not started |
+| 4. Build into `public/` | Not started |
+| 5. Check (phone, Safari, OG image) | Not started |
+| 6. Launch (merge, tag v2.0, deploy) | Not started |
+
+## v1 (live) feature areas
 
 | Area | State |
 |---|---|
-| Design matched to sebastian-wittig.design | Done |
-| Hero (rotating two-tone headline) | Done |
-| Work: 9 rows, name-only until hover | Done — dark hover, white knockout logos |
-| Hypefury thread section | Done |
-| Services | Done — 4 items |
-| Contact + footer | Done |
-| GitHub repo | Done — private |
-| Netlify site + first deploy | Done |
-| Publish dir isolates working files | Done — verified 404 live |
-| Custom domain (Netlify side) | Done |
-| DNS at Hover | Done |
-| HTTPS + forced redirect | Done — Let's Encrypt, valid to 2 Dec 2026 |
-| **GitHub auto-deploy** | **Blocked — needs the Netlify UI** |
-| Favicon | Not started |
-| OG / social share image | Not started |
+| Hero, work (9 rows), thread, services, contact | Done |
+| Favicon | Done |
+| iubenda Privacy + Cookie links | Done |
+| HTTPS + custom domain + redirects | Done — cert valid to 2 Dec 2026 |
+| GitHub auto-deploy | Blocked — Netlify sees no verified email on the account |
+| OG / social share image | Not started (fold into v2) |
 
 ## Next
 
-1. Samuele links the repo in the Netlify UI so pushes auto-deploy.
-2. Favicon + OG image.
-3. Confirm Dream Travel Agency and Bmark are the right companies.
+1. Samuele answers the brief questions in `plans/v2.md`.
+2. Draft the v2 section list and text.
 
-## DNS records to add at Hover
+## Blocked on Samuele
 
-| Type | Host | Value |
-|---|---|---|
-| A | @ | 75.2.60.5 |
-| CNAME | www | samueleonelia.netlify.app |
-
-No MX or TXT records exist on the domain, so nothing else is at risk.
+- The v2 brief.
+- Verify an email on the Netlify account so pushes auto-deploy.
+- Confirm Dream Travel Agency and Bmark logos are the right companies.
+- Tell Yannick Veys the X thread is on the site.
 
 ## Known issues
 
-- Dream Travel Agency and Bmark logos matched by web search, unconfirmed.
-- Yannick Veys has not been told the X thread is going on the site.
-- Deploys are manual until GitHub is linked: `netlify deploy --prod --dir public`.
-- Not yet tested on a real phone or in Safari.
+- Deploys are manual: `netlify deploy --prod --dir public` (from `main` only).
+- v1 not yet tested on a real phone or in Safari.
