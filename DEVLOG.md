@@ -507,3 +507,13 @@ copy and assets: A dark studio, B Swiss editorial, C soft bento. They load
 images via `../v2/assets`, so they need a server: `.claude/launch.json` runs
 `python3 -m http.server 8765` (gitignored). Opening them as plain files left
 the images blank. All three checked in the browser pane.
+
+**Direction D from Samuele's references.** He pointed at dariofontanel.com,
+inferentia.xyz and miito.ai. Shared traits: light-weight huge type, mono
+uppercase labels, big stat numbers, numbered cards, logo strips, one cool
+violet accent, a visual hero element. Two of three are light, so D is light
+with dark bands (case studies, contact) borrowed from miito. Adds the two
+things the brief asked for: a result slot on every project (the "extras") and
+a "Follow along" section for followers. Checked at 1440px and 375px; fixed the
+hero losing its side gutter on phones (`padding` shorthand on `.hero-grid`
+overrode `.wrap`'s inline padding; now `padding-block`).
