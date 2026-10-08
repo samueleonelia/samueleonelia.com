@@ -1,6 +1,6 @@
 # STATUS — samueleonelia.com
 
-Phase: **v2 — brief** · Branch: `v2` (main = live v1) · Last updated: 2026-10-08
+Phase: **v2 — brief** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-08
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
 - v2 plan: `plans/v2.md`
@@ -11,13 +11,13 @@ Phase: **v2 — brief** · Branch: `v2` (main = live v1) · Last updated: 2026-1
 
 | Phase | State |
 |---|---|
-| Setup (tag v1.0, `v2` branch, plan) | Done |
+| Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
 | 1. Brief | **Waiting on Samuele** — questions in `plans/v2.md` |
 | 2. Structure (sections + text) | Not started |
 | 3. Design | Not started |
-| 4. Build into `public/` | Not started |
+| 4. Build into `v2/` | Not started |
 | 5. Check (phone, Safari, OG image) | Not started |
-| 6. Launch (merge, tag v2.0, deploy) | Not started |
+| 6. Launch (publish `v2`, deploy, tag v2.0) | Not started |
 
 ## v1 (live) feature areas
 
@@ -44,5 +44,5 @@ Phase: **v2 — brief** · Branch: `v2` (main = live v1) · Last updated: 2026-1
 
 ## Known issues
 
-- Deploys are manual: `netlify deploy --prod --dir public` (from `main` only).
+- Deploys are manual: `netlify deploy --prod --dir v1` (v2 only at launch).
 - v1 not yet tested on a real phone or in Safari.

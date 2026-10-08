@@ -490,3 +490,12 @@ while v2 is built:
 - Plan with phases and the open brief questions: `plans/v2.md`.
 
 Next: Samuele answers the brief (why v2, who it's for, what changes, what stays).
+
+**Changed the same day: folders instead of branch-only.** Samuele asked for a
+`v1/` and `v2/` folder. Better for him: he can open and compare both in Finder
+and copy pieces across without git. Cost is a duplicated ~1 MB of images.
+`public/` was renamed to `v1/` (git history kept), copied to `v2/`, and
+`netlify.toml` now publishes `v1`. The live site itself is unchanged: deploys
+are manual, and the next one uses `--dir v1`. Launch becomes "set
+`publish = "v2"` and deploy". `tools/build-mockup.py` now takes the version
+(`v1`/`v2`, default `v2`) and writes `build/mockup-<version>.html`.

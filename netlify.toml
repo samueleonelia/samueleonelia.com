@@ -1,7 +1,8 @@
-# Only ./public is published, so the repo's working files — DEVLOG.md,
-# STATUS.md, tools/ — are never served on the live site.
+# Only the live version's folder is published (v1 now; switch to "v2" at
+# launch), so the repo's working files — DEVLOG.md, STATUS.md, tools/, and
+# the unfinished version — are never served on the live site.
 [build]
-  publish = "public"
+  publish = "v1"
 
 # Netlify did not redirect the .netlify.app subdomain to the custom domain on
 # its own, so state it explicitly. Keeps one canonical address for SEO and stops

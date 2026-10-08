@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Turn index.html into a self-contained page for publishing as a Claude Artifact.
+"""Turn a version's index.html into a self-contained page for publishing as a Claude Artifact.
 
 The Artifact host wraps the file in <!doctype html><head></head><body>, so this
 script strips our own wrapper tags and inlines assets/portrait.jpg as a data URI
@@ -9,9 +9,12 @@ import base64
 import mimetypes
 import pathlib
 import re
+import sys
 
+# which version to preview: `python3 tools/build-mockup.py v1` (default v2)
+version = sys.argv[1] if len(sys.argv) > 1 else "v2"
 root = pathlib.Path(__file__).resolve().parent.parent
-site = root / "public"          # what Netlify publishes
+site = root / version
 src = (site / "index.html").read_text(encoding="utf-8")
 
 # inline every local asset referenced with src="..."
@@ -37,7 +40,7 @@ keep = re.findall(
     r"(<title>.*?</title>|<link rel=\"stylesheet\"[^>]*>|<style>.*?</style>)", head, re.S
 )
 
-dest = root / "build" / "mockup.html"
+dest = root / "build" / f"mockup-{version}.html"
 dest.parent.mkdir(exist_ok=True)
 dest.write_text("\n".join(keep) + "\n" + body.strip() + "\n", encoding="utf-8")
 print(f"wrote {dest} ({dest.stat().st_size:,} bytes)")
