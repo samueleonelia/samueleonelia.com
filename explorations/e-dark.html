@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E · Dark, own identity</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#0C0B09;--card:#141310;--card-2:#1B1915;--line:#2A2722;--text:#F2EEE6;--muted:#9A948A;--dim:#5F5A52;
+  --yellow:#E9CB55;--yellow-soft:rgba(233,203,85,.12);--green:#7FD18B;
+  --serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:auto;padding-inline:clamp(16px,4vw,48px)}
+.label{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.02em}
+.label b{color:var(--yellow);font-weight:500}
+em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--yellow);letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:99px;font-weight:500;font-size:15px;transition:transform .15s,background .15s,border-color .15s}
+.btn.solid{background:var(--yellow);color:#16130A}
+.btn.solid:hover{background:#F6DD7A;transform:translateY(-1px)}
+.btn.ghost{border:1px solid var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--muted)}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(12,11,9,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;justify-content:space-between;align-items:center;height:68px}
+.nav-in b{font-weight:600}
+.links{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.lang{font-family:var(--mono);font-size:12px}.lang b{color:var(--text);font-weight:500}
+.links .btn{padding:9px 16px;font-size:14px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(64px,9vw,128px) clamp(56px,7vw,96px)}
+h1{font-size:clamp(48px,7.4vw,108px);font-weight:500;letter-spacing:-.045em;line-height:.95;margin:22px 0 28px}
+h1 em{letter-spacing:-.02em}
+.lede{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--muted);max-width:42ch;margin:0 0 36px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative}
+.stage img{width:78%;margin-left:auto;border-radius:18px;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.9)}
+.log{position:absolute;left:0;bottom:-28px;width:min(400px,92%);background:rgba(20,19,16,.92);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:14px 16px 10px;font-family:var(--mono);font-size:12px}
+.log-top{display:flex;justify-content:space-between;color:var(--dim);margin-bottom:10px}
+.log-top span:first-child::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:8px;box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.log ul{list-style:none;margin:0;padding:0;height:138px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;-webkit-mask-image:linear-gradient(transparent,#000 35%);mask-image:linear-gradient(transparent,#000 35%)}
+.log li{display:grid;grid-template-columns:44px 14px 1fr;gap:8px;padding:5px 0;color:var(--muted);border-top:1px solid rgba(42,39,34,.6);animation:in .5s ease both}
+.log li .t{color:var(--dim)}
+.log li .ok{color:var(--green)}
+.log li b{color:var(--text);font-weight:400}
+.log li span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+
+/* logos */
+.logos{border-block:1px solid var(--line);padding:30px 0}
+.logos .wrap{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.logos img{height:26px;width:auto;max-width:120px;object-fit:contain;filter:brightness(0) invert(1);opacity:.45;transition:opacity .2s}
+.logos img:hover{opacity:.9}
+
+section{padding-block:clamp(88px,11vw,150px)}
+h2{font-size:clamp(36px,5vw,68px);font-weight:500;letter-spacing:-.045em;line-height:1;margin:18px 0 0;max-width:16ch}
+.head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
+.head p{max-width:38ch;color:var(--muted);line-height:1.55;margin:0}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:clamp(88px,11vw,150px)}
+.nums div{background:var(--bg);padding:30px 26px}
+.nums b{display:block;font-size:clamp(44px,5vw,72px);font-weight:500;letter-spacing:-.05em;line-height:1}
+.nums b i{font-family:var(--serif);color:var(--yellow);font-weight:400}
+.nums span{display:block;margin-top:12px;color:var(--muted);font-size:14px}
+
+/* case studies */
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:22px;transition:border-color .25s,transform .25s}
+.case:hover{border-color:rgba(233,203,85,.5);transform:translateY(-3px)}
+.case .top{display:flex;justify-content:space-between;align-items:center}
+.case img{height:28px;width:auto;max-width:140px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
+.case .tag{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:5px 10px}
+.case h3{font-size:28px;font-weight:500;letter-spacing:-.035em;margin:0}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ba div{background:var(--card-2);border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.5;color:var(--muted)}
+.ba span{display:block;font-family:var(--mono);font-size:11px;margin-bottom:6px;color:var(--dim)}
+.ba div:last-child span{color:var(--yellow)}
+.ba div:last-child{color:var(--text)}
+.res{margin-top:auto;display:flex;align-items:baseline;gap:12px;padding-top:20px;border-top:1px solid var(--line)}
+.res b{font-size:34px;font-weight:500;letter-spacing:-.04em}
+.res span{color:var(--muted);font-size:14px}
+.todo{outline:1px dashed #F5A524;outline-offset:4px;border-radius:4px}
+.all{display:flex;justify-content:center;margin-top:28px}
+
+/* services */
+.svc{border-top:1px solid var(--line)}
+.svc-row{display:grid;grid-template-columns:80px 1fr 1fr 40px;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);transition:padding .25s,background .25s}
+.svc-row .n{font-family:var(--mono);font-size:13px;color:var(--dim)}
+.svc-row h3{font-size:clamp(24px,2.8vw,36px);font-weight:500;letter-spacing:-.035em;margin:0}
+.svc-row p{margin:0;color:var(--muted);line-height:1.55}
+.svc-row .ar{color:var(--dim);font-size:22px;transition:transform .25s,color .25s}
+.svc-row:hover{padding-left:14px}
+.svc-row:hover .n,.svc-row:hover .ar{color:var(--yellow)}
+.svc-row:hover .ar{transform:translateX(4px)}
+
+/* quote */
+.quote{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+blockquote{margin:0;font-family:var(--serif);font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.02em}
+blockquote span{color:var(--yellow);font-style:italic}
+cite{display:block;margin-top:26px;font-style:normal;color:var(--muted);font-size:15px}
+.quote img{border-radius:16px;max-height:520px;object-fit:cover;object-position:top;width:100%;opacity:.92}
+
+/* follow */
+.follow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.follow a{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;transition:background .25s,border-color .25s}
+.follow a:hover{background:var(--yellow);border-color:var(--yellow);color:#16130A}
+.follow a:hover p,.follow a:hover .label{color:#4A4126}
+.follow .row{display:flex;justify-content:space-between}
+.follow h3{margin:0 0 6px;font-size:24px;font-weight:500;letter-spacing:-.03em}
+.follow p{margin:0;color:var(--muted);font-size:14px}
+
+/* contact */
+.contact{text-align:center;border-top:1px solid var(--line);position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;left:50%;top:100%;width:900px;height:900px;transform:translate(-50%,-40%);background:radial-gradient(circle,rgba(233,203,85,.16),rgba(233,203,85,0) 60%);pointer-events:none}
+.contact h2{margin:20px auto 36px;max-width:14ch;font-size:clamp(44px,7vw,104px)}
+.contact .ctas{justify-content:center;position:relative}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:24px}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero,.quote{grid-template-columns:1fr}
+  .stage{max-width:420px;margin-bottom:28px}
+  .nums,.follow{grid-template-columns:1fr 1fr}
+  .cases{grid-template-columns:1fr}
+  .svc-row{grid-template-columns:44px 1fr}
+  .svc-row p,.svc-row .ar{grid-column:2}
+  .svc-row .ar{display:none}
+  .links a:not(.btn):not(.lang){display:none}
+}
+@media(max-width:560px){.follow,.ba{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.log li,.log-top span::before{animation:none}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap nav-in">
+  <b>Samuele Onelia</b>
+  <div class="links">
+    <a href="#work">Work</a><a href="#services">Services</a><a href="#follow">Follow</a>
+    <a class="lang" href="#"><b>EN</b> / IT</a>
+    <a class="btn solid" href="#contact">Let's talk</a>
+  </div>
+</div></nav>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <span class="label"><b>●</b> Automation &amp; AI · Padova, Italy</span>
+    <h1>I automate the <em>boring</em> work.</h1>
+    <p class="lede">I take the work your team still does by hand and rebuild it as software that runs on its own.</p>
+    <div class="ctas">
+      <a class="btn solid" href="#contact">Start a project</a>
+      <a class="btn ghost" href="#follow">Follow my work →</a>
+    </div>
+  </div>
+  <div class="stage">
+    <img src="../v2/assets/portrait.jpg" alt="Samuele Onelia">
+    <div class="log" aria-hidden="true">
+      <div class="log-top"><span>running</span><span>automations.log</span></div>
+      <ul id="log"></ul>
+    </div>
+  </div>
+</div>
+
+<div class="logos"><div class="wrap">
+  <span class="label">Trusted by</span>
+  <img src="../v2/assets/logos/hypefury.png" alt="Hypefury"><img src="../v2/assets/logos/financer.svg" alt="Financer.com"><img src="../v2/assets/logos/lacofacceria.png" alt="La Cofacceria"><img src="../v2/assets/logos/grillpark.png" alt="Grill Park"><img src="../v2/assets/logos/dreamtravel.svg" alt="Dream Travel"><img src="../v2/assets/logos/bmark.png" alt="Bmark"><img src="../v2/assets/logos/fbisol.svg" alt="F. Bisol"><img src="../v2/assets/logos/acarent.png" alt="Acarent">
+</div></div>
+
+<div class="wrap">
+  <div class="nums rv">
+    <div><b>9<i>+</i></b><span>companies running on systems I built</span></div>
+    <div><b>19<i>k</i></b><span>YouTube subscribers co-grown</span></div>
+    <div><b>200<i>+</i></b><span>founder interviews on my podcast</span></div>
+    <div><b>IT<i>/</i>EN</b><span>I work and write in both</span></div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head rv">
+      <div><span class="label"><b>01</b> / Work</span><h2>Before me, by hand. <em>After,</em> on its own.</h2></div>
+      <p>What each team was doing manually, what runs now, and what it changed. Amber boxes = numbers only you have.</p>
+    </div>
+    <div class="cases">
+      <a class="case rv" href="#">
+        <div class="top"><img src="../v2/assets/logos/lacofacceria.png" alt=""><span class="tag">CRM · WhatsApp bot</span></div>
+        <h3>La Cofacceria</h3>
+        <div class="ba"><div><span>Before</span>Orders arrived on WhatsApp and were retyped by hand.</div><div><span>After</span>A chatbot takes the order and files it in a custom CRM.</div></div>
+        <div class="res"><b class="todo">[00]</b><span>orders a week, zero retyping</span></div>
+      </a>
+      <a class="case rv" href="#">
+        <div class="top"><img src="../v2/assets/logos/hypefury.png" alt=""><span class="tag">Email · Ghostwriting</span></div>
+        <h3>Hypefury</h3>
+        <div class="ba"><div><span>Before</span>A SaaS with a big list and no one owning email.</div><div><span>After</span>I run every email: campaigns, newsletter, onboarding.</div></div>
+        <div class="res"><b class="todo">[00k]</b><span>people on the list</span></div>
+      </a>
+      <a class="case rv" href="#">
+        <div class="top"><img src="../v2/assets/logos/grillpark.png" alt=""><span class="tag">Staffing · Bookings</span></div>
+        <h3>Grill Park Ferrara</h3>
+        <div class="ba"><div><span>Before</span>Shifts planned by gut, bookings bunched at 8pm.</div><div><span>After</span>Staff needs worked out daily; bookings spread out.</div></div>
+        <div class="res"><b class="todo">[−00%]</b><span>wait time</span></div>
+      </a>
+      <a class="case rv" href="#">
+        <div class="top"><img src="../v2/assets/logos/bmark.png" alt=""><span class="tag">Reporting</span></div>
+        <h3>Bmark</h3>
+        <div class="ba"><div><span>Before</span>Someone built every client's Ads report by hand.</div><div><span>After</span>Results tracked and a monthly report sent automatically.</div></div>
+        <div class="res"><b class="todo">[00h]</b><span>saved each month</span></div>
+      </a>
+    </div>
+    <div class="all rv"><a class="btn ghost" href="#">All 9 projects →</a></div>
+  </div>
+</section>
+
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><span class="label"><b>02</b> / Services</span><h2>What I can do for <em>you.</em></h2></div></div>
+    <div class="svc rv">
+      <a class="svc-row" href="#contact"><span class="n">01</span><h3>Process automation</h3><p>I connect the tools you already use, so work moves between them without anyone copying it across.</p><span class="ar">→</span></a>
+      <a class="svc-row" href="#contact"><span class="n">02</span><h3>AI agents</h3><p>Multi-agent pipelines with verification gates and a human in the loop.</p><span class="ar">→</span></a>
+      <a class="svc-row" href="#contact"><span class="n">03</span><h3>Email marketing</h3><p>Campaigns, newsletters and large lists, run end to end.</p><span class="ar">→</span></a>
+      <a class="svc-row" href="#contact"><span class="n">04</span><h3>Copywriting</h3><p>Sales copy and long-form newsletters, in English and Italian, in your voice.</p><span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap quote rv">
+    <div>
+      <span class="label"><b>03</b> / Said about the work</span>
+      <blockquote style="margin-top:26px">"Samuele is a star." <span>"And a genius."</span></blockquote>
+      <cite>The Hypefury team, on the onboarding emails I run</cite>
+    </div>
+    <img src="../v2/assets/hypefury-thread.jpg" alt="">
+  </div>
+</section>
+
+<section id="follow" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv">
+      <div><span class="label"><b>04</b> / Follow along</span><h2>I share what I build, <em>while</em> I build it.</h2></div>
+      <p>Not looking for a project? Get the ideas instead. Pick where you like to read.</p>
+    </div>
+    <div class="follow">
+      <a class="rv" href="#"><div class="row"><span class="label">Newsletter</span><span>↗</span></div><div><h3>Weekly email</h3><p class="todo">[name, subscribers]</p></div></a>
+      <a class="rv" href="#"><div class="row"><span class="label">YouTube</span><span>↗</span></div><div><h3>Videos</h3><p class="todo">[channel link]</p></div></a>
+      <a class="rv" href="#"><div class="row"><span class="label">Podcast</span><span>↗</span></div><div><h3>200+ interviews</h3><p class="todo">[podcast link]</p></div></a>
+      <a class="rv" href="https://www.linkedin.com/in/samueleonelia/"><div class="row"><span class="label">LinkedIn</span><span>↗</span></div><div><h3>in/samueleonelia</h3><p>Posts on automation and AI</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap rv">
+    <span class="label"><b>05</b> / Contact</span>
+    <h2>Tell me the job <em>nobody</em> wants to do.</h2>
+    <div class="ctas">
+      <a class="btn solid" href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a>
+      <a class="btn ghost" href="#">Book a call →</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 · Samuele Onelia · P. IVA 04589970245</span><span>Privacy Policy · Cookie Policy</span></div></footer>
+
+<script>
+(function(){
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* the automation log: real project types, no invented numbers */
+  var lines = [
+    ["New WhatsApp order", "filed in CRM"],
+    ["Facebook Ads report", "sent to client"],
+    ["Tomorrow's rota", "staff notified"],
+    ["Trip enrolment", "invoice created"],
+    ["LinkedIn post", "written and published"],
+    ["Sales data", "monthly report ready"],
+    ["Newsletter", "scheduled"],
+    ["Booking at 20:00", "moved to 20:30"]
+  ];
+  var log = document.getElementById("log"), i = 0;
+  function stamp(){ var d = new Date(); return d.toTimeString().slice(0,5); }
+  function add(){
+    var l = lines[i++ % lines.length];
+    var li = document.createElement("li");
+    li.innerHTML = '<span class="t">' + stamp() + '</span><span class="ok">✓</span><span><b>' + l[0] + '</b> → ' + l[1] + '</span>';
+    log.appendChild(li);
+    while (log.children.length > 5) log.removeChild(log.firstChild);
+  }
+  for (var k = 0; k < 4; k++) add();
+  if (!reduce) setInterval(add, 2200);
+
+  var items = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)){ items.forEach(function(el){ el.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {rootMargin:"0px 0px -8% 0px", threshold:.05});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

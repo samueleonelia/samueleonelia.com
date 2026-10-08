@@ -13,7 +13,7 @@ Phase: **v2 — brief** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Las
 |---|---|
 | Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
 | 1. Brief | Mostly done: modern design, for clients + followers |
-| 3a. Pick a design direction | **Waiting on Samuele** — `explorations/` A, B or C |
+| 3a. Pick a design direction | **Waiting on Samuele** — E (dark) proposed |
 | 2. Structure (sections + text) | Not started |
 | 3. Design | Not started |
 | 4. Build into `v2/` | Not started |
@@ -33,7 +33,7 @@ Phase: **v2 — brief** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Las
 
 ## Next
 
-1. Samuele picks direction A, B or C (or a mix).
+1. Samuele confirms direction E (dark) or asks for changes.
 2. Samuele names the project "extras" and the follow channels.
 3. Draft the v2 section list, then build the chosen direction into `v2/`.
 

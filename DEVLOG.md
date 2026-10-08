@@ -517,3 +517,12 @@ things the brief asked for: a result slot on every project (the "extras") and
 a "Follow along" section for followers. Checked at 1440px and 375px; fixed the
 hero losing its side gutter on phones (`padding` shorthand on `.hero-grid`
 overrode `.wrap`'s inline padding; now `padding-block`).
+
+**Direction E: dark, own identity.** Samuele prefers dark and does not want a
+copy of the references (Dario Fontanel sells the same service to the same
+Italian SMEs, so looking like him would hurt). E keeps D's section order but
+swaps every borrowed signature: v1's yellow instead of violet, serif-italic
+accent words, a live automation log over the portrait instead of the hours
+grid, before → after project cards. Log lines describe real project types with
+no invented counts. Checked at phone width (344px pane): log wrapped and cut a
+line in half, fixed with single-line rows and a top fade; no sideways scroll.
