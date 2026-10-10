@@ -530,3 +530,27 @@ line in half, fixed with single-line rows and a top fade; no sideways scroll.
 Published mockup E as a private artifact so Samuele can review it on his phone:
 https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx (images inlined, sections visible at rest).
 Stopped here at his request; next step is his verdict on E.
+
+## 2026-10-10 — v2 built: green, terminal look, AI + automation only
+
+Built direction E into the real `v2/index.html`, then reshaped it with
+Samuele's decisions:
+
+- **Positioning narrowed to AI and automation.** Email marketing and
+  copywriting dropped as services. Hypefury kept, reframed as email
+  automation (onboarding flows on Customer.io), because its quote is the best
+  testimonial. Financer card kept unchanged at his request.
+- **Look:** he disliked the yellow and asked for green with a tech / dev /
+  matrix vibe. JetBrains Mono headings, IBM Plex Sans body, terminal-green
+  accent, `// 01 · offers` comment labels, blinking cursor in the h1, faint
+  canvas character rain behind the hero (paused off-screen, static frame for
+  reduced motion). automations.log kept.
+- **From hamia.io:** structured offer cards (Process automation, AI agents:
+  promise, button, ✓ groups, Built for / Seen at) and an FAQ (`<details>`).
+- Dropped the non-working bits from the mockup: IT/EN switch, "book a call".
+
+Bug fixed on the way: case cards overflowed phone width by 28px (logo + tag
+row could not shrink, grid column was `1fr` not `minmax(0,1fr)`).
+Checked at 1024px and 344px: no horizontal scroll, all images load, FAQ
+toggles, no console errors. Phone preview artifact updated (v2 of the same
+URL). Amber dashed boxes mark content only Samuele has.

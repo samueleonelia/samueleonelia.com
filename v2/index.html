@@ -3,287 +3,222 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Samuele Onelia</title>
-<meta name="description" content="Automation &amp; AI specialist in Padova, Italy. I turn manual work into systems that run themselves.">
+<title>Samuele Onelia · AI &amp; Automation</title>
+<meta name="description" content="AI and automation specialist in Padova, Italy. I turn the work your team does by hand into systems that run on their own.">
+<meta name="theme-color" content="#090C0A">
+<meta property="og:title" content="Samuele Onelia · AI &amp; Automation">
+<meta property="og:description" content="I take the work your team still does by hand and rebuild it as software that runs on its own.">
+<meta property="og:url" content="https://samueleonelia.com/">
+<meta property="og:type" content="website">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
 /* ==========================================================================
-   Palette and type lifted from sebastian-wittig.design:
-   cream #F5EFDF ground, brown #4B3E39 text, dark brown #30231E, yellow #E9CB55,
-   Inter everywhere, 9999px pill buttons.
-   Committed single (light) theme, like the reference — every colour is painted
-   explicitly so the page holds on a dark host background.
+   v2 — dark, terminal / dev feel. Grew out of explorations/e-dark.html.
+   Accent: terminal green. Headings in JetBrains Mono, body in IBM Plex Sans.
+   Labels read like code comments (// 01 · work). One committed dark theme.
+   Signature pieces: faint character rain behind the hero, and the live
+   automations.log over the portrait.
    ========================================================================== */
 :root{
-  --cream:#F5EFDF;
-  --white:#FFFFFF;
-  --brown-dark:#30231E;
-  --brown:#4B3E39;
-  --brown-90:rgba(75,62,57,.9);
-  --brown-80:rgba(75,62,57,.8);
-  --brown-40:rgba(75,62,57,.4);
-  --tint:rgba(75,62,57,.05);
-  --line:rgba(75,62,57,.12);
-  --line-soft:rgba(75,62,57,.08);
-  --yellow:#E9CB55;
-  --yellow-light:#F6DD7A;
-
-  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-
-  --pad:clamp(20px,5vw,72px);
-  --maxw:1240px;
-  --sec:clamp(72px,10vw,136px);
+  color-scheme:dark;
+  --bg:#090C0A;--card:#0F1411;--card-2:#141A16;--line:#1F2722;
+  --text:#E4ECE6;--muted:#8E9B92;--dim:#5E6B62;
+  --green:#4BE38A;--green-hover:#7BF0AC;--on-green:#04130A;
+  --green-08:color-mix(in srgb,var(--green) 8%,transparent);
+  --green-30:color-mix(in srgb,var(--green) 30%,transparent);
+  --todo:#F5A524;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --pad:clamp(16px,4vw,48px);
+  --sec:clamp(88px,11vw,150px);
 }
-
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--cream);
-  color:var(--brown);
-  font-family:var(--sans);
-  font-size:clamp(15px,.4vw + 14px,17px);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-img{max-width:100%;display:block}
-a{color:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
 p{margin:0}
-:focus-visible{outline:2px solid var(--brown-dark);outline-offset:3px;border-radius:4px}
+::selection{background:var(--green);color:var(--on-green)}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--pad)}
+.label{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.02em}
+.label b{color:var(--green);font-weight:500}
+.hl{color:var(--green)}
+h1,h2,h3{font-family:var(--mono);text-wrap:balance}
+h2{font-size:clamp(30px,4.2vw,56px);font-weight:500;letter-spacing:-.04em;line-height:1.05;margin:16px 0 0;max-width:18ch}
+.head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
+.head p{max-width:40ch;color:var(--muted);line-height:1.6}
+.sec{padding-block:var(--sec)}
+.sec.flush{padding-top:0}
 
-.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:2}
-
-/* section label — the reference's H2: small, uppercase, tight */
-.eyebrow{
-  font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:-.02em;
-  color:var(--brown-90);margin:0 0 clamp(28px,4vw,52px);
-}
-/* item title — the reference's H3 */
-h3{
-  font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;letter-spacing:-.025em;
-  line-height:1.15;color:var(--brown-dark);margin:0;text-wrap:balance;
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:8px;font-family:var(--mono);font-weight:500;font-size:14px;transition:transform .15s ease,background .15s ease,border-color .15s ease,box-shadow .15s ease}
+.btn.solid{background:var(--green);color:var(--on-green)}
+.btn.solid:hover{background:var(--green-hover);transform:translateY(-1px);box-shadow:0 0 24px var(--green-30)}
+.btn.ghost{border:1px solid var(--line);color:var(--text)}
+.btn.ghost:hover{border-color:var(--green-30);color:var(--green)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
 
 /* ---------- header ---------- */
-.bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--cream) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.bar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:74px}
-.brand{font-weight:600;font-size:1.05rem;letter-spacing:-.02em;color:var(--brown-dark);text-decoration:none}
-.nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px)}
-.nav a{font-size:.95rem;font-weight:500;text-transform:uppercase;letter-spacing:-.02em;color:var(--brown-80);text-decoration:none;transition:color .18s ease}
-.nav a:hover{color:var(--brown-dark)}
-.nav a.pill{color:var(--cream)}
-.nav a.pill:hover{color:var(--cream)}
-@media (max-width:680px){.nav a:not(.pill){display:none}}
-
-.pill{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  background:var(--brown-dark);color:var(--cream);border:1px solid rgba(245,239,223,.2);
-  border-radius:9999px;padding:12px 24px;font-size:.9rem;font-weight:600;letter-spacing:-.01em;
-  text-decoration:none;text-transform:none;transition:transform .18s ease,background .18s ease;
-}
-.pill:hover{background:var(--brown);transform:translateY(-1px);color:var(--cream)}
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar-in{display:flex;justify-content:space-between;align-items:center;gap:16px;height:64px}
+.brand{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:-.02em}
+.brand span{color:var(--green)}
+.nav{display:flex;align-items:center;gap:28px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.nav a:hover{color:var(--green)}
+.nav .btn{padding:8px 14px;font-size:13px;color:var(--on-green)}
+.nav .btn:hover{color:var(--on-green)}
+@media (max-width:760px){.nav a:not(.btn){display:none}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding-top:clamp(40px,6vw,80px);padding-bottom:clamp(56px,7vw,96px);overflow:hidden}
-/* the reference's blurred radial: white -> cream, blur(250px), pill-round */
-/* Same soft white->cream haze as the reference, but painted as gradients.
-   The original is a blur(250px) layer; at that radius Chromium promotes it to a
-   huge composited layer that janks on scroll, and gradients are visually equal. */
-.glow{
-  position:absolute;inset:-20% -10% auto -10%;height:min(1000px,110vh);
-  background:radial-gradient(ellipse 58% 52% at 50% 22%,var(--white) 0%,rgba(255,255,255,.55) 42%,rgba(255,255,255,0) 72%);
-  z-index:0;pointer-events:none;
-}
-.glow-2{
-  position:absolute;top:2%;right:-10%;width:min(680px,80vw);height:min(680px,80vw);
-  background:radial-gradient(circle at 50% 50%,rgba(246,221,122,.55) 0%,rgba(246,221,122,.22) 38%,rgba(246,221,122,0) 70%);
-  z-index:0;pointer-events:none;
-}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(32px,5vw,64px);align-items:center}
-@media (max-width:920px){.hero-grid{grid-template-columns:1fr}}
+.hero-band{position:relative;overflow:hidden}
+/* character rain: decorative, faint, faded out towards the bottom */
+#rain{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none;
+  -webkit-mask-image:linear-gradient(#000 0%,rgba(0,0,0,.6) 55%,transparent 100%);mask-image:linear-gradient(#000 0%,rgba(0,0,0,.6) 55%,transparent 100%)}
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;padding-block:clamp(64px,9vw,128px) clamp(64px,8vw,110px)}
+h1{font-size:clamp(40px,6.4vw,92px);font-weight:700;letter-spacing:-.055em;line-height:.98;margin:22px 0 28px}
+h1 .hl{text-shadow:0 0 28px var(--green-30)}
+.cursor{display:inline-block;width:.5em;height:.82em;background:var(--green);margin-left:.08em;vertical-align:-.04em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lede{font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:var(--muted);max-width:42ch;margin-bottom:36px}
+.stage{position:relative}
+.stage img{width:78%;height:auto;margin-left:auto;border-radius:14px;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.85);border:1px solid var(--line)}
 
-h1{
-  font-size:clamp(2.5rem,6.2vw,4.7rem);font-weight:700;letter-spacing:-.04em;line-height:1.02;
-  color:var(--brown);margin:0 0 clamp(22px,3vw,30px);text-transform:uppercase;
-}
-h1 .line{display:block;overflow:hidden}
-h1 .accent{color:var(--yellow)}
-.rot{display:inline-block;transition:opacity .45s ease,transform .45s ease}
-.rot.out{opacity:0;transform:translateY(-.32em)}
-
-.lede{max-width:44ch;font-size:clamp(1.02rem,1.1vw,1.15rem);color:var(--brown-90)}
-.hero .pill{margin-top:clamp(28px,3.5vw,38px);padding:15px 30px;font-size:.95rem}
-
-.portrait{position:relative}
-.portrait img{
-  /* height:auto is required: the width/height HTML attributes act as a
-     presentational hint, and an explicit height beats aspect-ratio */
-  width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center;
-  border-radius:12px;
-}
-@media (max-width:920px){.portrait{max-width:340px}}
-
-
-/* ---------- generic section ---------- */
-.sec{padding-block:var(--sec)}
-.sec.white{background:var(--white)}
-
-
-
-/* ---------- work ----------
-   Resting: just the client name, large.
-   Hovered/tapped: the name shrinks to a small bold headline, the description
-   appears beneath it, and the logo fades in on the right.
-
-   Grid areas put the name and description in one column without needing a
-   wrapper element. Both rows keep their space at rest, so a row is the same
-   height in either state and the list never shifts under the pointer.        */
-.jobs{display:flex;flex-direction:column}
-.job{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 230px;
-  grid-template-areas:"name logo" "desc logo";
-  column-gap:clamp(20px,3vw,48px);row-gap:10px;align-items:center;
-  padding-block:clamp(18px,2.2vw,26px);
-  padding-left:clamp(12px,1.4vw,20px);
-  padding-right:clamp(16px,4vw,84px);
-  margin-left:calc(-1 * clamp(12px,1.4vw,20px));
-  border-radius:8px;
-  transition:background-color .25s ease;
-}
-.job + .job{box-shadow:0 -1px 0 var(--line-soft)}
-.job:hover,.job.open{background:var(--brown-dark)}
-.job:has(.job-toggle:focus-visible){background:var(--brown-dark)}
-@media (max-width:820px){
-  .job{grid-template-columns:1fr;grid-template-areas:"name" "desc" "logo";align-items:start}
-  .job-logo{justify-content:flex-start}
+/* the automation log: real project types, no invented counts */
+.log{position:absolute;left:0;bottom:-28px;width:min(400px,92%);background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:14px 16px 10px;font-family:var(--mono);font-size:12px}
+.log-top{display:flex;justify-content:space-between;color:var(--dim);margin-bottom:10px}
+.log-top span:first-child::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:8px;box-shadow:0 0 10px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.log ul{list-style:none;margin:0;padding:0;height:138px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;-webkit-mask-image:linear-gradient(transparent,#000 35%);mask-image:linear-gradient(transparent,#000 35%)}
+.log li{display:grid;grid-template-columns:44px 14px minmax(0,1fr);gap:8px;padding:5px 0;color:var(--muted);border-top:1px solid var(--line);animation:in .5s ease both}
+.log .t{color:var(--dim)}
+.log .ok{color:var(--green)}
+.log b{color:var(--text);font-weight:400}
+.log li span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .stage{max-width:420px;margin-bottom:28px}
 }
 
-.job h3{grid-area:name;margin:0;align-self:end}
-.job-desc{grid-area:desc;align-self:start}
-.job-logo{grid-area:logo}
+/* ---------- logos ---------- */
+.logos{border-block:1px solid var(--line);padding-block:30px}
+.logos .wrap{display:flex;align-items:center;justify-content:space-between;gap:28px 32px;flex-wrap:wrap}
+/* brightness(0) invert(1) turns every mark, dark or white artwork, into a white silhouette */
+.logos img{height:26px;width:auto;max-width:120px;object-fit:contain;filter:brightness(0) invert(1);opacity:.4;transition:opacity .2s ease}
+.logos img:hover{opacity:.9}
 
-.job-toggle{
-  appearance:none;background:none;border:0;padding:0;margin:0;width:100%;
-  font:inherit;text-align:left;cursor:pointer;color:var(--brown);
-  font-size:clamp(1.7rem,3.4vw,2.9rem);font-weight:600;letter-spacing:-.03em;
-  line-height:1.1;
-  transition:font-size .28s cubic-bezier(.2,.7,.3,1),color .25s ease,letter-spacing .28s ease;
-}
-/* shrink to a small bold headline once the row opens */
-.job:hover .job-toggle,
-.job.open .job-toggle,
-.job:has(.job-toggle:focus-visible) .job-toggle{
-  font-size:1.15rem;font-weight:700;letter-spacing:-.01em;color:var(--cream);
-}
-.job:hover .job-desc p,
-.job.open .job-desc p,
-.job:has(.job-toggle:focus-visible) .job-desc p{color:rgba(245,239,223,.82)}
-.job-toggle:focus-visible{outline:2px solid var(--brown-dark);outline-offset:6px;border-radius:4px}
+/* ---------- numbers ---------- */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:var(--sec)}
+.nums div{background:var(--bg);padding:30px 26px}
+.nums b{display:block;font-family:var(--mono);font-size:clamp(40px,4.6vw,64px);font-weight:500;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.nums b i{font-style:normal;color:var(--green)}
+.nums span{display:block;margin-top:12px;color:var(--muted);font-size:14px;line-height:1.45}
+@media (max-width:900px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-/* visibility, not opacity alone, so a closed row stays out of the
-   accessibility tree and matches its aria-expanded="false" */
-.job-desc,.job-logo{
-  opacity:0;visibility:hidden;
-  transition:opacity .3s ease,visibility 0s linear .3s;
-}
-.job:hover .job-desc,.job:hover .job-logo,
-.job.open .job-desc,.job.open .job-logo{
-  opacity:1;visibility:visible;transition:opacity .3s ease,visibility 0s;
-}
-.job:has(.job-toggle:focus-visible) .job-desc,
-.job:has(.job-toggle:focus-visible) .job-logo{
-  opacity:1;visibility:visible;transition:opacity .3s ease,visibility 0s;
-}
-.job-desc p{font-size:1rem;color:var(--brown-90);max-width:60ch}
+/* ---------- offers (structured, like hamia.io's product cards) ---------- */
+.offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.offer{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:28px;transition:border-color .25s ease}
+.offer:hover{border-color:var(--green-30)}
+.offer-top{display:flex;flex-direction:column;gap:14px}
+.offer .cmd{font-family:var(--mono);font-size:12px;color:var(--green)}
+.offer h3{font-size:clamp(26px,2.6vw,34px);font-weight:500;letter-spacing:-.04em;margin:0}
+.offer-top p{color:var(--muted);line-height:1.6;max-width:44ch}
+.offer .btn{align-self:flex-start}
+.groups{display:flex;flex-direction:column;gap:22px;padding-top:24px;border-top:1px solid var(--line)}
+.group h4{margin:0 0 10px;font-size:15px;font-weight:600}
+.group ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.group li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:6px;color:var(--muted);line-height:1.5;font-size:15px}
+.group li::before{content:"✓";color:var(--green);font-family:var(--mono)}
+.offer-foot{margin-top:auto;padding-top:20px;border-top:1px dashed var(--line);font-size:14px;color:var(--dim);line-height:1.6}
+.offer-foot b{color:var(--muted);font-weight:500}
+@media (max-width:900px){.offers{grid-template-columns:minmax(0,1fr)}}
 
-.job-logo{display:flex;align-items:center;justify-content:flex-end}
-/* White silhouettes on the dark row, background left transparent.
-   brightness(0) flattens the artwork to black whatever its colours, invert(1)
-   then makes it white — so it works for the dark marks and the white-artwork
-   SVGs alike, and .inv is no longer a special case. */
-.job-logo img{
-  width:215px;height:64px;object-fit:contain;object-position:right center;
-  filter:brightness(0) invert(1);opacity:.92;
-}
-.job-logo img.tall{width:150px;height:112px}
+/* ---------- work ---------- */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.case{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:22px;transition:border-color .25s ease,transform .25s ease}
+.case:hover{border-color:var(--green-30);transform:translateY(-3px)}
+.case-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.case-top img{height:28px;width:auto;max-width:140px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
+.tag{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:5px 9px}
+.case h3{font-size:24px;font-weight:500;letter-spacing:-.04em;margin:0}
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ba div{background:var(--card-2);border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.55;color:var(--muted)}
+.ba span{display:block;font-family:var(--mono);font-size:11px;margin-bottom:6px;color:var(--dim)}
+.ba .after{color:var(--text);box-shadow:inset 0 0 0 1px var(--green-08)}
+.ba .after span{color:var(--green)}
+.res{margin-top:auto;display:flex;align-items:baseline;gap:12px;padding-top:20px;border-top:1px solid var(--line)}
+.res b{font-family:var(--mono);font-size:30px;font-weight:500;letter-spacing:-.04em}
+.res span{color:var(--muted);font-size:14px}
+/* TODO marker: a number Samuele still has to supply. Remove before launch. */
+.todo{outline:1px dashed var(--todo);outline-offset:4px;border-radius:4px}
+@media (max-width:900px){.cases{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.ba{grid-template-columns:minmax(0,1fr)}.case{padding:24px}}
 
-@media (prefers-reduced-motion:reduce){
-  .job-desc,.job-logo,.job-toggle{transition:none}
-}
+/* ---------- quote ---------- */
+.quote{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:64px;align-items:center}
+blockquote{margin:26px 0 0;font-family:var(--mono);font-size:clamp(30px,3.8vw,52px);font-weight:500;line-height:1.1;letter-spacing:-.04em}
+blockquote span{color:var(--green)}
+cite{display:block;margin-top:26px;font-style:normal;color:var(--muted);font-size:15px}
+.read{display:inline-flex;margin-top:20px;font-family:var(--mono);font-size:13px;color:var(--text);border-bottom:1px solid var(--line);padding-bottom:2px}
+.read:hover{border-color:var(--green);color:var(--green)}
+.shot img{border-radius:14px;max-height:520px;width:100%;object-fit:cover;object-position:top;opacity:.9}
+@media (max-width:900px){.quote{grid-template-columns:minmax(0,1fr);gap:40px}}
 
-/* ---------- said about the work ---------- */
-.said{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,680px);gap:clamp(28px,5vw,64px);align-items:center}
-@media (max-width:860px){.said{grid-template-columns:1fr}}
-.said-lede{font-size:clamp(1.4rem,2.6vw,2.1rem);font-weight:600;letter-spacing:-.03em;line-height:1.15;color:var(--brown-dark);max-width:18ch;text-wrap:balance}
-.said-link{
-  display:inline-flex;align-items:center;gap:7px;margin-top:20px;
-  font-size:.9rem;font-weight:500;color:var(--brown-dark);text-decoration:none;
-  border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s ease,color .2s ease;
-}
-.said-link:hover{color:var(--accent-ink,var(--brown-dark));border-bottom-color:var(--brown-dark)}
-.said-shot{display:block;justify-self:end;max-width:680px;width:100%;border-radius:12px;overflow:hidden;
-  border:1px solid var(--line);background:var(--white);transition:transform .25s ease,box-shadow .25s ease}
-.said-shot img{width:100%;height:auto;display:block}
-.said-shot:hover{transform:translateY(-2px);box-shadow:0 18px 40px -22px rgba(48,35,30,.45)}
-@media (max-width:860px){.said-shot{justify-self:start;max-width:100%}}
+/* ---------- faq ---------- */
+.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:64px;align-items:start}
+.qs{border-top:1px solid var(--line)}
+.qs details{border-bottom:1px solid var(--line)}
+.qs summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:22px;font-size:clamp(17px,1.5vw,20px);font-weight:500}
+.qs summary::-webkit-details-marker{display:none}
+.qs summary::after{content:"+";font-family:var(--mono);color:var(--green);font-size:20px;transition:transform .2s ease}
+.qs details[open] summary::after{transform:rotate(45deg)}
+.qs summary:hover{color:var(--green)}
+.qs .a{padding-bottom:24px;color:var(--muted);line-height:1.65;max-width:62ch}
+@media (max-width:900px){.faq{grid-template-columns:minmax(0,1fr);gap:32px}}
 
-/* ---------- services ---------- */
-.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.svc-item{background:var(--cream);padding:clamp(26px,3vw,34px);display:flex;flex-direction:column;gap:12px}
-.sec.white .svc-item{background:var(--white)}
-.svc-item h3{font-size:clamp(1.2rem,1.6vw,1.4rem)}
-.svc-item p{color:var(--brown-90);font-size:.98rem;max-width:34ch}
+/* ---------- follow ---------- */
+.follow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.follow a{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;transition:border-color .25s ease,background .25s ease}
+.follow a:hover{border-color:var(--green-30);background:var(--card-2)}
+.follow a:hover .arrow{color:var(--green)}
+.follow .row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--dim)}
+.follow h3{margin:0 0 6px;font-size:20px;font-weight:500;letter-spacing:-.03em}
+.follow p{color:var(--muted);font-size:14px;line-height:1.45}
+@media (max-width:900px){.follow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.follow{grid-template-columns:minmax(0,1fr)}.follow a{min-height:0}}
 
 /* ---------- contact ---------- */
-.contact{background:var(--brown-dark);color:rgba(245,239,223,.8);padding-block:var(--sec)}
-.contact .eyebrow{color:rgba(245,239,223,.9)}
-.contact h2{
-  font-size:clamp(2rem,4.6vw,3.4rem);font-weight:700;letter-spacing:-.035em;line-height:1.05;
-  color:var(--cream);margin:0 0 clamp(26px,3vw,36px);text-wrap:balance;
-}
-.contact h2 em{font-style:normal;color:var(--yellow)}
-.mail{
-  display:inline-block;font-size:clamp(1.15rem,2.4vw,1.9rem);font-weight:600;letter-spacing:-.03em;
-  color:var(--cream);text-decoration:none;border-bottom:2px solid rgba(245,239,223,.3);
-  padding-bottom:3px;overflow-wrap:anywhere;transition:border-color .2s ease,color .2s ease;
-}
-.mail:hover{color:var(--yellow);border-bottom-color:var(--yellow)}
-.crows{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin-top:clamp(34px,4vw,50px)}
-.crow span{display:block;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:-.01em;color:rgba(245,239,223,.4);margin-bottom:8px}
-.crow a,.crow p{color:var(--cream);font-size:1rem;text-decoration:none}
-.crow a:hover{color:var(--yellow)}
+.contact{text-align:center;border-top:1px solid var(--line);position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;left:50%;top:100%;width:900px;height:900px;transform:translate(-50%,-40%);background:radial-gradient(circle,color-mix(in srgb,var(--green) 14%,transparent),transparent 60%);pointer-events:none}
+.contact .wrap{position:relative}
+.contact h2{margin:20px auto 36px;max-width:16ch;font-size:clamp(36px,5.6vw,80px)}
+.contact .ctas{justify-content:center}
+.crows{display:flex;justify-content:center;flex-wrap:wrap;gap:20px 48px;margin-top:48px}
+.crow{display:flex;flex-direction:column;gap:6px;font-size:15px}
+.crow span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.crow a:hover{color:var(--green)}
 
-footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);padding-block:26px}
-.foot-in{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
-.foot-in p{font-size:.85rem;color:rgba(245,239,223,.4)}
-.foot-legal{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
-/* iubenda-nostyle + no-brand switch off their badge stylesheet and its icon at
-   source (every rule in iubenda_badge.css is guarded by :not(.iubenda-nostyle)),
-   so these need no !important and inherit the footer's own styling. The modal
-   still opens — that comes from .iubenda-embed. */
-.foot-legal a{
-  font-size:.85rem;color:rgba(245,239,223,.55);text-decoration:none;cursor:pointer;
-  border-bottom:1px solid rgba(245,239,223,.2);padding-bottom:1px;
-  transition:color .2s ease,border-color .2s ease;
-}
-.foot-legal a:hover{color:var(--cream);border-bottom-color:var(--cream)}
-.foot-legal a:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding-block:24px}
+.foot-legal{display:flex;gap:20px;flex-wrap:wrap}
+/* iubenda-nostyle + no-brand switch off their badge stylesheet at source, so
+   the links inherit this styling without !important (see v1 DEVLOG). */
+.foot-legal a{color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:1px;cursor:pointer}
+.foot-legal a:hover{color:var(--text);border-color:var(--text)}
 
 /* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
-  .rot{transition:none}
-  .pill:hover{transform:none}
+  .log li,.log-top span:first-child::before,.cursor{animation:none}
+  .btn.solid:hover,.case:hover{transform:none}
 }
 </style>
 </head>
@@ -291,162 +226,274 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
 
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="brand" href="#top">Samuele Onelia</a>
+    <a class="brand" href="#top"><span>&gt;_</span> samuele onelia</a>
     <nav class="nav">
+      <a href="#offers">Offers</a>
       <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a class="pill" href="#contact">Get in touch</a>
+      <a href="#faq">FAQ</a>
+      <a href="#follow">Follow</a>
+      <a class="btn solid" href="#contact">Let's talk</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
 
-  <section class="hero">
-    <div class="glow"></div>
-    <div class="glow-2"></div>
-    <div class="wrap hero-grid">
+  <div class="hero-band">
+    <canvas id="rain" aria-hidden="true"></canvas>
+    <div class="wrap hero">
       <div>
-        <h1>
-          <span class="line"><span class="rot" id="r1">I automate</span></span>
-          <span class="line"><span class="rot accent" id="r2">the boring work</span></span>
-        </h1>
+        <span class="label"><b>●</b> AI &amp; automation · Padova, Italy</span>
+        <h1>I automate the <span class="hl">boring</span> work<span class="cursor" aria-hidden="true"></span></h1>
         <p class="lede">I take the work your team still does by hand and rebuild it as software that runs on its own.</p>
-        <a class="pill" href="#contact">Start a project</a>
+        <div class="ctas">
+          <a class="btn solid" href="#contact">Start a project</a>
+          <a class="btn ghost" href="#follow">Follow my work →</a>
+        </div>
       </div>
-      <div class="portrait">
+      <div class="stage">
         <img src="assets/portrait.jpg" alt="Samuele Onelia" width="900" height="900">
+        <div class="log" aria-hidden="true">
+          <div class="log-top"><span>running</span><span>automations.log</span></div>
+          <ul id="log"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logos">
+    <div class="wrap">
+      <span class="label">// trusted by</span>
+      <img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy">
+      <img src="assets/logos/financer.svg" alt="Financer.com" loading="lazy">
+      <img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy">
+      <img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy">
+      <img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy">
+      <img src="assets/logos/acarent.png" alt="Acarent" loading="lazy">
+      <img src="assets/logos/bmark.png" alt="Bmark" loading="lazy">
+      <img src="assets/logos/fbisol.svg" alt="F. Bisol" loading="lazy">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="nums rv">
+      <div><b>9<i>+</i></b><span>companies running on systems I built</span></div>
+      <div><b>19<i>k</i></b><span>YouTube subscribers co-grown</span></div>
+      <div><b>200<i>+</i></b><span>founder interviews on my podcast</span></div>
+      <div><b>IT<i>/</i>EN</b><span>I work in both languages</span></div>
+    </div>
+  </div>
+
+  <section id="offers" class="sec">
+    <div class="wrap">
+      <div class="head rv">
+        <div><span class="label"><b>// 01</b> · offers</span><h2>Two ways I can take work <span class="hl">off your plate.</span></h2></div>
+        <p>Both start the same way: you show me where your team works by hand, and I tell you what can run on its own.</p>
+      </div>
+      <div class="offers">
+
+        <article class="offer rv">
+          <div class="offer-top">
+            <span class="cmd">$ automate --process</span>
+            <h3>Process automation</h3>
+            <p>Your tools, connected. Orders, invoices and reports move on their own, and nobody copies data from one app to another.</p>
+            <a class="btn solid" href="#contact">Automate a process</a>
+          </div>
+          <div class="groups">
+            <div class="group">
+              <h4>Connect your tools</h4>
+              <ul><li>I work with the tools you already use, so nothing has to be replaced</li><li>Data moves between them without anyone retyping it</li></ul>
+            </div>
+            <div class="group">
+              <h4>Custom CRMs</h4>
+              <ul><li>Customers, orders, trips, costs and invoices in one place</li><li>Built around how your business actually works</li></ul>
+            </div>
+            <div class="group">
+              <h4>Automatic reports</h4>
+              <ul><li>Sales, ads and team numbers collected for you</li><li>A clear report sent every month, with nobody assembling it</li></ul>
+            </div>
+          </div>
+          <p class="offer-foot"><b>Built for</b> small teams buried in admin. <b>Seen at</b> La Cofacceria, Dream Travel Agency, Bmark, F. Bisol, Grill Park Ferrara.</p>
+        </article>
+
+        <article class="offer rv">
+          <div class="offer-top">
+            <span class="cmd">$ deploy --agent</span>
+            <h3>AI agents</h3>
+            <p>AI that does real work inside your business: it writes, sorts, replies and publishes, with a human checking before anything important goes out.</p>
+            <a class="btn solid" href="#contact">Build an agent</a>
+          </div>
+          <div class="groups">
+            <div class="group">
+              <h4>Customer chatbots</h4>
+              <ul><li>Takes orders and answers customers on WhatsApp</li><li>Files every request where your team can see it</li></ul>
+            </div>
+            <div class="group">
+              <h4>Content on autopilot</h4>
+              <ul><li>Writes and publishes LinkedIn and Instagram posts</li><li>Automated email flows, from onboarding to newsletters</li></ul>
+            </div>
+            <div class="group">
+              <h4>Multi-agent pipelines</h4>
+              <ul><li>Several agents split the work and check each other</li><li>Verification gates and a human in the loop</li></ul>
+            </div>
+          </div>
+          <p class="offer-foot"><b>Built for</b> teams that want AI doing the work, not just answering questions. <b>Seen at</b> La Cofacceria, Acarent, Hypefury.</p>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <section id="work" class="sec white">
+  <section id="work" class="sec flush">
     <div class="wrap">
-      <h2 class="eyebrow rv">Work</h2>
-      <div class="jobs">
+      <div class="head rv">
+        <div><span class="label"><b>// 02</b> · work</span><h2>Before: by hand. <span class="hl">After: on its own.</span></h2></div>
+        <p>What each team was doing by hand, what runs now, and what it changed.</p>
+      </div>
+      <div class="cases">
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-1">SOS Automazioni</button></h3>
-          <div class="job-desc" id="job-1"><p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p></div>
-          <div class="job-logo"><img src="assets/logos/sosautomazioni.png" class="tall" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"><span class="tag">CRM · WhatsApp bot</span></div>
+          <h3>La Cofacceria</h3>
+          <div class="ba"><div><span>// before</span>Orders arrived on WhatsApp and were retyped by hand.</div><div class="after"><span>// after</span>A chatbot takes the order and files it in a custom CRM.</div></div>
+          <div class="res"><b class="todo">[00]</b><span>orders a week, zero retyping</span></div>
         </article>
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-2">Hypefury</button></h3>
-          <div class="job-desc" id="job-2"><p>I run every email this SaaS sends — campaigns, the weekly newsletter, the whole list — on Customer.io and Beehiiv, and I ghostwrite all of it.</p></div>
-          <div class="job-logo"><img src="assets/logos/hypefury.png" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/hypefury.png" alt="" loading="lazy"><span class="tag">Email automation</span></div>
+          <h3>Hypefury</h3>
+          <div class="ba"><div><span>// before</span>Onboarding, campaigns and a weekly newsletter for a large list, with no one owning them.</div><div class="after"><span>// after</span>Automated onboarding flows on Customer.io, plus every campaign and newsletter, written by me.</div></div>
+          <div class="res"><b class="todo">[00k]</b><span>people on the list</span></div>
         </article>
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-3">Financer.com</button></h3>
-          <div class="job-desc" id="job-3"><p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p></div>
-          <div class="job-logo"><img src="assets/logos/financer.svg" class="inv" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/dreamtravel.svg" alt="" loading="lazy"><span class="tag">CRM · Invoicing</span></div>
+          <h3>Dream Travel Agency</h3>
+          <div class="ba"><div><span>// before</span>Enrolments, trips, costs, revenue and invoices tracked by hand.</div><div class="after"><span>// after</span>A CRM built from scratch handles all of it on its own.</div></div>
+          <div class="res"><b class="todo">[00h]</b><span>saved each month</span></div>
         </article>
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-4">Dream Travel Agency</button></h3>
-          <div class="job-desc" id="job-4"><p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p></div>
-          <div class="job-logo"><img src="assets/logos/dreamtravel.svg" class="tall" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/grillpark.png" alt="" loading="lazy"><span class="tag">Staffing · Bookings</span></div>
+          <h3>Grill Park Ferrara</h3>
+          <div class="ba"><div><span>// before</span>Daily staff needs worked out by hand; bookings piled up at peak times.</div><div class="after"><span>// after</span>Staff needs calculated and staff contacted; bookings spread across the evening.</div></div>
+          <div class="res"><b class="todo">[−00%]</b><span>customer wait time</span></div>
         </article>
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-5">La Cofacceria</button></h3>
-          <div class="job-desc" id="job-5"><p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p></div>
-          <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/acarent.png" alt="" loading="lazy"><span class="tag">AI content · Scraping</span></div>
+          <h3>Acarent</h3>
+          <div class="ba"><div><span>// before</span>LinkedIn and Instagram posts written by hand; prospects found one by one.</div><div class="after"><span>// after</span>AI writes and publishes the posts; a Google Maps scraper feeds prospecting.</div></div>
+          <div class="res"><b class="todo">[00]</b><span>posts a month, no one writing them</span></div>
         </article>
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-6">Grill Park Ferrara</button></h3>
-          <div class="job-desc" id="job-6"><p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p></div>
-          <div class="job-logo"><img src="assets/logos/grillpark.png" class="tall" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/bmark.png" alt="" loading="lazy"><span class="tag">Reporting</span></div>
+          <h3>Bmark</h3>
+          <div class="ba"><div><span>// before</span>Someone assembled every client's Facebook Ads report by hand.</div><div class="after"><span>// after</span>Results are tracked and every client gets a monthly report automatically.</div></div>
+          <div class="res"><b class="todo">[00h]</b><span>saved each month</span></div>
         </article>
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-7">Acarent</button></h3>
-          <div class="job-desc" id="job-7"><p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p></div>
-          <div class="job-logo"><img src="assets/logos/acarent.png" class="tall" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/fbisol.svg" alt="" loading="lazy"><span class="tag">Sales data</span></div>
+          <h3>F. Bisol</h3>
+          <div class="ba"><div><span>// before</span>Sales data scattered; hard to see how each salesperson was doing.</div><div class="after"><span>// after</span>Data collected and analysed into a clear monthly report per salesperson.</div></div>
+          <div class="res"><b class="todo">[00]</b><span>salespeople tracked</span></div>
         </article>
 
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-8">Bmark</button></h3>
-          <div class="job-desc" id="job-8"><p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p></div>
-          <div class="job-logo"><img src="assets/logos/bmark.png" alt="" loading="lazy"></div>
-        </article>
-
-        <article class="job rv">
-          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-9">F. Bisol</button></h3>
-          <div class="job-desc" id="job-9"><p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p></div>
-          <div class="job-logo"><img src="assets/logos/fbisol.svg" class="inv" alt="" loading="lazy"></div>
+        <article class="case rv">
+          <div class="case-top"><img src="assets/logos/financer.svg" alt="" loading="lazy"><span class="tag">Content · Migration</span></div>
+          <h3>Financer.com</h3>
+          <div class="ba"><div><span>// before</span>Italian and US sites running on WordPress.</div><div class="after"><span>// after</span>I owned the Italian content, worked on the US site, and oversaw both moves to Ghost.</div></div>
+          <div class="res"><b>2</b><span>sites migrated to Ghost</span></div>
         </article>
 
       </div>
     </div>
   </section>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="said rv">
-        <div>
-          <p class="said-lede">Hypefury's co-founder, on the onboarding email flow I run.</p>
-          <a class="said-link" href="https://x.com/Yannick_Veys/status/1810219067778732374" target="_blank" rel="noopener">Read it on X &rarr;</a>
-        </div>
-        <a class="said-shot" href="https://x.com/Yannick_Veys/status/1810219067778732374" target="_blank" rel="noopener">
-          <img src="assets/hypefury-thread.jpg" width="1206" height="1440" loading="lazy"
-               alt="A thread on X. Yannick Veys of Hypefury posts a screenshot of their onboarding email flow. Arunima replies, tagging Samuele Onelia: &quot;Samuele is a star&quot;. Yannick answers: &quot;And a genius.&quot;">
-        </a>
+  <section class="sec flush">
+    <div class="wrap quote rv">
+      <div>
+        <span class="label"><b>// 03</b> · said about the work</span>
+        <blockquote>"Samuele is a star." <span>"And a genius."</span></blockquote>
+        <cite>The Hypefury team, on the onboarding emails I run</cite>
+        <a class="read" href="https://x.com/Yannick_Veys/status/1810219067778732374" target="_blank" rel="noopener">Read the thread on X →</a>
+      </div>
+      <a class="shot" href="https://x.com/Yannick_Veys/status/1810219067778732374" target="_blank" rel="noopener">
+        <img src="assets/hypefury-thread.jpg" width="1206" height="1440" loading="lazy"
+             alt="A thread on X. Yannick Veys of Hypefury posts a screenshot of their onboarding email flow. Arunima replies, tagging Samuele Onelia: &quot;Samuele is a star&quot;. Yannick answers: &quot;And a genius.&quot;">
+      </a>
+    </div>
+  </section>
+
+  <section id="faq" class="sec flush">
+    <div class="wrap faq">
+      <div class="rv"><span class="label"><b>// 04</b> · faq</span><h2>Questions clients <span class="hl">ask first.</span></h2></div>
+      <div class="qs rv">
+        <details>
+          <summary>Do I need to change the tools I use?</summary>
+          <p class="a">No. I connect the tools you already use, so your team keeps working the way it does today and the copying between apps disappears.</p>
+        </details>
+        <details>
+          <summary>How much does a project cost?</summary>
+          <p class="a todo">[Your answer: a starting price, or how you quote.]</p>
+        </details>
+        <details>
+          <summary>How long until it's running?</summary>
+          <p class="a todo">[Your answer: a typical timeline.]</p>
+        </details>
+        <details>
+          <summary>Is AI safe to let loose on my customers?</summary>
+          <p class="a">I build agents with verification gates and a human in the loop, so a person checks before anything important goes out.</p>
+        </details>
+        <details>
+          <summary>Do you work in Italian or English?</summary>
+          <p class="a">Both. I'm based in Padova and work with Italian and international teams.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <section id="services" class="sec white">
+  <section id="follow" class="sec flush">
     <div class="wrap">
-      <h2 class="eyebrow rv">What I do</h2>
-      <div class="svc rv">
-        <div class="svc-item">
-          <h3>Process automation</h3>
-          <p>I connect the tools you already use, so work moves between them without anyone copying it across.</p>
-        </div>
-        <div class="svc-item">
-          <h3>AI agents</h3>
-          <p>Multi-agent pipelines with verification gates and a human in the loop.</p>
-        </div>
-        <div class="svc-item">
-          <h3>Email marketing</h3>
-          <p>Campaigns, newsletters and large lists, run end to end.</p>
-        </div>
-        <div class="svc-item">
-          <h3>Copywriting &amp; ghostwriting</h3>
-          <p>Sales copy and long-form newsletters, in English and Italian, in your voice.</p>
-        </div>
+      <div class="head rv">
+        <div><span class="label"><b>// 05</b> · follow along</span><h2>I share what I build, <span class="hl">while I build it.</span></h2></div>
+        <p>Not looking for a project? Get the ideas instead. Pick where you like to read.</p>
+      </div>
+      <div class="follow">
+        <a class="rv" href="#"><div class="row"><span>newsletter</span><span class="arrow" aria-hidden="true">↗</span></div><div><h3>Weekly email</h3><p class="todo">[name, subscribers, link]</p></div></a>
+        <a class="rv" href="#"><div class="row"><span>youtube</span><span class="arrow" aria-hidden="true">↗</span></div><div><h3>SOS Automazioni</h3><p class="todo">[channel link]</p></div></a>
+        <a class="rv" href="#"><div class="row"><span>podcast</span><span class="arrow" aria-hidden="true">↗</span></div><div><h3>200+ interviews</h3><p class="todo">[podcast link]</p></div></a>
+        <a class="rv" href="https://www.linkedin.com/in/samueleonelia/" target="_blank" rel="noopener"><div class="row"><span>linkedin</span><span class="arrow" aria-hidden="true">↗</span></div><div><h3>in/samueleonelia</h3><p>Posts on AI and automation</p></div></a>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2 class="eyebrow rv">Contact</h2>
-      <div class="rv">
-        <h2>Tell me the job <em>nobody wants to do</em>.</h2>
-        <a class="mail" href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a>
-        <div class="crows">
-          <div class="crow"><span>Phone</span><a href="tel:+393485843362">+39 348 584 3362</a></div>
-          <div class="crow"><span>LinkedIn</span><a href="https://www.linkedin.com/in/samueleonelia/" target="_blank" rel="noopener">in/samueleonelia</a></div>
-          <div class="crow"><span>Based in</span><p>Padova, Italy</p></div>
-          <div class="crow"><span>Languages</span><p>Italian, English</p></div>
-        </div>
+  <section id="contact" class="sec contact">
+    <div class="wrap rv">
+      <span class="label"><b>// 06</b> · contact</span>
+      <h2>Tell me the job <span class="hl">nobody</span> wants to do.</h2>
+      <div class="ctas">
+        <a class="btn solid" href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a>
+      </div>
+      <div class="crows">
+        <div class="crow"><span>phone</span><a href="tel:+393485843362">+39 348 584 3362</a></div>
+        <div class="crow"><span>linkedin</span><a href="https://www.linkedin.com/in/samueleonelia/" target="_blank" rel="noopener">in/samueleonelia</a></div>
+        <div class="crow"><span>based in</span><p>Padova, Italy</p></div>
+        <div class="crow"><span>languages</span><p>Italian, English</p></div>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap foot-in">
-    <p>© <span id="yr">2026</span> · Samuele Onelia</p>
+  <div class="wrap foot">
+    <p>© <span id="yr">2026</span> · Samuele Onelia · P. IVA 04589970245</p>
     <nav class="foot-legal">
       <a href="https://www.iubenda.com/privacy-policy/10145367" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed" title="Privacy Policy">Privacy Policy</a>
       <a href="https://www.iubenda.com/privacy-policy/10145367/cookie-policy" class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
     </nav>
-    <p>P. IVA 04589970245</p>
   </div>
 </footer>
 
@@ -459,71 +506,100 @@ footer{background:var(--brown-dark);border-top:1px solid rgba(245,239,223,.12);p
   var y = document.getElementById("yr");
   if (y) y.textContent = new Date().getFullYear();
 
-  /* rotating two-tone headline, like the reference's "I DESIGN FOR / FINANCE" */
-  var phrases = [
-    ["I automate", "the boring work"],
-    ["I build",    "custom CRMs"],
-    ["I design",   "AI agents"]
+  /* character rain behind the hero. Faint on purpose: it sets the mood, the
+     headline does the talking. Runs only while the hero is on screen. */
+  var cv = document.getElementById("rain");
+  if (cv && cv.getContext){
+    var ctx = cv.getContext("2d"), cols = [], size = 16, w = 0, h = 0, running = false, last = 0;
+    var glyphs = "01アイウエオカキクケコサシスセソタチツテトナニヌネノ{}[]<>/=+*$#".split("");
+    var green = getComputedStyle(document.documentElement).getPropertyValue("--green").trim() || "#4BE38A";
+    var bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim() || "#090C0A";
+    function resize(){
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = cv.clientWidth; h = cv.clientHeight;
+      cv.width = w * dpr; cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = bg; ctx.fillRect(0, 0, w, h);
+      cols = [];
+      for (var c = 0; c < Math.ceil(w / size); c++) cols.push(Math.random() * -h / size);
+    }
+    function frame(t){
+      if (!running) return;
+      requestAnimationFrame(frame);
+      if (t - last < 70) return;
+      last = t;
+      ctx.fillStyle = bg; ctx.globalAlpha = .12; ctx.fillRect(0, 0, w, h); ctx.globalAlpha = 1;
+      ctx.font = "500 " + (size - 2) + "px 'JetBrains Mono', monospace";
+      for (var i = 0; i < cols.length; i++){
+        var y = cols[i] * size;
+        ctx.fillStyle = green;
+        ctx.globalAlpha = Math.random() < .08 ? .9 : .32;
+        ctx.fillText(glyphs[(Math.random() * glyphs.length) | 0], i * size, y);
+        cols[i] = (y > h && Math.random() > .975) ? 0 : cols[i] + 1;
+      }
+      ctx.globalAlpha = 1;
+    }
+    function staticFrame(){
+      ctx.font = "500 " + (size - 2) + "px 'JetBrains Mono', monospace";
+      ctx.fillStyle = green; ctx.globalAlpha = .18;
+      for (var i = 0; i < cols.length; i++){
+        var len = (Math.random() * 14) | 0, start = (Math.random() * h / size) | 0;
+        for (var j = 0; j < len; j++) ctx.fillText(glyphs[(Math.random() * glyphs.length) | 0], i * size, (start + j) * size);
+      }
+      ctx.globalAlpha = 1;
+    }
+    resize();
+    if (reduce){ staticFrame(); }
+    else if ("IntersectionObserver" in window){
+      new IntersectionObserver(function(es){
+        var on = es[0].isIntersecting;
+        if (on && !running){ running = true; requestAnimationFrame(frame); }
+        else if (!on) running = false;
+      }).observe(cv);
+    } else { running = true; requestAnimationFrame(frame); }
+    var rt;
+    window.addEventListener("resize", function(){
+      clearTimeout(rt); rt = setTimeout(function(){ resize(); if (reduce) staticFrame(); }, 200);
+    });
+  }
+
+  /* the automation log: one line per real project type, oldest scrolls off */
+  var lines = [
+    ["New WhatsApp order", "filed in CRM"],
+    ["Facebook Ads report", "sent to client"],
+    ["Tomorrow's rota", "staff notified"],
+    ["Trip enrolment", "invoice created"],
+    ["LinkedIn post", "written and published"],
+    ["Sales data", "monthly report ready"],
+    ["New signup", "onboarding email sent"],
+    ["Booking at 20:00", "moved to 20:30"]
   ];
-  var r1 = document.getElementById("r1"), r2 = document.getElementById("r2"), i = 0;
-  if (r1 && r2 && !reduce){
-    setInterval(function(){
-      r1.classList.add("out"); r2.classList.add("out");
-      setTimeout(function(){
-        i = (i + 1) % phrases.length;
-        r1.textContent = phrases[i][0];
-        r2.textContent = phrases[i][1];
-        r1.classList.remove("out"); r2.classList.remove("out");
-      }, 450);
-    }, 3200);
+  var log = document.getElementById("log"), i = 0;
+  function add(){
+    var l = lines[i++ % lines.length];
+    var li = document.createElement("li");
+    li.innerHTML = '<span class="t">' + new Date().toTimeString().slice(0,5) +
+      '</span><span class="ok">✓</span><span><b>' + l[0] + '</b> → ' + l[1] + '</span>';
+    log.appendChild(li);
+    while (log.children.length > 5) log.removeChild(log.firstChild);
   }
-
-  /* project rows: click or tap toggles the detail open, since :hover never
-     fires on touch. Hover and keyboard focus are handled in CSS. */
-  document.querySelectorAll(".job-toggle").forEach(function(btn){
-    var row = btn.closest(".job");
-    btn.addEventListener("click", function(){
-      var open = row.classList.toggle("open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    row.addEventListener("mouseleave", function(){
-      if (row.classList.contains("open")){
-        row.classList.remove("open");
-        btn.setAttribute("aria-expanded", "false");
-      }
-    });
-  });
-
-  /* The name shrinks when a row opens, which made every row below it jump up
-     by ~14px. Pin each row to the height it has at rest. */
-  var rows = document.querySelectorAll(".job");
-  function lockRowHeights(){
-    rows.forEach(function(r){ r.style.minHeight = ""; });
-    rows.forEach(function(r){
-      if (!r.classList.contains("open") && !r.matches(":hover")){
-        r.style.minHeight = Math.ceil(r.getBoundingClientRect().height) + "px";
-      }
-    });
+  if (log){
+    for (var k = 0; k < 4; k++) add();
+    if (!reduce) setInterval(add, 2200);
   }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockRowHeights);
-  else window.addEventListener("load", lockRowHeights);
-  var resizeT;
-  window.addEventListener("resize", function(){
-    clearTimeout(resizeT); resizeT = setTimeout(lockRowHeights, 180);
-  });
 
   /* scroll reveal */
   var items = document.querySelectorAll(".rv");
   if (reduce || !("IntersectionObserver" in window)){
     items.forEach(function(el){ el.classList.add("in"); });
-  } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-    items.forEach(function(el){ io.observe(el); });
+    return;
   }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+  items.forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
