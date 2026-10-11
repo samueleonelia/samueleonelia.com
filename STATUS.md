@@ -1,6 +1,6 @@
 # STATUS — samueleonelia.com
 
-Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-10
+Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-11
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
 - v2 page: `v2/index.html` · phone preview: https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
@@ -15,7 +15,7 @@ Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` li
 |---|---|
 | Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
 | 1. Brief | Done — AI + automation only, for clients and followers |
-| 2–3. Structure + design | Done — dark terminal look, green accent |
+| 2–3. Structure + design | Done — black and white, all mono, minimal |
 | 4. Build into `v2/` | Done — checked at 1024px and phone width |
 | 4b. Real content in the amber boxes | **Waiting on Samuele** |
 | 5. Check (real phone, Safari, OG image) | Not started |
@@ -23,7 +23,7 @@ Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` li
 
 ## v2 page sections
 
-Hero (character rain + automations.log) · logos · numbers · 2 offers ·
+Hero (workflow background + automations.log) · logos · numbers · 2 offers ·
 8 case studies · Hypefury quote · FAQ · follow along · contact · footer.
 
 ## Next
@@ -34,7 +34,7 @@ Hero (character rain + automations.log) · logos · numbers · 2 offers ·
 
 ## Blocked on Samuele
 
-- Feedback on the green version.
+- Feedback on the black-and-white version.
 - Amber-box content (results, FAQ answers, follow links).
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.

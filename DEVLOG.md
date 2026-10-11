@@ -554,3 +554,20 @@ row could not shrink, grid column was `1fr` not `minmax(0,1fr)`).
 Checked at 1024px and 344px: no horizontal scroll, all images load, FAQ
 toggles, no console errors. Phone preview artifact updated (v2 of the same
 URL). Amber dashed boxes mark content only Samuele has.
+
+## 2026-10-11 — Black and white, all mono, minimal
+
+Samuele disliked the green and the font. Now:
+- Pure black and white palette (tokens renamed from `--green*` to `--accent*`).
+- All monospace: Martian Mono headings, IBM Plex Mono text; heading sizes
+  pulled in because mono glyphs are wide.
+- Matrix rain judged "too matrix". Replaced with a canvas workflow diagram:
+  nodes on a 48px grid wired to nearest neighbours with L-shaped paths,
+  signals travel the wires and light nodes, often chaining onward. Echoes
+  what he builds; paused off-screen, static for reduced motion.
+- Tried inverted highlight blocks for key words; he asked to drop them and go
+  minimal first, so highlighted words are now plain.
+- Logo strip: flex left F.BISOL orphaned, then grid cells were narrower than
+  the 120px logos so they overlapped. Now an auto-fit grid with the label on
+  its own row and logos capped at their cell: one row at 1024px, no overlap.
+Checked at 1024px and 375px: no horizontal scroll, fonts load, no errors.
