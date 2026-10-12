@@ -91,7 +91,7 @@ h1{font-size:clamp(34px,5.4vw,78px);font-weight:700;letter-spacing:-.06em;line-h
 .stage{position:relative}
 .stage img{width:78%;height:auto;margin-left:auto;border-radius:14px;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.85);border:1px solid var(--line)}
 
-/* the automation log: real project types, no invented counts */
+/* the automation log: real, anonymised runs from Samuele's n8n instances (see the JS) */
 .log{position:absolute;left:0;bottom:-28px;width:min(400px,92%);background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:14px 16px 10px;font-family:var(--mono);font-size:12px}
 .log-top{display:flex;justify-content:space-between;color:var(--dim);margin-bottom:10px}
 .log-top span:first-child::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;animation:pulse 2s infinite}
@@ -258,7 +258,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
       <div class="stage">
         <img src="assets/portrait.jpg" alt="Samuele Onelia" width="900" height="900">
         <div class="log" aria-hidden="true">
-          <div class="log-top"><span>running</span><span>automations.log</span></div>
+          <div class="log-top"><span id="log-status">live</span><span>automations.log</span></div>
           <ul id="log"></ul>
         </div>
       </div>
@@ -616,29 +616,70 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
     });
   }
 
-  /* the automation log: one line per real project type, oldest scrolls off */
-  var lines = [
-    ["New WhatsApp order", "filed in CRM"],
-    ["Facebook Ads report", "sent to client"],
-    ["Tomorrow's rota", "staff notified"],
-    ["Trip enrolment", "invoice created"],
-    ["LinkedIn post", "written and published"],
-    ["Sales data", "monthly report ready"],
-    ["New signup", "onboarding email sent"],
-    ["Booking at 20:00", "moved to 20:30"]
-  ];
-  var log = document.getElementById("log"), i = 0;
-  function add(){
-    var l = lines[i++ % lines.length];
+  /* the automation log. Real runs come from the "Site feed" workflow on the
+     SOS n8n, which reads every n8n instance Samuele manages and publishes only
+     generic labels (no client, workflow or instance ever reaches this page).
+     If the feed can't be reached, it falls back to example lines and says so. */
+  var FEED = "https://n8nhostinger.sosautomazioni.com/webhook/site-feed";
+  var log = document.getElementById("log");
+  var status = document.getElementById("log-status");
+  var clock = new Intl.DateTimeFormat("it-IT", {hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome"});
+  var queue = [], newest = "", drip = null;
+
+  function add(what, result, time){
     var li = document.createElement("li");
-    li.innerHTML = '<span class="t">' + new Date().toTimeString().slice(0,5) +
-      '</span><span class="ok">✓</span><span><b>' + l[0] + '</b> → ' + l[1] + '</span>';
+    var t = document.createElement("span"); t.className = "t"; t.textContent = time;
+    var ok = document.createElement("span"); ok.className = "ok"; ok.textContent = "✓";
+    var txt = document.createElement("span");
+    var b = document.createElement("b"); b.textContent = what;
+    txt.appendChild(b); txt.appendChild(document.createTextNode(" → " + result));
+    li.appendChild(t); li.appendChild(ok); li.appendChild(txt);
     log.appendChild(li);
     while (log.children.length > 5) log.removeChild(log.firstChild);
   }
-  if (log){
-    for (var k = 0; k < 4; k++) add();
-    if (!reduce) setInterval(add, 2200);
+  function startDrip(){
+    if (drip || reduce) return;
+    drip = setInterval(function(){
+      var l = queue.shift();
+      if (!l){ clearInterval(drip); drip = null; return; }
+      add(l.what, l.result, clock.format(new Date(l.t)));
+    }, 2400);
+  }
+  function demo(){
+    var lines = [["WhatsApp order", "filed in CRM"], ["Monthly report", "sent to client"],
+                 ["LinkedIn post", "written by AI"], ["Invoice", "matched to deal"],
+                 ["Leads", "collected from Google Maps"], ["Website chat", "answered by AI"]], i = 0;
+    status.textContent = "demo";
+    function one(){ var l = lines[i++ % lines.length]; add(l[0], l[1], clock.format(new Date())); }
+    for (var k = 0; k < 4; k++) one();
+    if (!reduce) setInterval(one, 2400);
+  }
+  function load(first){
+    return fetch(FEED, {cache: "no-store"}).then(function(r){
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function(f){
+      var lines = (f && f.lines || []).filter(function(l){ return l.t > newest; })
+        .sort(function(a, b){ return a.t < b.t ? -1 : 1; });
+      if (first && !lines.length) throw new Error("empty");
+      if (f.total24h) status.textContent = f.total24h.toLocaleString("en-US") + " runs · 24h";
+      if (lines.length) newest = lines[lines.length - 1].t;
+      if (first){
+        /* show the older ones at once, then replay the newest few one by one */
+        var shown = lines.slice(0, Math.max(0, lines.length - 4)).slice(-4);
+        shown.forEach(function(l){ add(l.what, l.result, clock.format(new Date(l.t))); });
+        queue = lines.slice(shown.length ? lines.length - 4 : 0);
+        if (reduce){ queue.forEach(function(l){ add(l.what, l.result, clock.format(new Date(l.t))); }); queue = []; }
+      } else {
+        queue = queue.concat(lines);
+      }
+      startDrip();
+    });
+  }
+  if (log && status){
+    load(true).then(function(){
+      setInterval(function(){ if (!document.hidden) load(false).catch(function(){}); }, 120000);
+    }).catch(demo);
   }
 
   /* scroll reveal */

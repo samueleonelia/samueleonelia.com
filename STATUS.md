@@ -1,6 +1,6 @@
 # STATUS — samueleonelia.com
 
-Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-11
+Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-12
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
 - v2 page: `v2/index.html` · phone preview: https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
@@ -18,6 +18,7 @@ Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` li
 | 2–3. Structure + design | Done — black and white, all mono, minimal |
 | 4. Build into `v2/` | Done — checked at 1024px and phone width |
 | 4b. Real content in the amber boxes | **Waiting on Samuele** |
+| 4c. Live automation log (n8n feed) | **Waiting on Samuele** — import workflow, add 8 keys, activate |
 | 5. Check (real phone, Safari, OG image) | Not started |
 | 6. Launch (publish `v2`, deploy, tag v2.0) | Not started |
 
@@ -28,12 +29,15 @@ Hero (workflow background + automations.log) · logos · numbers · 2 offers ·
 
 ## Next
 
-1. Samuele reviews the phone preview and gives feedback.
-2. Samuele supplies: result per project, price + timeline answers, newsletter / YouTube / podcast links.
-3. OG share image, then real-phone + Safari check.
+1. Samuele imports `site-feed-workflow.json` into the SOS n8n, adds one Header Auth key per instance, activates it.
+2. Claude checks https://n8nhostinger.sosautomazioni.com/webhook/site-feed and the live log.
+3. Samuele reviews the phone preview and gives feedback.
+4. Samuele supplies: result per project, price + timeline answers, newsletter / YouTube / podcast links.
+5. OG share image, then real-phone + Safari check.
 
 ## Blocked on Samuele
 
+- Site feed workflow: import, 8 API keys, activate (Claude was blocked from writing keys or workflows to n8n).
 - Feedback on the black-and-white version.
 - Amber-box content (results, FAQ answers, follow links).
 - Verify an email on the Netlify account so pushes auto-deploy.

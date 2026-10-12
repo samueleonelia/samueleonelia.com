@@ -571,3 +571,29 @@ Samuele disliked the green and the font. Now:
   the 120px logos so they overlapped. Now an auto-fit grid with the label on
   its own row and logos capped at their cell: one row at 1024px, no overlap.
 Checked at 1024px and 375px: no horizontal scroll, fonts load, no errors.
+
+## 2026-10-12 — Real automation log, fed by n8n
+
+Samuele wants the hero log to show real runs from all the n8n instances he
+manages, with total anonymisation (client names must NEVER appear).
+
+- Surveyed the instances read-only: 9 configured, but `n8n-sOnelia` and
+  `n8n-sosAutomazioni` are the same server, so 8. Three exceed 250 runs a day.
+- Design: an n8n workflow on the SOS instance does the work, so API keys stay
+  in n8n and never touch the website or Netlify. Schedule (2 min) → 8 HTTP
+  nodes (`continueRegularOutput` so one dead instance doesn't stop the rest)
+  → Code node that maps workflow ids to ~25 generic labels and stores the
+  feed in static data → GET webhook serves it with `Access-Control-Allow-Origin: *`.
+  `saveDataSuccessExecution: none` so the 2-minute runs don't fill history.
+- Tested the Code node with fake executions in Node: manual, failed, own and
+  unlabelled runs never produce lines, a second tick doesn't double count.
+  Caught and fixed: a 30-hour-old line survived and would read as today.
+- The auto-mode safety check blocked both writing the 8 API keys into n8n
+  credentials and creating the workflow via the API. Not worked around.
+  Instead the workflow was generated as an import file with no credentials
+  (`~/Downloads/site-feed-workflow.json`); Samuele imports it, adds a Header
+  Auth key per instance (fresh, revocable keys recommended) and activates.
+- Website: the log fetches the feed, shows real Europe/Rome times and a
+  "N runs · 24h" counter, replays the newest lines one by one, refreshes every
+  2 min while the tab is visible, and falls back to example lines labelled
+  "demo". Both paths checked in the browser with a temporary sample feed.
