@@ -618,3 +618,9 @@ log holds still while open; 375px fits with no sideways scroll.
 covered the chin. In the photo the face fills the top ~80%, so the log now
 sits in normal flow under the portrait with `margin-top:-32px`: it overlaps
 8–10% of the photo (the collar) at desktop and 375px.
+
+**Log as a full-width bar.** Samuele wanted no overlap at all: the log moved
+out of the portrait column into its own hero-grid row (`grid-column:1/-1`),
+spanning the full content width, 3 lines tall, with a "kind" column
+(automation / AI agent) that hides under 560px. Checked: 1144px wide at
+1280, 64px below the photo; full width with 16px gutters at 375, no sideways scroll.
