@@ -613,3 +613,8 @@ Downloads, and the feed code was removed from the page. Instead:
   maps entries to clients so Samuele can choose which to name.
 Checked: click and Enter open it; ×, Escape and a tap outside close it; the
 log holds still while open; 375px fits with no sideways scroll.
+
+**Log off the face.** The log was absolutely positioned over the portrait and
+covered the chin. In the photo the face fills the top ~80%, so the log now
+sits in normal flow under the portrait with `margin-top:-32px`: it overlaps
+8–10% of the photo (the collar) at desktop and 375px.
