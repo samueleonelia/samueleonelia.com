@@ -597,3 +597,19 @@ manages, with total anonymisation (client names must NEVER appear).
   "N runs · 24h" counter, replays the newest lines one by one, refreshes every
   2 min while the tab is visible, and falls back to example lines labelled
   "demo". Both paths checked in the browser with a temporary sample feed.
+
+**Changed course the same day: simulated log, real catalogue.** Samuele
+decided a live feed wasn't worth it. Nothing had been created on any n8n
+server (both write attempts were blocked), the import file was deleted from
+Downloads, and the feed code was removed from the page. Instead:
+- Read every active workflow (read-only, 169 across 8 instances) and wrote a
+  catalogue of 56 real automations, grouped where several workflows form one
+  system, skipping tests, copies, temp and unclear flows.
+- The log shows them from a shuffled bag with the visitor's current time; each
+  line is a button opening a `<dialog>` with kind, description, tools, an
+  optional client line and an "I want one like this" link. It pauses on hover
+  and while the window is open.
+- Client names are not on the page. `plans/automation-catalog.md` (private)
+  maps entries to clients so Samuele can choose which to name.
+Checked: click and Enter open it; ×, Escape and a tap outside close it; the
+log holds still while open; 375px fits with no sideways scroll.

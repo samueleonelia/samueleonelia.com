@@ -91,13 +91,27 @@ h1{font-size:clamp(34px,5.4vw,78px);font-weight:700;letter-spacing:-.06em;line-h
 .stage{position:relative}
 .stage img{width:78%;height:auto;margin-left:auto;border-radius:14px;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.85);border:1px solid var(--line)}
 
-/* the automation log: real, anonymised runs from Samuele's n8n instances (see the JS) */
+/* the automation log: a simulation built from real automations; each line opens a details window */
 .log{position:absolute;left:0;bottom:-28px;width:min(400px,92%);background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:14px 16px 10px;font-family:var(--mono);font-size:12px}
 .log-top{display:flex;justify-content:space-between;color:var(--dim);margin-bottom:10px}
 .log-top span:first-child::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;animation:pulse 2s infinite}
 @keyframes pulse{50%{opacity:.35}}
 .log ul{list-style:none;margin:0;padding:0;height:138px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;-webkit-mask-image:linear-gradient(transparent,#000 35%);mask-image:linear-gradient(transparent,#000 35%)}
 .log li{display:grid;grid-template-columns:44px 14px minmax(0,1fr);gap:8px;padding:5px 0;color:var(--muted);border-top:1px solid var(--line);animation:in .5s ease both}
+.log li{cursor:pointer}
+.log li:hover b,.log li:focus-visible b{text-decoration:underline;text-underline-offset:3px}
+.log-hint{margin-top:8px;color:var(--dim);font-size:11px}
+
+/* automation details window */
+#auto{width:min(440px,calc(100vw - 32px));margin:auto;padding:28px;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:14px;font-family:var(--sans)}
+#auto::backdrop{background:rgba(0,0,0,.7)}
+#auto h3{margin:12px 0 14px;font-size:20px;font-weight:500;letter-spacing:-.04em;line-height:1.3;padding-right:24px}
+#auto .d-desc{color:var(--muted);line-height:1.65;font-size:15px}
+#auto .d-meta{display:flex;gap:12px;margin-top:14px;font-size:13px;line-height:1.5}
+#auto .d-meta span:first-child{flex:0 0 56px;font-family:var(--mono);font-size:11px;color:var(--dim);padding-top:2px}
+#auto .d-cta{margin-top:24px}
+#auto .d-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer}
+#auto .d-close:hover{color:var(--text);border-color:var(--text)}
 .log .t{color:var(--dim)}
 .log .ok{color:var(--accent)}
 .log b{color:var(--text);font-weight:400}
@@ -257,9 +271,10 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
       </div>
       <div class="stage">
         <img src="assets/portrait.jpg" alt="Samuele Onelia" width="900" height="900">
-        <div class="log" aria-hidden="true">
-          <div class="log-top"><span id="log-status">live</span><span>automations.log</span></div>
-          <ul id="log"></ul>
+        <div class="log">
+          <div class="log-top"><span>running</span><span id="log-count">automations.log</span></div>
+          <ul id="log" aria-label="Automations I've built"></ul>
+          <p class="log-hint">// tap a line to see what it does</p>
         </div>
       </div>
     </div>
@@ -491,6 +506,16 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
   </section>
 </main>
 
+<dialog id="auto" aria-labelledby="auto-title">
+  <button class="d-close" type="button" aria-label="Close">×</button>
+  <span class="d-kind label"></span>
+  <h3 id="auto-title"></h3>
+  <p class="d-desc"></p>
+  <p class="d-meta"><span>tools</span><span class="d-tools"></span></p>
+  <p class="d-meta d-client" hidden><span>client</span><span></span></p>
+  <a class="btn ghost d-cta" href="#contact">I want one like this →</a>
+</dialog>
+
 <footer>
   <div class="wrap foot">
     <p>© <span id="yr">2026</span> · Samuele Onelia · P. IVA 04589970245</p>
@@ -616,70 +641,124 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
     });
   }
 
-  /* the automation log. Real runs come from the "Site feed" workflow on the
-     SOS n8n, which reads every n8n instance Samuele manages and publishes only
-     generic labels (no client, workflow or instance ever reaches this page).
-     If the feed can't be reached, it falls back to example lines and says so. */
-  var FEED = "https://n8nhostinger.sosautomazioni.com/webhook/site-feed";
-  var log = document.getElementById("log");
-  var status = document.getElementById("log-status");
-  var clock = new Intl.DateTimeFormat("it-IT", {hour: "2-digit", minute: "2-digit", timeZone: "Europe/Rome"});
-  var queue = [], newest = "", drip = null;
+  /* the automation log. A simulation, but every line is a real automation
+     Samuele has built: it picks entries from AUTOMATIONS at random, stamps the
+     current time, and each line opens a small window explaining it.
+     Client names are off by default; fill an entry's `client` to show one. */
+  var AUTOMATIONS = [
+    // [id, what, result, kind, tools, description, client]
+    ["deal-sync", "Deal update", "copied to company record", "Automation", "Pipedrive", "When a deal changes in the CRM, its latest details are copied onto the company record, so sales sees the current picture without opening every deal.", ""],
+    ["invoice-match", "New invoices", "matched to deals", "Automation", "Pipedrive · Google Sheets · Invoicing API", "Every day new invoices are pulled from the invoicing software and attached to the right deal, so revenue per customer is always up to date.", ""],
+    ["sales-sync", "Sales, quotes and products", "synced to CRM", "Automation", "Pipedrive · Management software API", "Sales, quotes, invoices and products from the management software stay in sync with the CRM, with no double entry.", ""],
+    ["course-reminder", "Course about to expire", "reminder sent", "Automation", "Google Sheets · Mailchimp", "Customers whose training course is about to expire get a reminder email, without anyone checking dates by hand.", ""],
+    ["customer-status", "Customer status", "recalculated in CRM", "Automation", "Pipedrive", "Each customer's status (active, lapsed, at risk) is recalculated on a schedule from their purchase history.", ""],
+    ["company-import", "Company list", "imported into CRM", "Automation", "Google Drive · Pipedrive · Gmail", "Company lists dropped into a Drive folder are read and imported into the CRM, then a summary email says what was added.", ""],
+    ["year-rollover", "New year", "sales sheets rolled over", "Automation", "Google Sheets", "On 1 January the yearly sales sheets are archived and fresh ones are set up, ready for the new year.", ""],
+    ["wa-agent", "WhatsApp message", "answered by AI agent", "AI agent", "WhatsApp · OpenAI · Excel", "An AI agent answers customers on WhatsApp around the clock, looking up answers in the business's own data.", ""],
+    ["web-agent", "Website chat", "answered by AI agent", "AI agent", "Chat widget · OpenAI · Excel", "The same kind of AI agent on the website chat. It remembers the conversation and answers from the company's own documents.", ""],
+    ["paper-research", "New research papers", "found and summarised by AI", "AI agent", "Perplexity · Notion", "Every day new scientific papers on chosen topics are searched, summarised by AI and saved to a Notion library.", ""],
+    ["paper-digest", "Paper digest", "emailed to subscribers", "Automation", "Notion · Brevo", "Subscribers get an email with the newest summarised papers, built straight from the Notion library.", ""],
+    ["linkedin-agent", "LinkedIn post", "drafted by AI", "AI agent", "OpenAI", "An AI agent drafts LinkedIn posts on a schedule, in the brand's voice, ready for a quick human review.", ""],
+    ["market-report", "Market research report", "generated by AI", "AI agent", "Perplexity · Google Search · OpenAI · Google Drive", "Fill in a short form and an AI pipeline researches the market, then delivers a finished report to Google Drive.", ""],
+    ["ad-contract", "Advertising deal", "contract generated", "Automation", "Google Sheets · Document API", "Advertising deals logged in a sheet become ready-to-sign contracts, with checks that stop anything incomplete.", ""],
+    ["form-analysis", "Questionnaire", "analysed by AI", "AI agent", "Jotform · Claude · Google Drive · Gmail", "Answers from an online questionnaire are read by Claude, turned into a summary document and emailed to the team.", ""],
+    ["deal-analysis", "Open negotiations", "analysed by AI", "AI agent", "Claude · Google Drive · Gmail", "Claude reviews ongoing negotiations and emails a short analysis with suggested next steps.", ""],
+    ["wa-order", "WhatsApp order", "filed in CRM", "Automation", "WhatsApp · Notion", "Orders sent on WhatsApp are read and recorded in the CRM, without anyone retyping them.", ""],
+    ["email-order", "Email order", "filed in CRM", "Automation", "Gmail · Notion", "Orders arriving by email are read from the message, split into lines and filed in the CRM.", ""],
+    ["order-check", "New order", "checked", "Automation", "Notion", "Each new order is checked against the catalogue and the customer's details. Anything missing is flagged before it ships.", ""],
+    ["order-notify", "Order confirmed", "customer notified on WhatsApp", "Automation", "WhatsApp", "Customers get a WhatsApp message as soon as their order is confirmed.", ""],
+    ["catalogue-sync", "Catalogue and customers", "synced to Notion", "Automation", "Google Sheets · Google Drive · Notion", "Product and customer lists are uploaded to Notion every day, and outdated records are cleaned up.", ""],
+    ["wa-router", "WhatsApp message", "routed to the right flow", "Automation", "WhatsApp", "Every WhatsApp message the business receives is sorted and sent to the right flow: bookings, staff shifts or customer feedback.", ""],
+    ["survey", "Guest survey", "processed", "Automation", "Gmail · Booking platform", "Post-visit surveys from the booking platform are read automatically, and low scores start a follow-up.", ""],
+    ["unhappy-guest", "Low score", "guest contacted on WhatsApp", "Automation", "WhatsApp", "When a guest leaves a low score, they get a personal WhatsApp message asking what went wrong.", ""],
+    ["reply-classify", "Guest reply", "classified by AI", "AI agent", "Claude", "Claude reads the guest's reply and sorts it (complaint, suggestion, praise) so the right person handles it.", ""],
+    ["guest-thanks", "Issue resolved", "guest thanked", "Automation", "WhatsApp · Email", "Once the issue is handled, the guest gets a thank-you message by WhatsApp and email.", ""],
+    ["booking-sync", "Booking or cancellation", "synced to booking system", "Automation", "TheFork · Restoo · Gmail", "Bookings and cancellations from the online platforms are copied into the restaurant's own booking system.", ""],
+    ["guest-contact", "New guest", "saved to contacts", "Automation", "Google Contacts", "Every new booking adds the guest to the phone's contacts, so staff recognise them when they write on WhatsApp.", ""],
+    ["peak-spread", "Busy evening", "bookings spread out", "Automation", "WhatsApp · Notion", "The system spots peak times and asks some guests on WhatsApp whether they'd move to a quieter slot.", ""],
+    ["shift-poll", "Weekly shifts", "availability collected", "Automation", "WhatsApp polls", "Every week staff get a WhatsApp poll for their availability, with reminders for anyone who hasn't answered.", ""],
+    ["staff-callin", "Shift", "staff called in", "Automation", "WhatsApp", "Waiters and dishwashers are called in automatically, based on their availability and the expected covers.", ""],
+    ["staff-calc", "Tomorrow's bookings", "staff needed calculated", "Automation", "Notion · Booking system", "Expected bookings are turned into the number of staff needed for each day.", ""],
+    ["missed-call", "Missed call", "followed up on WhatsApp", "Automation", "Phone system · WhatsApp", "When a call goes unanswered, the caller gets a WhatsApp message straight away.", ""],
+    ["maps-leads", "Leads", "collected from Google Maps", "Automation", "Google Maps · Notion", "Pick a type of business and an area: every result lands in Notion with contact details, ready for outreach.", ""],
+    ["site-videos", "Website", "updated with latest videos", "Automation", "YouTube · Instagram", "A website sidebar always shows the latest YouTube videos and reels, with nobody updating it.", ""],
+    ["calendar-sync", "Event dates", "synced to Google Calendar", "Automation", "Notion · Google Calendar", "Event dates kept in Notion stay in sync, both ways, with a shared Google Calendar.", ""],
+    ["yt-short", "YouTube Short", "published", "Automation", "Notion · YouTube", "Short videos queued in Notion are uploaded to YouTube on schedule, with title and description.", ""],
+    ["ig-reel", "Instagram reel", "published", "Automation", "Notion · Instagram", "Reels planned in Notion are published to Instagram on schedule.", ""],
+    ["ig-comment-dm", "Instagram comment", "answered by DM", "Automation", "Instagram · Notion", "Comments on reels are logged in Notion, and each commenter gets a DM with the resource they asked for.", ""],
+    ["site-forms", "Website form", "filed and confirmed", "Automation", "Website · Gmail", "Every form on a website goes through one workflow: the request is filed and a confirmation email goes out.", ""],
+    ["idea-backlog", "Video idea", "added to content plan", "Automation", "Todoist · Notion", "Video ideas jotted down in Todoist are moved into the Notion content plan.", ""],
+    ["payment-reminder", "Payment due", "reminder sent", "Automation", "Notion · Gmail", "Members with an upcoming payment get a reminder email, picked from the list automatically.", ""],
+    ["backup", "Workflows and credentials", "backed up", "Automation", "n8n · Google Drive", "Every automation and its settings are backed up to Google Drive every night.", ""],
+    ["error-alert", "Failed run", "alert sent", "Automation", "Gmail · Brevo", "If any automation fails, an email alert goes out with the details, so problems are fixed before anyone notices.", ""],
+    ["enrol-close", "Sign-up link", "closed when full", "Automation", "Notion · Brevo", "Trip sign-up links close themselves as soon as the last place is taken.", ""],
+    ["email-archive", "Sent email", "archived on the customer record", "Automation", "Brevo · Notion", "Every email sent to a customer is saved on their record in the CRM, so the full history is in one place.", ""],
+    ["deal-stage", "School negotiation", "moved to next stage", "Automation", "Notion · Google Drive", "Negotiations move through their stages automatically, with folders and tasks created at each step.", ""],
+    ["postcode", "Postcode", "province filled in", "Automation", "Notion", "Each contact's province is filled in from their postcode, so lists can be filtered by area.", ""],
+    ["enrolment", "New enrolment", "contact created", "Automation", "Website form · Notion · Brevo", "When someone enrols, their contact is created in the CRM and a confirmation email goes out.", ""],
+    ["discount", "Siblings enrolled", "discount applied", "Automation", "Notion", "Family and under-age discounts are applied to the enrolment automatically.", ""],
+    ["booking-export", "Participants", "exported to booking software", "Automation", "Notion · Google Drive · Brevo", "Trip participants are exported in the exact format the booking software needs, saved to Drive and emailed.", ""],
+    ["receipt", "Payment", "receipt created and sent", "Automation", "Notion · Google Drive · Brevo", "Receipts are generated, saved to Google Drive and emailed to the customer.", ""],
+    ["instalments", "Instalment plan", "emailed to the family", "Automation", "Notion · Brevo", "Families paying in instalments get their plan and the reminders by email.", ""],
+    ["trip-list", "Trip", "participant list built", "Automation", "Notion · Google Sheets", "Participant lists for each trip are built in Google Sheets for the school and the insurer.", ""],
+    ["flight-cost", "Flight", "cost recorded", "Automation", "Notion", "Flight costs are recorded per trip, with the airline name looked up automatically.", ""],
+    ["teacher-proposal", "Trip proposal", "sent to teachers", "Automation", "Notion · Brevo", "Trip proposals go out to teachers by email straight from the CRM.", ""]
+  ];
 
-  function add(what, result, time){
+  var log = document.getElementById("log");
+  var count = document.getElementById("log-count");
+  var dlg = document.getElementById("auto");
+  var clock = new Intl.DateTimeFormat(undefined, {hour: "2-digit", minute: "2-digit", hour12: false});
+  var bag = [], paused = false;
+  if (count) count.textContent = AUTOMATIONS.length + " automations";
+
+  /* shuffled bag: every automation shows once before any repeats */
+  function next(){
+    if (!bag.length){
+      bag = AUTOMATIONS.slice();
+      for (var j = bag.length - 1; j > 0; j--){ var r = (Math.random() * (j + 1)) | 0, x = bag[j]; bag[j] = bag[r]; bag[r] = x; }
+    }
+    return bag.pop();
+  }
+  function open(a){
+    dlg.querySelector(".d-kind").textContent = "// " + a[3].toLowerCase();
+    dlg.querySelector("h3").textContent = a[1] + " → " + a[2];
+    dlg.querySelector(".d-desc").textContent = a[5];
+    dlg.querySelector(".d-tools").textContent = a[4];
+    var c = dlg.querySelector(".d-client");
+    c.hidden = !a[6];
+    c.querySelector("span").textContent = a[6] || "";
+    paused = true;
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+  }
+  function add(){
+    var a = next();
     var li = document.createElement("li");
-    var t = document.createElement("span"); t.className = "t"; t.textContent = time;
+    li.setAttribute("role", "button");
+    li.tabIndex = 0;
+    li.setAttribute("aria-label", a[1] + " → " + a[2] + ". Show details");
+    var t = document.createElement("span"); t.className = "t"; t.textContent = clock.format(new Date());
     var ok = document.createElement("span"); ok.className = "ok"; ok.textContent = "✓";
     var txt = document.createElement("span");
-    var b = document.createElement("b"); b.textContent = what;
-    txt.appendChild(b); txt.appendChild(document.createTextNode(" → " + result));
+    var b = document.createElement("b"); b.textContent = a[1];
+    txt.appendChild(b); txt.appendChild(document.createTextNode(" → " + a[2]));
     li.appendChild(t); li.appendChild(ok); li.appendChild(txt);
+    li.addEventListener("click", function(){ open(a); });
+    li.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); open(a); } });
     log.appendChild(li);
     while (log.children.length > 5) log.removeChild(log.firstChild);
   }
-  function startDrip(){
-    if (drip || reduce) return;
-    drip = setInterval(function(){
-      var l = queue.shift();
-      if (!l){ clearInterval(drip); drip = null; return; }
-      add(l.what, l.result, clock.format(new Date(l.t)));
-    }, 2400);
-  }
-  function demo(){
-    var lines = [["WhatsApp order", "filed in CRM"], ["Monthly report", "sent to client"],
-                 ["LinkedIn post", "written by AI"], ["Invoice", "matched to deal"],
-                 ["Leads", "collected from Google Maps"], ["Website chat", "answered by AI"]], i = 0;
-    status.textContent = "demo";
-    function one(){ var l = lines[i++ % lines.length]; add(l[0], l[1], clock.format(new Date())); }
-    for (var k = 0; k < 4; k++) one();
-    if (!reduce) setInterval(one, 2400);
-  }
-  function load(first){
-    return fetch(FEED, {cache: "no-store"}).then(function(r){
-      if (!r.ok) throw new Error(r.status);
-      return r.json();
-    }).then(function(f){
-      var lines = (f && f.lines || []).filter(function(l){ return l.t > newest; })
-        .sort(function(a, b){ return a.t < b.t ? -1 : 1; });
-      if (first && !lines.length) throw new Error("empty");
-      if (f.total24h) status.textContent = f.total24h.toLocaleString("en-US") + " runs · 24h";
-      if (lines.length) newest = lines[lines.length - 1].t;
-      if (first){
-        /* show the older ones at once, then replay the newest few one by one */
-        var shown = lines.slice(0, Math.max(0, lines.length - 4)).slice(-4);
-        shown.forEach(function(l){ add(l.what, l.result, clock.format(new Date(l.t))); });
-        queue = lines.slice(shown.length ? lines.length - 4 : 0);
-        if (reduce){ queue.forEach(function(l){ add(l.what, l.result, clock.format(new Date(l.t))); }); queue = []; }
-      } else {
-        queue = queue.concat(lines);
-      }
-      startDrip();
-    });
-  }
-  if (log && status){
-    load(true).then(function(){
-      setInterval(function(){ if (!document.hidden) load(false).catch(function(){}); }, 120000);
-    }).catch(demo);
+  if (log && dlg){
+    for (var k = 0; k < 5; k++) add();
+    if (!reduce) setInterval(function(){ if (!paused && !document.hidden) add(); }, 2600);
+    /* hold the log still while someone is pointing at it or reading a window */
+    var stage = log.closest(".log");
+    stage.addEventListener("mouseenter", function(){ paused = true; });
+    stage.addEventListener("mouseleave", function(){ if (!dlg.open) paused = false; });
+    dlg.addEventListener("close", function(){ paused = false; });
+    dlg.querySelector(".d-close").addEventListener("click", function(){ dlg.close(); });
+    dlg.querySelector(".d-cta").addEventListener("click", function(){ dlg.close(); });
+    dlg.addEventListener("click", function(e){ if (e.target === dlg) dlg.close(); });
   }
 
   /* scroll reveal */
