@@ -634,3 +634,13 @@ translated for the English site and grouped as before we start / the 4 weeks
 / after. Section heading now "I build it for you, or I teach you to." Added a
 FAQ entry on which offer fits whom. Checked at 1280px (cards equal height)
 and 375px (no sideways scroll).
+
+**X thread instead of the screenshot.** Samuele asked to embed the three
+Hypefury posts. X's embed script sets third-party cookies before consent and
+the site has no consent banner, so the posts are rebuilt as plain HTML (text
+copied as posted, from X's public syndication endpoint), each linking to the
+original. Avatars are initials, not X images. The flow image from the first
+post is hosted in `v2/assets/tweets/` (greyscale to match). Then, at his
+request, made compact and visibly connected: one box, 28px avatars joined by a
+line, max 440px wide (was 514 × 824, now 440 × 471). Removed
+`v2/assets/hypefury-thread.jpg`. 375px: fits, no sideways scroll.
