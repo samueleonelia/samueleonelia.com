@@ -624,3 +624,13 @@ out of the portrait column into its own hero-grid row (`grid-column:1/-1`),
 spanning the full content width, 3 lines tall, with a "kind" column
 (automation / AI agent) that hides under 560px. Checked: 1144px wide at
 1280, 64px below the photo; full width with 16px gutters at 375, no sideways scroll.
+
+## 2026-10-13 — Offers: Process automation + AI Training Sprint
+
+Samuele redefined the two offers. "AI agents" stopped being its own offer and
+became part of Process automation ("I build it for you"). The new second offer
+is the AI Training Sprint ("I teach you to"), from his Italian brief,
+translated for the English site and grouped as before we start / the 4 weeks
+/ after. Section heading now "I build it for you, or I teach you to." Added a
+FAQ entry on which offer fits whom. Checked at 1280px (cards equal height)
+and 375px (no sideways scroll).
