@@ -191,14 +191,14 @@ cite{display:block;margin-top:26px;font-style:normal;color:var(--muted);font-siz
 .thread{min-width:0;width:100%;max-width:440px;justify-self:end;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
 .tw{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:12px;padding-bottom:16px}
 .tw:not(:last-of-type)::before{content:"";position:absolute;left:13.5px;top:32px;bottom:2px;width:1px;background:var(--line)}
-.av{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:10px;background:var(--bg)}
+.av{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);object-fit:cover;background:var(--bg);filter:grayscale(1)}
 .tw-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;font-size:13px}
 .tw-head b{font-weight:500}
 .tw:hover .tw-head b{text-decoration:underline;text-underline-offset:3px}
 .handle{font-size:12px;color:var(--dim)}
 .tw p{margin-top:2px;font-size:14px;line-height:1.5}
 .tw .rep{font-size:12px;color:var(--dim)}
-.tw img{margin-top:10px;width:100%;height:auto;max-height:150px;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);filter:grayscale(1)}
+.tw .tw-body img{margin-top:10px;width:100%;height:auto;max-height:150px;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);filter:grayscale(1)}
 .tw-src{display:block;padding-top:12px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--dim)}
 @media (max-width:900px){.thread{justify-self:start}}
 @media (max-width:900px){.quote{grid-template-columns:minmax(0,1fr);gap:40px}}
@@ -460,7 +460,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
            as posted; each card links to the original. -->
       <div class="thread">
         <a class="tw" href="https://x.com/Yannick_Veys/status/1810219067778732374" target="_blank" rel="noopener">
-          <span class="av" aria-hidden="true">YV</span>
+          <img class="av" src="assets/tweets/yannick.jpg" width="200" height="200" alt="" loading="lazy">
           <div class="tw-body">
             <div class="tw-head"><b>Yannick Veys</b><span class="handle">@Yannick_Veys · <time datetime="2024-07-08T07:47:12Z">Jul 8, 2024</time></span></div>
             <p>Our onboarding email flow 🤯</p>
@@ -468,7 +468,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
           </div>
         </a>
         <a class="tw" href="https://x.com/HeyArunima/status/1810232706799734996" target="_blank" rel="noopener">
-          <span class="av" aria-hidden="true">A</span>
+          <img class="av" src="assets/tweets/arunima.jpg" width="200" height="200" alt="" loading="lazy">
           <div class="tw-body">
             <div class="tw-head"><b>Arunima</b><span class="handle">@HeyArunima · <time datetime="2024-07-08T08:41:24Z">Jul 8, 2024</time></span></div>
             <p class="rep">Replying to @Yannick_Veys @SamueleOnelia</p>
@@ -476,7 +476,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
           </div>
         </a>
         <a class="tw" href="https://x.com/Yannick_Veys/status/1810272313834692971" target="_blank" rel="noopener">
-          <span class="av" aria-hidden="true">YV</span>
+          <img class="av" src="assets/tweets/yannick.jpg" width="200" height="200" alt="" loading="lazy">
           <div class="tw-body">
             <div class="tw-head"><b>Yannick Veys</b><span class="handle">@Yannick_Veys · <time datetime="2024-07-08T11:18:47Z">Jul 8, 2024</time></span></div>
             <p class="rep">Replying to @HeyArunima @SamueleOnelia</p>

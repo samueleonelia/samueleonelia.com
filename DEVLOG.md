@@ -644,3 +644,5 @@ post is hosted in `v2/assets/tweets/` (greyscale to match). Then, at his
 request, made compact and visibly connected: one box, 28px avatars joined by a
 line, max 440px wide (was 514 × 824, now 440 × 471). Removed
 `v2/assets/hypefury-thread.jpg`. 375px: fits, no sideways scroll.
+Then swapped the initials for Yannick's and Arunima's real X profile photos
+(200px, hosted in `v2/assets/tweets/`, greyscale, shown at 28px).
