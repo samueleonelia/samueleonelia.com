@@ -671,3 +671,5 @@ The phone preview artifact still shows the old dark look.
 
 
 Rebuilt the phone preview artifact (same link) from `build/mockup-v2.html`, so it shows the new white look.
+
+**Padova only in the footer.** Samuele asked: removed it from the meta description, hero subline (now "AI & automation for small teams."), the FAQ language answer and the contact row; the footer now reads "© · Samuele Onelia · Padova, Italy · P. IVA".
