@@ -1,9 +1,9 @@
 # STATUS — samueleonelia.com
 
-Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-12
+Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-15
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
-- v2 page: `v2/index.html` · phone preview: https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
+- v2 page: `v2/index.html` · phone preview (outdated, shows the old dark look): https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
 - v2 plan and decisions: `plans/v2.md`
 - Repo: https://github.com/samueleonelia/samueleonelia.com (private)
 - Netlify admin: https://app.netlify.com/projects/samueleonelia
@@ -15,7 +15,7 @@ Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` li
 |---|---|
 | Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
 | 1. Brief | Done — AI + automation only, for clients and followers |
-| 2–3. Structure + design | Done — black and white, all mono, minimal |
+| 2–3. Structure + design | Done — restyled 2026-10-15 after dagorenouf.com: white page, heavy caps, boxed buttons |
 | 4. Build into `v2/` | Done — checked at 1024px and phone width |
 | 4b. Real content in the amber boxes | **Waiting on Samuele** |
 | 4c. Automation log | Done — simulated, from a catalogue of 56 real automations; each line opens a details window |
@@ -24,8 +24,9 @@ Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` li
 
 ## v2 page sections
 
-Hero (workflow background + clickable automations.log) · logos · numbers · 2 offers ·
-8 case studies · Hypefury quote · FAQ · follow along · contact · footer.
+Hero (round portrait, handwritten notes, workflow background) · black automations.log bar · logos · numbers ·
+3 offers as numbered rows (AI Employees, AI Training, Process automations) ·
+8 case studies · Hypefury quote on a black band · FAQ · follow along · contact · footer.
 
 ## Next
 
@@ -38,7 +39,7 @@ Hero (workflow background + clickable automations.log) · logos · numbers · 2 
 ## Blocked on Samuele
 
 - Check the automation descriptions; choose any client names to show.
-- Feedback on the black-and-white version.
+- Feedback on the new white look (after dagorenouf.com) and the 3 offers.
 - Amber-box content (results, FAQ answers, follow links).
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.

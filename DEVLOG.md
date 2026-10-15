@@ -646,3 +646,26 @@ line, max 440px wide (was 514 × 824, now 440 × 471). Removed
 `v2/assets/hypefury-thread.jpg`. 375px: fits, no sideways scroll.
 Then swapped the initials for Yannick's and Arunima's real X profile photos
 (200px, hosted in `v2/assets/tweets/`, greyscale, shown at 28px).
+
+## 2026-10-15 — Three offers, and a new look after dagorenouf.com
+
+**Three offers.** Samuele split the offers into AI Employees (AI agents),
+AI Training (the 4-week sprint) and Process automations (mini-apps that
+automate one process). Agent examples come from real catalogue entries
+(WhatsApp/website agents, message routing, market report, LinkedIn drafts).
+FAQ "which offer" now covers all three.
+
+**Whole-site restyle.** Samuele pointed at dagorenouf.com/how-to-dominate-twitter
+and chose "whole site look" over restyling only the offers. v2 is now a white
+page in black ink: wide ultra-heavy caps for section titles (Archivo at 125%
+width standing in for his custom Yalla font), Poppins Black headline and row
+titles, Antonio Light subline, Archivo Narrow text, Caveat handwritten notes
+plus two hand-drawn smileys (my own SVGs, desktop only). Boxed black buttons,
+long-arrow bullets, square corners. Hero is centred with a round portrait
+(was a big photo on the right); the portrait is also the header avatar.
+Offers became numbered rows like his "Here's how" list, a black number box
+on the left. Log and the Hypefury quote sit on black bands. Workflow canvas
+now draws in black. Code labels (// 01) hidden, kept in the markup.
+Checked at 1280px and 375px: no sideways scroll, details window works.
+The phone preview artifact still shows the old dark look.
+
