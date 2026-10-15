@@ -675,3 +675,5 @@ Rebuilt the phone preview artifact (same link) from `build/mockup-v2.html`, so i
 **Padova only in the footer.** Samuele asked: removed it from the meta description, hero subline (now "AI & automation for small teams."), the FAQ language answer and the contact row; the footer now reads "© · Samuele Onelia · Padova, Italy · P. IVA".
 
 **Numbers row removed** (9+ companies, 19k, 200+, IT/EN) at Samuele's request, with its CSS.
+
+**Hero subline removed** ("AI & automation for small teams."): the headline now leads straight into the arrow and the lede.
