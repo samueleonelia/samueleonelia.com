@@ -142,7 +142,7 @@ h1{font-size:clamp(34px,5.4vw,78px);font-weight:700;letter-spacing:-.06em;line-h
 @media (max-width:900px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ---------- offers (structured, like hamia.io's product cards) ---------- */
-.offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .offer{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:28px;transition:border-color .25s ease}
 .offer:hover{border-color:var(--accent-30)}
 .offer-top{display:flex;flex-direction:column;gap:14px}
@@ -157,7 +157,7 @@ h1{font-size:clamp(34px,5.4vw,78px);font-weight:700;letter-spacing:-.06em;line-h
 .group li::before{content:"✓";color:var(--accent);font-family:var(--mono)}
 .offer-foot{margin-top:auto;padding-top:20px;border-top:1px dashed var(--line);font-size:14px;color:var(--dim);line-height:1.6}
 .offer-foot b{color:var(--muted);font-weight:500}
-@media (max-width:900px){.offers{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:1000px){.offers{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- work ---------- */
 .cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -329,33 +329,33 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
 
         <article class="offer rv">
           <div class="offer-top">
-            <span class="cmd">$ automate --process</span>
-            <h3>Process automation</h3>
-            <p>I build the automation for you. Your tools get connected, orders, invoices and reports move on their own, and AI agents step in where they help.</p>
-            <a class="btn solid" href="#contact">Automate a process</a>
+            <span class="cmd">$ hire --agent</span>
+            <h3>AI Employees</h3>
+            <p>AI agents that do a job in your business around the clock: they answer customers, sort requests and write content, using your own data.</p>
+            <a class="btn solid" href="#contact">Hire an AI employee</a>
           </div>
           <div class="groups">
             <div class="group">
-              <h4>Connect your tools</h4>
-              <ul><li>I work with the tools you already use, so nothing has to be replaced</li><li>Data moves between them without anyone retyping it</li></ul>
+              <h4>Customer support</h4>
+              <ul><li>Answers customers on WhatsApp and on your website chat, day and night</li><li>Replies come from your own documents and data, not from guesses</li></ul>
             </div>
             <div class="group">
-              <h4>CRMs and reports</h4>
-              <ul><li>Customers, orders, costs and invoices in one place, built around how you work</li><li>A clear report every month, with nobody assembling it</li></ul>
+              <h4>Back office</h4>
+              <ul><li>Reads incoming messages and sends each one to the right person</li><li>Researches a market and delivers a finished report</li><li>Drafts posts in your brand's voice</li></ul>
             </div>
             <div class="group">
-              <h4>AI agents, when they help</h4>
-              <ul><li>Answer customers on WhatsApp, sort requests, write and publish content</li><li>A human checks before anything important goes out</li></ul>
+              <h4>You stay in control</h4>
+              <ul><li>A human checks before anything important goes out</li></ul>
             </div>
           </div>
-          <p class="offer-foot"><b>Built for</b> small teams buried in admin. <b>Seen at</b> La Cofacceria, Dream Travel Agency, Bmark, F. Bisol, Grill Park Ferrara, Acarent, Hypefury.</p>
+          <p class="offer-foot"><b>Built for</b> businesses that answer the same questions every day.</p>
         </article>
 
         <article class="offer rv">
           <div class="offer-top">
             <span class="cmd">$ sprint --weeks 4</span>
-            <h3>AI Training Sprint</h3>
-            <p>You learn to automate one of your processes yourself, with me beside you. Four weeks, one process, a fixed price, and you keep the know-how.</p>
+            <h3>AI Training</h3>
+            <p>You learn to automate one of your processes yourself, with me beside you. A 4-week sprint, one process, a fixed price, and you keep the know-how.</p>
             <a class="btn solid" href="#contact">Book the free diagnosis</a>
           </div>
           <div class="groups">
@@ -373,6 +373,26 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
             </div>
           </div>
           <p class="offer-foot"><b>Built for</b> teams that want to own their automations instead of depending on a consultant. <b>Fixed price,</b> one process, 4 weeks.</p>
+        </article>
+
+        <article class="offer rv">
+          <div class="offer-top">
+            <span class="cmd">$ automate --process</span>
+            <h3>Process automations</h3>
+            <p>Mini-apps that automate one specific process. Your tools get connected, and orders, invoices and reports move on their own.</p>
+            <a class="btn solid" href="#contact">Automate a process</a>
+          </div>
+          <div class="groups">
+            <div class="group">
+              <h4>Connect your tools</h4>
+              <ul><li>I work with the tools you already use, so nothing has to be replaced</li><li>Data moves between them without anyone retyping it</li></ul>
+            </div>
+            <div class="group">
+              <h4>CRMs and reports</h4>
+              <ul><li>Customers, orders, costs and invoices in one place, built around how you work</li><li>A clear report every month, with nobody assembling it</li></ul>
+            </div>
+          </div>
+          <p class="offer-foot"><b>Built for</b> small teams buried in admin. <b>Seen at</b> La Cofacceria, Dream Travel Agency, Bmark, F. Bisol, Grill Park Ferrara, Acarent, Hypefury.</p>
         </article>
 
       </div>
@@ -494,7 +514,7 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:13px}
       <div class="qs rv">
         <details>
           <summary>Which offer is right for me?</summary>
-          <p class="a">If you want the work off your plate, choose Process automation: I build it and keep it running. If you want your team to build and own its automations, choose the AI Training Sprint: in four weeks you automate one process yourself, with my guidance.</p>
+          <p class="a">If you want an agent that talks to customers or handles messages and research, choose AI Employees. If you want one specific process to run on its own, choose Process automations: I build a mini-app and keep it running. If you want your team to build and own its automations, choose AI Training: in four weeks you automate one process yourself, with my guidance.</p>
         </details>
         <details>
           <summary>Do I need to change the tools I use?</summary>
