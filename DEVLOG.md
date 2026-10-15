@@ -677,3 +677,5 @@ Rebuilt the phone preview artifact (same link) from `build/mockup-v2.html`, so i
 **Numbers row removed** (9+ companies, 19k, 200+, IT/EN) at Samuele's request, with its CSS.
 
 **Hero subline removed** ("AI & automation for small teams."): the headline now leads straight into the arrow and the lede.
+
+**Portrait in colour.** Removed the greyscale filter from the hero portrait and the header avatar (X thread images stay greyscale).
