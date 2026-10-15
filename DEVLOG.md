@@ -679,3 +679,4 @@ Rebuilt the phone preview artifact (same link) from `build/mockup-v2.html`, so i
 **Hero subline removed** ("AI & automation for small teams."): the headline now leads straight into the arrow and the lede.
 
 **Portrait in colour.** Removed the greyscale filter from the hero portrait and the header avatar (X thread images stay greyscale).
+Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in the first post stays greyscale.
