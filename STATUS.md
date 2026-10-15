@@ -3,7 +3,7 @@
 Phase: **v2 — built, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-15
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
-- v2 page: `v2/index.html` · phone preview (outdated, shows the old dark look): https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
+- v2 page: `v2/index.html` · phone preview (white look, rebuilt 2026-10-15): https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
 - v2 plan and decisions: `plans/v2.md`
 - Repo: https://github.com/samueleonelia/samueleonelia.com (private)
 - Netlify admin: https://app.netlify.com/projects/samueleonelia

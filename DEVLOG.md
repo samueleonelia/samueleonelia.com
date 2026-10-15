@@ -669,3 +669,5 @@ now draws in black. Code labels (// 01) hidden, kept in the markup.
 Checked at 1280px and 375px: no sideways scroll, details window works.
 The phone preview artifact still shows the old dark look.
 
+
+Rebuilt the phone preview artifact (same link) from `build/mockup-v2.html`, so it shows the new white look.
