@@ -702,3 +702,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **White ring back, at rest only.** Buttons at rest: black with a white inner ring (inset shadow) inside the black border. On hover the ring disappears and the gradient fills the whole button.
 
 **Toned-down hover colour.** `--grad` now uses the portrait backdrop's own lavender-grey, sampled from `v2/assets/portrait.jpg`: #DDDCE4 → #C3C1C8 → #A29FA6. Replaces the multicolour pastel.
+
+**Black border on hover too.** Hovered buttons keep their 3px black outer border around the grey gradient fill.
