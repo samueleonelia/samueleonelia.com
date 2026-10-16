@@ -688,3 +688,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Fiscozen and Fatture in Cloud** added to the logo strip (official logos from fiscozen.it and fattureincloud.it, in `v2/assets/logos/`). With 10 logos the strip is now 5 per row on desktop, 2 per row under 640px.
 
 **Logos balanced.** Each logo gets its own height from its shape (inline `--h`, about the same visual area each), tuned by eye for Dream Travel, Hypefury, La Cofacceria; full black, no fade. Square marks (Dream Travel, Grill Park) were tiny at the shared 26px.
+
+**Offer titles on black.** AI Employees / AI Training / Process automations now sit on a black block with white text, echoing the removed number box.
