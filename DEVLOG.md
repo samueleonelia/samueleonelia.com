@@ -692,3 +692,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Offer titles on black.** AI Employees / AI Training / Process automations now sit on a black block with white text, echoing the removed number box.
 
 **Light-blue accent.** The page's one colour: a gradient #BFE6FF → #6CC4FF. Buttons have it as their border at rest and fill with it on hover (black text). Text links (nav, follow my work, read the thread, contact, footer) have it as a 3px underline at rest that grows into a marker behind the words on hover.
+
+**Multicolour, outer line only.** Buttons are back to black with a white inner ring; only the outermost 3px line carries the gradient at rest (gradient border + inset white shadow). The accent is now one shared `--grad`: cyan #7DE3FF → periwinkle #9DB4FF → pink #E7A6FF → peach #FFC2A3, used for button borders/hover fill and link underlines/hover marker.
