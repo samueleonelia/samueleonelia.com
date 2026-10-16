@@ -698,3 +698,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **No white ring.** Buttons are now just black with the 3px gradient border.
 
 **Colour only on hover.** At rest buttons are plain black and links have a plain underline in the text colour (white in the footer). The multicolour gradient shows only on hover/focus.
+
+**White ring back, at rest only.** Buttons at rest: black with a white inner ring (inset shadow) inside the black border. On hover the ring disappears and the gradient fills the whole button.
