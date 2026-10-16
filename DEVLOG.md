@@ -696,3 +696,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Multicolour, outer line only.** Buttons are back to black with a white inner ring; only the outermost 3px line carries the gradient at rest (gradient border + inset white shadow). The accent is now one shared `--grad`: cyan #7DE3FF → periwinkle #9DB4FF → pink #E7A6FF → peach #FFC2A3, used for button borders/hover fill and link underlines/hover marker.
 
 **No white ring.** Buttons are now just black with the 3px gradient border.
+
+**Colour only on hover.** At rest buttons are plain black and links have a plain underline in the text colour (white in the footer). The multicolour gradient shows only on hover/focus.

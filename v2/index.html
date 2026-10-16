@@ -64,13 +64,13 @@ section[id]{scroll-margin-top:76px}
 
 /* boxed button: black block, white inner border, black outer line */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--head);font-weight:800;line-height:1.2;transition:transform .15s ease,color .15s ease}
-/* black button with a 3px gradient border (gradient painted on the border-box behind a black padding-box) */
-.btn.solid{background:linear-gradient(var(--ink),var(--ink)) padding-box,var(--grad) border-box;color:var(--paper);border:3px solid transparent;padding:12px 20px;font-size:clamp(17px,1.6vw,22px)}
-.btn.solid:hover,.btn.solid:focus-visible{transform:translateY(-2px);background:var(--grad) padding-box,var(--grad) border-box;color:var(--ink)}
-/* text links: a gradient underline at rest that grows into a marker behind the words on hover */
-.btn.ghost,.nav a:not(.btn),.read,.crow a,.foot-legal a{padding:2px 4px 3px;margin-inline:-4px;background:var(--grad) no-repeat left bottom/100% 3px;transition:background-size .2s ease,color .15s ease}
+/* plain black button; the gradient appears only on hover */
+.btn.solid{background:var(--ink);border-color:var(--ink);color:var(--paper);border-width:3px;border-style:solid;padding:12px 20px;font-size:clamp(17px,1.6vw,22px)}
+.btn.solid:hover,.btn.solid:focus-visible{transform:translateY(-2px);background:var(--grad) padding-box,var(--grad) border-box;border-color:transparent;color:var(--ink)}
+/* text links: a plain underline in the text colour at rest; on hover it becomes a gradient marker behind the words */
+.btn.ghost,.nav a:not(.btn),.read,.crow a,.foot-legal a{padding:2px 4px 3px;margin-inline:-4px;background:linear-gradient(currentColor,currentColor) no-repeat left bottom/100% 2px;transition:background-size .2s ease,color .15s ease}
 .btn.ghost:hover,.nav a:not(.btn):hover,.read:hover,.crow a:hover,.foot-legal a:hover,
-.btn.ghost:focus-visible,.nav a:not(.btn):focus-visible,.read:focus-visible,.crow a:focus-visible,.foot-legal a:focus-visible{background-size:100% 100%;color:var(--ink)}
+.btn.ghost:focus-visible,.nav a:not(.btn):focus-visible,.read:focus-visible,.crow a:focus-visible,.foot-legal a:focus-visible{background-image:var(--grad);background-size:100% 100%;color:var(--ink)}
 .btn.ghost{font-weight:900}
 .ctas{display:flex;gap:24px 32px;flex-wrap:wrap;align-items:center}
 
