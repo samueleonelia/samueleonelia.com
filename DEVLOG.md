@@ -680,3 +680,7 @@ Rebuilt the phone preview artifact (same link) from `build/mockup-v2.html`, so i
 
 **Portrait in colour.** Removed the greyscale filter from the hero portrait and the header avatar (X thread images stay greyscale).
 Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in the first post stays greyscale.
+
+## 2026-10-16
+
+**Offer titles only.** Removed the black number boxes ("1", "$ hire --agent") and the "1 — " prefix: each offer now opens with just its name. Offers are a single column, max 760px.

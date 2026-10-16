@@ -144,13 +144,9 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(42px,7vw,84px);line-h
 .logos .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));align-items:center;justify-items:center;gap:28px 16px}
 .logos img{height:26px;width:auto;max-width:min(120px,100%);object-fit:contain;filter:brightness(0);opacity:.85}
 
-/* ---------- offers: numbered rows, like his "Here's how we'll boost your growth" ---------- */
+/* ---------- offers: stacked rows with long-arrow bullets, like his "Here's how" list ---------- */
 .offers{display:flex;flex-direction:column;gap:clamp(48px,6vw,72px)}
-.offer{display:grid;grid-template-columns:240px minmax(0,1fr);column-gap:clamp(28px,4vw,48px);align-items:start}
-.offer>*{grid-column:2}
-.offer-num{grid-column:1;grid-row:1/span 4;align-self:start;aspect-ratio:241/141;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:space-between;padding:14px 16px;border-top:3px solid var(--hair)}
-.offer-num b{font-family:var(--wide);font-stretch:125%;font-weight:900;font-size:64px;line-height:.9}
-.offer-num span{font-family:var(--mono);font-size:12px;color:#BDBDBD}
+.offer{display:flex;flex-direction:column;max-width:760px}
 .offer-top{display:flex;flex-direction:column;gap:10px}
 .offer h3{font-family:var(--head);font-weight:900;font-size:clamp(24px,2.6vw,30px);line-height:1.15;margin:0}
 .offer-top p{max-width:52ch}
@@ -159,12 +155,8 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(42px,7vw,84px);line-h
 .group h4{margin:0 0 6px;font-family:var(--head);font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:.03em}
 .offer-foot{margin-top:22px;padding-top:14px;border-top:2px solid var(--ink);font-size:18px;color:var(--muted)}
 .offer-foot b{font-family:var(--head);font-weight:800;font-size:15px;color:var(--ink)}
-.offer-cta{margin-top:28px;justify-self:start}
+.offer-cta{margin-top:28px;align-self:flex-start}
 @media (max-width:760px){
-  .offer{grid-template-columns:minmax(0,1fr)}
-  .offer>*,.offer-num{grid-column:1}
-  .offer-num{grid-row:auto;aspect-ratio:auto;flex-direction:row;align-items:end;gap:16px;width:100%;margin-bottom:20px}
-  .offer-num b{font-size:48px}
   .group li{padding-left:44px}
   .group li::before{width:32px}
   .group li::after{left:24px}
@@ -322,9 +314,8 @@ footer{background:var(--ink);color:var(--paper);font-size:16px}
       <div class="offers">
 
         <article class="offer rv">
-          <div class="offer-num" aria-hidden="true"><b>1</b><span>$ hire --agent</span></div>
           <div class="offer-top">
-            <h3>1 — AI Employees</h3>
+            <h3>AI Employees</h3>
             <p>AI agents that do a job in your business around the clock: they answer customers, sort requests and write content, using your own data.</p>
           </div>
           <div class="groups">
@@ -346,9 +337,8 @@ footer{background:var(--ink);color:var(--paper);font-size:16px}
         </article>
 
         <article class="offer rv">
-          <div class="offer-num" aria-hidden="true"><b>2</b><span>$ sprint --weeks 4</span></div>
           <div class="offer-top">
-            <h3>2 — AI Training</h3>
+            <h3>AI Training</h3>
             <p>You learn to automate one of your processes yourself, with me beside you. A 4-week sprint, one process, a fixed price, and you keep the know-how.</p>
           </div>
           <div class="groups">
@@ -370,9 +360,8 @@ footer{background:var(--ink);color:var(--paper);font-size:16px}
         </article>
 
         <article class="offer rv">
-          <div class="offer-num" aria-hidden="true"><b>3</b><span>$ automate --process</span></div>
           <div class="offer-top">
-            <h3>3 — Process automations</h3>
+            <h3>Process automations</h3>
             <p>Mini-apps that automate one specific process. Your tools get connected, and orders, invoices and reports move on their own.</p>
           </div>
           <div class="groups">
