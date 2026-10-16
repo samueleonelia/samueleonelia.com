@@ -143,7 +143,8 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(42px,7vw,84px);line-h
 .logos{border-block:3px solid var(--ink);padding-block:30px}
 .logos .wrap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;justify-items:center;gap:28px 16px}
 @media (max-width:640px){.logos .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.logos img{height:26px;width:auto;max-width:min(120px,100%);object-fit:contain;filter:brightness(0);opacity:.85}
+/* each logo gets a height from its shape (inline --h) so square and wide marks carry the same visual weight */
+.logos img{height:var(--h,26px);width:auto;max-width:min(160px,100%);object-fit:contain;filter:brightness(0)}
 
 /* ---------- offers: stacked rows with long-arrow bullets, like his "Here's how" list ---------- */
 .offers{display:flex;flex-direction:column;gap:clamp(48px,6vw,72px)}
@@ -295,16 +296,16 @@ footer{background:var(--ink);color:var(--paper);font-size:16px}
   <div class="logos">
     <div class="wrap">
       <span class="label">// trusted by</span>
-      <img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy">
-      <img src="assets/logos/financer.svg" alt="Financer.com" loading="lazy">
-      <img src="assets/logos/fiscozen.svg" alt="Fiscozen" loading="lazy">
-      <img src="assets/logos/fattureincloud.png" alt="Fatture in Cloud" loading="lazy">
-      <img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy">
-      <img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy">
-      <img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy">
-      <img src="assets/logos/acarent.png" alt="Acarent" loading="lazy">
-      <img src="assets/logos/bmark.png" alt="Bmark" loading="lazy">
-      <img src="assets/logos/fbisol.svg" alt="F. Bisol" loading="lazy">
+      <img style="--h:30px" src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy">
+      <img style="--h:26px" src="assets/logos/financer.svg" alt="Financer.com" loading="lazy">
+      <img style="--h:23px" src="assets/logos/fiscozen.svg" alt="Fiscozen" loading="lazy">
+      <img style="--h:35px" src="assets/logos/fattureincloud.png" alt="Fatture in Cloud" loading="lazy">
+      <img style="--h:66px" src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy">
+      <img style="--h:33px" src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy">
+      <img style="--h:56px" src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy">
+      <img style="--h:47px" src="assets/logos/acarent.png" alt="Acarent" loading="lazy">
+      <img style="--h:28px" src="assets/logos/bmark.png" alt="Bmark" loading="lazy">
+      <img style="--h:26px" src="assets/logos/fbisol.svg" alt="F. Bisol" loading="lazy">
     </div>
   </div>
 
