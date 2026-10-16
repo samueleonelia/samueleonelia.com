@@ -700,3 +700,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Colour only on hover.** At rest buttons are plain black and links have a plain underline in the text colour (white in the footer). The multicolour gradient shows only on hover/focus.
 
 **White ring back, at rest only.** Buttons at rest: black with a white inner ring (inset shadow) inside the black border. On hover the ring disappears and the gradient fills the whole button.
+
+**Toned-down hover colour.** `--grad` now uses the portrait backdrop's own lavender-grey, sampled from `v2/assets/portrait.jpg`: #DDDCE4 → #C3C1C8 → #A29FA6. Replaces the multicolour pastel.
