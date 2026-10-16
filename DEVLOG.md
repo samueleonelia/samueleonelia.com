@@ -706,3 +706,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Black border on hover too.** Hovered buttons keep their 3px black outer border around the grey gradient fill.
 
 **Mono buttons (trial).** Solid buttons now use Space Mono Bold (Google Fonts) instead of Poppins; text links stay Poppins.
+
+**All mono.** Every font token now points to Space Mono (400/700, Google Fonts); Poppins, Archivo, Archivo Narrow and Antonio are gone. Caveat stays for the handwritten notes; the X thread box keeps system-ui to look like X. Sizes retuned down since mono runs wide (body 15–17px, h1 36–74px, h2 26–46px). Checked at 1280px and 375px, no sideways scroll.
