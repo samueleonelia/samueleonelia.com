@@ -684,3 +684,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 ## 2026-10-16
 
 **Offer titles only.** Removed the black number boxes ("1", "$ hire --agent") and the "1 — " prefix: each offer now opens with just its name. Offers are a single column, max 760px.
+
+**Fiscozen and Fatture in Cloud** added to the logo strip (official logos from fiscozen.it and fattureincloud.it, in `v2/assets/logos/`). With 10 logos the strip is now 5 per row on desktop, 2 per row under 640px.

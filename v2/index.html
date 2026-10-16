@@ -141,7 +141,8 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(42px,7vw,84px);line-h
 
 /* ---------- logos ---------- */
 .logos{border-block:3px solid var(--ink);padding-block:30px}
-.logos .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));align-items:center;justify-items:center;gap:28px 16px}
+.logos .wrap{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;justify-items:center;gap:28px 16px}
+@media (max-width:640px){.logos .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .logos img{height:26px;width:auto;max-width:min(120px,100%);object-fit:contain;filter:brightness(0);opacity:.85}
 
 /* ---------- offers: stacked rows with long-arrow bullets, like his "Here's how" list ---------- */
@@ -296,6 +297,8 @@ footer{background:var(--ink);color:var(--paper);font-size:16px}
       <span class="label">// trusted by</span>
       <img src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy">
       <img src="assets/logos/financer.svg" alt="Financer.com" loading="lazy">
+      <img src="assets/logos/fiscozen.svg" alt="Fiscozen" loading="lazy">
+      <img src="assets/logos/fattureincloud.png" alt="Fatture in Cloud" loading="lazy">
       <img src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy">
       <img src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy">
       <img src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy">
