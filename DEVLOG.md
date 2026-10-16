@@ -704,3 +704,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Toned-down hover colour.** `--grad` now uses the portrait backdrop's own lavender-grey, sampled from `v2/assets/portrait.jpg`: #DDDCE4 → #C3C1C8 → #A29FA6. Replaces the multicolour pastel.
 
 **Black border on hover too.** Hovered buttons keep their 3px black outer border around the grey gradient fill.
+
+**Mono buttons (trial).** Solid buttons now use Space Mono Bold (Google Fonts) instead of Poppins; text links stay Poppins.
