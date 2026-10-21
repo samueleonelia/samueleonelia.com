@@ -710,3 +710,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **All mono.** Every font token now points to Space Mono (400/700, Google Fonts); Poppins, Archivo, Archivo Narrow and Antonio are gone. Caveat stays for the handwritten notes; the X thread box keeps system-ui to look like X. Sizes retuned down since mono runs wide (body 15–17px, h1 36–74px, h2 26–46px). Checked at 1280px and 375px, no sideways scroll.
 
 **Heavier mono.** Space Mono tops out at 700, so headings looked thin next to the old Poppins Black. Headings, section and offer/case titles, FAQ questions now use Azeret Mono Black (900); buttons, nav and labels Azeret ExtraBold (800). Space Mono stays for running text. Checked at 1280px and 375px.
+
+**Uppercase headlines.** The hero headline and the offer, case and follow card titles are now uppercase (section titles already were). FAQ questions and body text stay sentence case for readability.
