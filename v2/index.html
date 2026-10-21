@@ -207,7 +207,9 @@ cite{display:block;margin-top:22px;font-style:normal;font-family:var(--head);fon
 .tw .rep{font-size:12px;color:var(--dim)}
 .tw .tw-body img{margin-top:10px;width:100%;height:auto;max-height:150px;object-fit:cover;object-position:top;border:1px solid var(--hair);filter:grayscale(1)}
 .tw-src{display:block;padding-top:12px;border-top:1px solid var(--hair);font-size:12px;color:var(--dim)}
-@media (max-width:900px){.quote{grid-template-columns:minmax(0,1fr);gap:40px}.thread{justify-self:start}}
+.quote+.quote{margin-top:96px}
+.vid{display:block;width:100%;max-width:520px;height:auto;aspect-ratio:16/9;justify-self:end;background:#000;border:4px solid var(--paper);box-shadow:0 0 0 3px #5A5A5A}
+@media (max-width:900px){.quote{grid-template-columns:minmax(0,1fr);gap:40px}.thread,.vid{justify-self:start}.quote+.quote{margin-top:72px}}
 
 /* ---------- faq: ► questions, his style ---------- */
 .faq{display:flex;flex-direction:column;gap:clamp(32px,5vw,48px)}
@@ -494,6 +496,16 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
         </a>
         <span class="tw-src">thread on X ↗</span>
       </div>
+    </div>
+    <!-- Clip from Yaron's livestream (06:30 to 07:03), subtitles burned in so it
+         reads with the sound off. Self-hosted: no YouTube embed, no cookies. -->
+    <div class="wrap quote rv">
+      <div>
+        <blockquote>"Sam has done an amazing job <span>getting Claude to do all kinds of amazing stuff for me."</span></blockquote>
+        <cite>Yaron Brook, The Yaron Brook Show, on the Claude system I set up for his daily news shows</cite>
+        <a class="read" href="https://www.youtube.com/live/Sc5vO6ast-k?t=390" target="_blank" rel="noopener">Watch it on YouTube →</a>
+      </div>
+      <video class="vid" src="assets/yaron-on-sam.mp4" poster="assets/yaron-on-sam-poster.jpg" width="1920" height="1080" controls playsinline preload="none" aria-label="Yaron Brook on his livestream, thanking Samuele for the Claude system behind his shows. Subtitles included."></video>
     </div>
   </section>
 
