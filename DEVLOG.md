@@ -712,3 +712,7 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Heavier mono.** Space Mono tops out at 700, so headings looked thin next to the old Poppins Black. Headings, section and offer/case titles, FAQ questions now use Azeret Mono Black (900); buttons, nav and labels Azeret ExtraBold (800). Space Mono stays for running text. Checked at 1280px and 375px.
 
 **Uppercase headlines.** The hero headline and the offer, case and follow card titles are now uppercase (section titles already were). FAQ questions and body text stay sentence case for readability.
+
+## 2026-10-21
+
+**Yaron Brook video testimonial.** 34 s clip from his show (Samuele's edit, `yaron-on-sam-v4-web.mp4`, subtitles burned in so they show on every phone) in `v2/assets/testimonials/`, with a clean poster frame. Sits at the top of the black quote band: video left, pull quote right ("Sam has done an amazing job…"), stacked on phones. `preload="none"` so the 5.7 MB file loads only on play. `tools/build-mockup.py` now also inlines `poster=` and `.vtt` files.

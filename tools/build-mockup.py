@@ -7,6 +7,8 @@ script strips our own wrapper tags and inlines assets/portrait.jpg as a data URI
 """
 import base64
 import mimetypes
+
+mimetypes.add_type("text/vtt", ".vtt")
 import pathlib
 import re
 import sys
@@ -19,7 +21,7 @@ src = (site / "index.html").read_text(encoding="utf-8")
 
 # inline every local asset referenced with src="..."
 def inline(match):
-    path = match.group(1)
+    path = match.group(2)
     if path.startswith(("http", "data:", "//")):
         return match.group(0)
     f = site / path
@@ -27,9 +29,10 @@ def inline(match):
         raise SystemExit(f"missing asset: {path}")
     mime = mimetypes.guess_type(path)[0] or "application/octet-stream"
     b64 = base64.b64encode(f.read_bytes()).decode("ascii")
-    return f'src="data:{mime};base64,{b64}"'
+    return f'{match.group(1)}="data:{mime};base64,{b64}"'
 
-out = re.sub(r'src="([^"]+)"', inline, src)
+# src= covers img/source/track; poster= covers the video cover image
+out = re.sub(r'(src|poster)="([^"]+)"', inline, src)
 
 # drop the document wrapper the Artifact host supplies itself
 head = re.search(r"<head>(.*?)</head>", out, re.S).group(1)

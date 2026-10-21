@@ -1,6 +1,6 @@
 # STATUS — samueleonelia.com
 
-Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-16
+Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-21
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
 - v2 page: `v2/index.html` · phone preview (rebuild with `tools/build-mockup.py`): https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
@@ -26,7 +26,7 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 
 Hero (colour portrait, headline, handwritten notes, workflow background) · black automations.log bar ·
 10 client logos · 3 offers (AI Employees, AI Training, Process automations) ·
-8 case studies · Hypefury quote + X thread on a black band · FAQ · follow along · contact · footer (only place with Padova).
+8 case studies · black band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
 
 ## Next
 
