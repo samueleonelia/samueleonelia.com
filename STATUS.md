@@ -25,7 +25,7 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 ## v2 page sections
 
 Hero (colour portrait, headline, handwritten notes, workflow background) · black automations.log bar ·
-10 client logos · 3 offers (AI Employees, AI Training, Process automations) ·
+11 client logos (incl. The Yaron Brook Show) · 3 offers (AI Employees, AI Training, Process automations) ·
 8 case studies · black band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
 
 ## Next

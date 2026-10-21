@@ -716,3 +716,5 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 ## 2026-10-21
 
 **Yaron Brook video testimonial.** 34 s clip from his show (Samuele's edit, `yaron-on-sam-v4-web.mp4`, subtitles burned in so they show on every phone) in `v2/assets/testimonials/`, with a clean poster frame. Sits at the top of the black quote band: video left, pull quote right ("Sam has done an amazing job…"), stacked on phones. `preload="none"` so the 5.7 MB file loads only on play. `tools/build-mockup.py` now also inlines `poster=` and `.vtt` files.
+
+**The Yaron Brook Show in the logos.** Wordmark cut from the show's own logo (yaronbrookshow.com), white card removed, saved as `v2/assets/logos/yaronbrookshow.png`; placed after Hypefury. The strip is now centred rows of equal slots (6 per row desktop, 3 tablet, 2 phone) so an odd last row sits in the middle.
