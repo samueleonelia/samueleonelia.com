@@ -141,20 +141,34 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line
 .offer.tilting::after{opacity:1}
 @media (max-width:900px){.offers{grid-template-columns:minmax(0,1fr)}}
 
-/* ---------- work ---------- */
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
-.case{min-width:0;border:3px solid var(--ink);padding:26px;display:flex;flex-direction:column;gap:18px;background:var(--paper);transition:transform .2s ease,box-shadow .2s ease}
-.case:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
-.case-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.case-top img{height:28px;width:auto;max-width:140px;object-fit:contain;filter:url(#ink)}
-.tag{font-family:var(--head);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em;border:2px solid var(--ink);padding:4px 8px}
-.case h3{font-family:var(--head);font-weight:900;font-size:22px;line-height:1.15;letter-spacing:-.03em;margin:0;text-transform:uppercase}
-.ba{flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.ba div{padding:14px 16px;font-size:14px;line-height:1.5;border:2px solid var(--ink)}
-.ba span{display:block;font-family:var(--head);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
-.ba .after{background:var(--ink);color:var(--paper)}
-@media (max-width:900px){.cases{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:560px){.ba{grid-template-columns:minmax(0,1fr)}.case{padding:20px}}
+/* ---------- past projects: same rows as v1 ----------
+   Resting: just the name, large, in teal because it opens. Hovered or tapped:
+   the row goes dark, the name shrinks, the description and white logo appear.
+   On desktop both rows keep their space at rest, so the list never shifts.
+   On phones they collapse, so the list isn't mostly empty space. */
+.jobs{display:flex;flex-direction:column}
+.job{display:grid;grid-template-columns:minmax(0,1fr) 230px;grid-template-areas:"name logo" "desc logo";column-gap:clamp(20px,3vw,48px);row-gap:10px;align-items:center;padding:clamp(18px,2.2vw,26px) clamp(16px,4vw,84px) clamp(18px,2.2vw,26px) clamp(12px,1.4vw,20px);margin-left:calc(-1 * clamp(12px,1.4vw,20px));transition:background-color .25s ease}
+.job + .job{box-shadow:0 -2px 0 var(--ink)}
+.job:hover,.job.open,.job:has(.job-toggle:focus-visible){background:var(--ink)}
+.job h3{grid-area:name;margin:0;align-self:end}
+.job-desc{grid-area:desc;align-self:start}
+.job-logo{grid-area:logo;display:flex;align-items:center;justify-content:flex-end}
+.job-toggle{appearance:none;background:none;border:0;padding:0;margin:0;width:100%;text-align:left;cursor:pointer;color:var(--link);font-family:var(--head);font-weight:900;font-size:clamp(24px,3.4vw,42px);line-height:1.1;letter-spacing:-.04em;text-transform:uppercase;transition:font-size .28s cubic-bezier(.2,.7,.3,1),color .25s ease}
+.job:hover .job-toggle,.job.open .job-toggle,.job:has(.job-toggle:focus-visible) .job-toggle{font-size:18px;letter-spacing:-.02em;color:var(--paper)}
+.job-toggle:focus-visible{outline:none}
+/* visibility, not opacity alone, so a closed row stays out of the accessibility tree */
+.job-desc,.job-logo{opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s}
+.job:hover .job-desc,.job:hover .job-logo,.job.open .job-desc,.job.open .job-logo,
+.job:has(.job-toggle:focus-visible) .job-desc,.job:has(.job-toggle:focus-visible) .job-logo{opacity:1;visibility:visible;transition:opacity .3s ease,visibility 0s}
+.job-desc p{margin:0;max-width:60ch;color:var(--paper)}
+.job-logo img{width:215px;height:64px;object-fit:contain;object-position:right center;filter:brightness(0) invert(1)}
+.job-logo img.tall{width:150px;height:112px}
+@media (max-width:820px){
+  .job{grid-template-columns:minmax(0,1fr);grid-template-areas:"name" "desc" "logo";align-items:start;padding-right:clamp(12px,1.4vw,20px)}
+  .job-logo{justify-content:flex-start}
+  .job-logo img{object-position:left center}
+  .job:not(.open):not(:hover) .job-desc,.job:not(.open):not(:hover) .job-logo{display:none}
+}
 
 /* ---------- testimonial: a dark band ---------- */
 .band{background:var(--ink);color:var(--paper)}
@@ -200,20 +214,19 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
   .cursor{animation:none}
-  .btn.solid:hover,.case:hover{transform:none}
+  .btn.solid:hover{transform:none}
+  .job-desc,.job-logo,.job-toggle{transition:none}
 }
 </style>
 </head>
 <body>
-<!-- paints a logo in the dark green ink, whatever its own colours -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="ink" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .024 0 0 0 0 .129 0 0 0 0 .137 0 0 0 1 0"/></filter></svg>
 
 <header class="bar">
   <div class="wrap bar-in">
     <a class="brand" href="#top"><img src="assets/portrait.jpg" alt="" width="48" height="48"><span><b>Samuele<br>Onelia</b><small>AI &amp; automation</small></span></a>
     <nav class="nav">
       <a href="#offers">Offers</a>
-      <a href="#work">Work</a>
+      <a href="#work">Projects</a>
       <a class="btn solid" href="#contact">Let's talk</a>
     </nav>
   </div>
@@ -279,57 +292,62 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
   <section id="work" class="sec flush">
     <div class="wrap">
       <div class="head rv">
-        <div><span class="label"><b>// 02</b> · work</span><h2>Before: by hand. <span class="hl">After: on its own.</span></h2></div>
-        <p>What each team was doing by hand, what runs now, and what it changed.</p>
+        <div><span class="label"><b>// 02</b> · projects</span><h2>Past projects</h2></div>
       </div>
-      <div class="cases">
+      <div class="jobs">
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"><span class="tag">CRM · WhatsApp bot</span></div>
-          <h3>La Cofacceria</h3>
-          <div class="ba"><div><span>// before</span>Orders arrived on WhatsApp and were retyped by hand.</div><div class="after"><span>// after</span>A chatbot takes the order and files it in a custom CRM.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-1">SOS Automazioni</button></h3>
+          <div class="job-desc" id="job-1"><p>My own media and training business: a YouTube channel co-grown to 19,000 subscribers, paid programs on copywriting and email marketing, and a podcast of 200+ founder interviews, repeatedly featured as a top show on Apple Podcasts Italy.</p></div>
+          <div class="job-logo"><img src="assets/logos/sosautomazioni.png" class="tall" alt="" loading="lazy"></div>
         </article>
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/hypefury.png" alt="" loading="lazy"><span class="tag">Email automation</span></div>
-          <h3>Hypefury</h3>
-          <div class="ba"><div><span>// before</span>Onboarding, campaigns and a weekly newsletter for a large list, with no one owning them.</div><div class="after"><span>// after</span>Automated onboarding flows on Customer.io, plus every campaign and newsletter, written by me.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-2">Hypefury</button></h3>
+          <div class="job-desc" id="job-2"><p>I run every email this SaaS sends, from campaigns to the weekly newsletter, on Customer.io and Beehiiv, and I ghostwrite all of it.</p></div>
+          <div class="job-logo"><img src="assets/logos/hypefury.png" alt="" loading="lazy"></div>
         </article>
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/dreamtravel.svg" alt="" loading="lazy"><span class="tag">CRM · Invoicing</span></div>
-          <h3>Dream Travel Agency</h3>
-          <div class="ba"><div><span>// before</span>Enrolments, trips, costs, revenue and invoices tracked by hand.</div><div class="after"><span>// after</span>A CRM built from scratch handles all of it on its own.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-3">Financer.com</button></h3>
+          <div class="job-desc" id="job-3"><p>I owned all content for the Italian site and worked on the US site's, then oversaw both migrations from WordPress to Ghost.</p></div>
+          <div class="job-logo"><img src="assets/logos/financer.svg" alt="" loading="lazy"></div>
         </article>
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/grillpark.png" alt="" loading="lazy"><span class="tag">Staffing · Bookings</span></div>
-          <h3>Grill Park Ferrara</h3>
-          <div class="ba"><div><span>// before</span>Daily staff needs worked out by hand; bookings piled up at peak times.</div><div class="after"><span>// after</span>Staff needs calculated and staff contacted; bookings spread across the evening.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-4">Dream Travel Agency</button></h3>
+          <div class="job-desc" id="job-4"><p>A CRM built from scratch that handles customer enrolments, trips, costs, revenue and invoicing on its own.</p></div>
+          <div class="job-logo"><img src="assets/logos/dreamtravel.svg" class="tall" alt="" loading="lazy"></div>
         </article>
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/acarent.png" alt="" loading="lazy"><span class="tag">AI content · Scraping</span></div>
-          <h3>Acarent</h3>
-          <div class="ba"><div><span>// before</span>LinkedIn and Instagram posts written by hand; prospects found one by one.</div><div class="after"><span>// after</span>AI writes and publishes the posts; a Google Maps scraper feeds prospecting.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-5">La Cofacceria</button></h3>
+          <div class="job-desc" id="job-5"><p>A custom CRM that tracks incoming orders, plus a chatbot that takes orders from customers on WhatsApp and files them without anyone retyping a thing.</p></div>
+          <div class="job-logo"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"></div>
         </article>
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/bmark.png" alt="" loading="lazy"><span class="tag">Reporting</span></div>
-          <h3>Bmark</h3>
-          <div class="ba"><div><span>// before</span>Someone assembled every client's Facebook Ads report by hand.</div><div class="after"><span>// after</span>Results are tracked and every client gets a monthly report automatically.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-6">Grill Park Ferrara</button></h3>
+          <div class="job-desc" id="job-6"><p>Automations that work out how many staff are needed each day and contact them, and that spread reservations across the evening so customers wait less.</p></div>
+          <div class="job-logo"><img src="assets/logos/grillpark.png" class="tall" alt="" loading="lazy"></div>
         </article>
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/fbisol.svg" alt="" loading="lazy"><span class="tag">Sales data</span></div>
-          <h3>F. Bisol</h3>
-          <div class="ba"><div><span>// before</span>Sales data scattered; hard to see how each salesperson was doing.</div><div class="after"><span>// after</span>Data collected and analysed into a clear monthly report per salesperson.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-7">Acarent</button></h3>
+          <div class="job-desc" id="job-7"><p>An AI automation that writes and publishes their LinkedIn and Instagram content on its own, plus a Google Maps scraper feeding their prospecting.</p></div>
+          <div class="job-logo"><img src="assets/logos/acarent.png" class="tall" alt="" loading="lazy"></div>
         </article>
 
-        <article class="case rv">
-          <div class="case-top"><img src="assets/logos/financer.svg" alt="" loading="lazy"><span class="tag">Content · Migration</span></div>
-          <h3>Financer.com</h3>
-          <div class="ba"><div><span>// before</span>Italian and US sites running on WordPress.</div><div class="after"><span>// after</span>I owned the Italian content, worked on the US site, and oversaw both moves to Ghost.</div></div>
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-8">Bmark</button></h3>
+          <div class="job-desc" id="job-8"><p>A system that tracks Facebook Ads results and sends every client a monthly report, with nobody assembling it.</p></div>
+          <div class="job-logo"><img src="assets/logos/bmark.png" alt="" loading="lazy"></div>
+        </article>
+
+        <article class="job rv">
+          <h3><button class="job-toggle" type="button" aria-expanded="false" aria-controls="job-9">F. Bisol</button></h3>
+          <div class="job-desc" id="job-9"><p>A system that collects and analyses sales data, tracks how each salesperson is performing, and turns it into a clear monthly report.</p></div>
+          <div class="job-logo"><img src="assets/logos/fbisol.svg" alt="" loading="lazy"></div>
         </article>
 
       </div>
@@ -622,6 +640,40 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
     }).catch(function(){
       msg.innerHTML = 'That didn\'t send. Please write to <a href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a>.';
     }).then(function(){ send.disabled = false; });
+  });
+
+  /* project rows: click or tap toggles the detail open, since :hover never
+     fires on touch. Hover and keyboard focus are handled in CSS. */
+  document.querySelectorAll(".job-toggle").forEach(function(btn){
+    var row = btn.closest(".job");
+    btn.addEventListener("click", function(){
+      var open = row.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    row.addEventListener("mouseleave", function(){
+      if (row.classList.contains("open")){
+        row.classList.remove("open");
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
+  /* The name shrinks when a row opens, which made every row below it jump up.
+     Pin each row to the height it has at rest. */
+  var rows = document.querySelectorAll(".job");
+  function lockRowHeights(){
+    rows.forEach(function(r){ r.style.minHeight = ""; });
+    rows.forEach(function(r){
+      if (!r.classList.contains("open") && !r.matches(":hover")){
+        r.style.minHeight = Math.ceil(r.getBoundingClientRect().height) + "px";
+      }
+    });
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockRowHeights);
+  else window.addEventListener("load", lockRowHeights);
+  var resizeT;
+  window.addEventListener("resize", function(){
+    clearTimeout(resizeT); resizeT = setTimeout(lockRowHeights, 180);
   });
 
   /* offer cards lean towards the cursor, same as sosautomazioni.com. Mouse only. */
