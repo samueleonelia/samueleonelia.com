@@ -122,12 +122,11 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line
 /* each logo gets a height from its shape (inline --h) so square and wide marks carry the same visual weight */
 .logos img{flex:0 0 auto;width:auto;height:var(--h,26px);filter:brightness(0) invert(1)}
 
-/* ---------- offers: three cards in a row, as on sosautomazioni.com, in three teal tints ---------- */
-.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+/* ---------- offers: two cards in a row, as on sosautomazioni.com, in two teal tints ---------- */
+.offers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .offer{position:relative;display:flex;flex-direction:column;gap:16px;padding:28px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
 .offer:nth-child(1){background:#E6F6F3}
 .offer:nth-child(2){background:#CDEDE8}
-.offer:nth-child(3){background:#B2E5DE}
 .offer-tag{font-family:var(--head);font-weight:800;font-size:12px;line-height:1;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
 .offer h3{margin:0;font-family:var(--head);font-weight:900;font-size:clamp(20px,2vw,24px);line-height:1.15;text-transform:uppercase}
 .offer p{margin:0;color:var(--muted)}
@@ -293,28 +292,20 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
     <div class="wrap">
       <div class="head rv">
         <div><span class="label"><b>// 01</b> · offers</span><h2>I build it for you, <span class="hl">or I teach you to.</span></h2></div>
-        <p>Either way we start from one real process in your business, and we agree on the result before any work begins.</p>
       </div>
       <div class="offers">
         <article class="offer rv">
-          <span class="offer-tag">Works for you</span>
-          <h3>AI Employees</h3>
-          <p>AI agents that do a job in your business around the clock: they answer customers, sort requests and write content, using your own data.</p>
-          <div class="offer-foot"><span>A human checks what matters</span><a class="btn solid" href="#contact">Hire an AI employee <span aria-hidden="true">→</span></a></div>
+          <span class="offer-tag">Done for you</span>
+          <h3>Process automation</h3>
+          <p>You tell me the problem, I build the automation. You get it with a video guide and 15 days of support.</p>
+          <div class="offer-foot"><span>Free call</span><a class="btn solid" href="https://tidycal.com/so/esplorativa" target="_blank" rel="noopener">Book a call <span aria-hidden="true">→</span></a></div>
         </article>
 
         <article class="offer rv">
           <span class="offer-tag">You learn</span>
           <h3>AI Training</h3>
-          <p>You learn to automate one of your processes yourself, with me beside you. A 4-week sprint, one process, a fixed price, and you keep the know-how.</p>
-          <div class="offer-foot"><span>Free 30-minute diagnosis</span><a class="btn solid" href="#contact">Book the diagnosis <span aria-hidden="true">→</span></a></div>
-        </article>
-
-        <article class="offer rv">
-          <span class="offer-tag">Runs on its own</span>
-          <h3>Process automations</h3>
-          <p>Mini-apps that automate one specific process. Your tools get connected, and orders, invoices and reports move on their own.</p>
-          <div class="offer-foot"><span>Nothing has to be replaced</span><a class="btn solid" href="#contact">Automate a process <span aria-hidden="true">→</span></a></div>
+          <p>I teach you and your team to use AI and digital tools in your everyday work.</p>
+          <div class="offer-foot"><span>Free call</span><a class="btn solid" href="https://tidycal.com/so/esplorativa" target="_blank" rel="noopener">Book a call <span aria-hidden="true">→</span></a></div>
         </article>
       </div>
     </div>
@@ -448,7 +439,7 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
       <div class="qs rv">
         <details>
           <summary>Which offer is right for me?</summary>
-          <p class="a">If you want an agent that talks to customers or handles messages and research, choose AI Employees. If you want one specific process to run on its own, choose Process automations: I build a mini-app and keep it running. If you want your team to build and own its automations, choose AI Training: in four weeks you automate one process yourself, with my guidance.</p>
+          <p class="a">If you want one specific process to run on its own, choose Process automation: I build it for you. If you want you and your team to use AI in your daily work, choose AI Training. Not sure? Book a free call and we work it out.</p>
         </details>
         <details>
           <summary>Do I need to change the tools I use?</summary>

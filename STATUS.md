@@ -25,18 +25,19 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 ## v2 page sections
 
 Hero (colour portrait, headline, handwritten notes, one button) · 11 client logos, white, scrolling on a dark green strip ·
-3 offer cards in a row, as on sosautomazioni.com (AI Employees, AI Training, Process automations) ·
+2 offer cards, as on sosautomazioni.com (Process automation, AI Training), both booking a free call ·
 8 case studies · dark band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
 
 ## Next
 
-1. Samuele reviews the redesign and keeps sending changes, and checks the short new wording on the offer cards. The phone preview needs a rebuild to show it.
+1. Samuele reviews the redesign and keeps sending changes. The phone preview needs a rebuild to show it.
 2. Samuele supplies: result per project, price + timeline answers, newsletter / YouTube / podcast links.
 3. OG share image, then real-phone + Safari check.
 
 ## Blocked on Samuele
 
 - Dashed-box content (results, FAQ price/timeline, follow links).
+- Decide if "Book a call" keeps using the SOS TidyCal calendar (`so/esplorativa`, Italian page).
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.
 - Tell Yannick Veys the X thread is on the site.
