@@ -70,9 +70,9 @@ section[id]{scroll-margin-top:76px}
 .btn.solid{font-weight:800;letter-spacing:-.02em;background:var(--link);border-color:var(--link);color:var(--paper);border-width:3px;border-style:solid;box-shadow:inset 0 0 0 5px var(--paper);padding:15px 23px;font-size:clamp(15px,1.3vw,18px)}
 .btn.solid:hover,.btn.solid:focus-visible{transform:translateY(-2px);background:var(--grad);border-color:var(--link);box-shadow:none;color:var(--ink)}
 /* text links: a plain underline in the text colour at rest; on hover it becomes a gradient marker behind the words */
-.btn.ghost,.nav a:not(.btn),.read,.crow a,.foot-legal a{color:var(--link);padding:2px 4px 3px;margin-inline:-4px;background:linear-gradient(currentColor,currentColor) no-repeat left bottom/100% 2px;transition:background-size .2s ease,color .15s ease}
-.btn.ghost:hover,.nav a:not(.btn):hover,.read:hover,.crow a:hover,.foot-legal a:hover,
-.btn.ghost:focus-visible,.nav a:not(.btn):focus-visible,.read:focus-visible,.crow a:focus-visible,.foot-legal a:focus-visible{background-image:var(--grad);background-size:100% 100%;color:var(--ink)}
+.btn.ghost,.nav a:not(.btn),.crow a,.foot-legal a{color:var(--link);padding:2px 4px 3px;margin-inline:-4px;background:linear-gradient(currentColor,currentColor) no-repeat left bottom/100% 2px;transition:background-size .2s ease,color .15s ease}
+.btn.ghost:hover,.nav a:not(.btn):hover,.crow a:hover,.foot-legal a:hover,
+.btn.ghost:focus-visible,.nav a:not(.btn):focus-visible,.crow a:focus-visible,.foot-legal a:focus-visible{background-image:var(--grad);background-size:100% 100%;color:var(--ink)}
 .btn.ghost{font-weight:700}
 .ctas{display:flex;gap:24px 32px;flex-wrap:wrap;align-items:center}
 
@@ -163,35 +163,17 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line
 @media (max-width:900px){.cases{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.ba{grid-template-columns:minmax(0,1fr)}.case{padding:20px}}
 
-/* ---------- quote: a dark band, like his testimonials ---------- */
+/* ---------- testimonial: a dark band ---------- */
 .band{background:var(--ink);color:var(--paper)}
-.band .read{color:var(--link-dark)}
-.band .read:hover,.band .read:focus-visible{color:var(--ink)}
 .band ::selection{background:var(--paper);color:var(--ink)}
-.quote{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:center}
 blockquote{margin:0;font-family:var(--sub);font-weight:400;font-size:clamp(26px,3.4vw,44px);line-height:1.15;letter-spacing:-.04em}
 cite{display:block;margin-top:22px;font-style:normal;font-family:var(--head);font-weight:700;font-size:16px}
-.read{display:inline-block;margin-top:18px;color:var(--link);font-family:var(--head);font-weight:800}
 /* Yaron Brook video testimonial: video left, pull quote right; stacks on phones */
-.yaron{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center;margin-bottom:clamp(64px,8vw,104px)}
+.yaron{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center}
 .vid{margin:0;border:3px solid var(--paper);background:var(--ink)}
 .vid video{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .yaron blockquote{font-size:clamp(20px,2.4vw,30px)}
 @media (max-width:900px){.yaron{grid-template-columns:minmax(0,1fr);gap:28px}}
-/* the X thread: one compact white box, a line joins the avatars like on X */
-.thread{min-width:0;width:100%;max-width:440px;justify-self:end;background:var(--paper);color:var(--ink);border:4px solid var(--paper);box-shadow:0 0 0 3px rgba(255,255,255,.4);padding:16px 18px;font-family:system-ui,sans-serif}
-.tw{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:12px;padding-bottom:16px}
-.tw:not(:last-of-type)::before{content:"";position:absolute;left:13.5px;top:32px;bottom:2px;width:2px;background:var(--hair)}
-.av{width:28px;height:28px;border-radius:50%;border:1px solid var(--hair);object-fit:cover;background:var(--paper)}
-.tw-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;font-size:13px}
-.tw-head b{font-weight:700;color:var(--link)}
-.tw:hover .tw-head b{text-decoration:underline;text-underline-offset:3px}
-.handle{font-size:12px;color:var(--dim)}
-.tw p{margin-top:2px;font-size:14px;line-height:1.45}
-.tw .rep{font-size:12px;color:var(--dim)}
-.tw .tw-body img{margin-top:10px;width:100%;height:auto;max-height:150px;object-fit:cover;object-position:top;border:1px solid var(--hair);filter:grayscale(1)}
-.tw-src{display:block;padding-top:12px;border-top:1px solid var(--hair);font-size:12px;color:var(--dim)}
-@media (max-width:900px){.quote{grid-template-columns:minmax(0,1fr);gap:40px}.thread{justify-self:start}}
 
 /* ---------- contact ---------- */
 .contact{text-align:center;border-top:3px solid var(--ink)}
@@ -371,44 +353,6 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
       <div>
         <blockquote>"Sam has done an amazing job programming all kinds of stuff… that is making these new shows so much more efficient and productive."</blockquote>
         <cite>Yaron Brook, host of The Yaron Brook Show</cite>
-      </div>
-    </div>
-    <div class="wrap quote rv">
-      <div>
-        <span class="label"><b>// 03</b> · said about the work</span>
-        <blockquote>"Samuele is a star." <span>"And a genius."</span></blockquote>
-        <cite>The Hypefury team, on the onboarding emails I run</cite>
-        <a class="read" href="https://x.com/Yannick_Veys/status/1810219067778732374" target="_blank" rel="noopener">Read the thread on X →</a>
-      </div>
-      <!-- The three posts, rebuilt as plain HTML instead of X's embed script,
-           which would set third-party cookies before any consent. Text copied
-           as posted; each card links to the original. -->
-      <div class="thread">
-        <a class="tw" href="https://x.com/Yannick_Veys/status/1810219067778732374" target="_blank" rel="noopener">
-          <img class="av" src="assets/tweets/yannick.jpg" width="200" height="200" alt="" loading="lazy">
-          <div class="tw-body">
-            <div class="tw-head"><b>Yannick Veys</b><span class="handle">@Yannick_Veys · <time datetime="2024-07-08T07:47:12Z">Jul 8, 2024</time></span></div>
-            <p>Our onboarding email flow 🤯</p>
-            <img src="assets/tweets/onboarding-flow.jpg" width="2048" height="1329" loading="lazy" alt="Hypefury's onboarding email flow: a large diagram of automated emails, delays and branches.">
-          </div>
-        </a>
-        <a class="tw" href="https://x.com/HeyArunima/status/1810232706799734996" target="_blank" rel="noopener">
-          <img class="av" src="assets/tweets/arunima.jpg" width="200" height="200" alt="" loading="lazy">
-          <div class="tw-body">
-            <div class="tw-head"><b>Arunima</b><span class="handle">@HeyArunima · <time datetime="2024-07-08T08:41:24Z">Jul 8, 2024</time></span></div>
-            <p class="rep">Replying to @Yannick_Veys @SamueleOnelia</p>
-            <p>Samuele is a star ✨✨😍😍</p>
-          </div>
-        </a>
-        <a class="tw" href="https://x.com/Yannick_Veys/status/1810272313834692971" target="_blank" rel="noopener">
-          <img class="av" src="assets/tweets/yannick.jpg" width="200" height="200" alt="" loading="lazy">
-          <div class="tw-body">
-            <div class="tw-head"><b>Yannick Veys</b><span class="handle">@Yannick_Veys · <time datetime="2024-07-08T11:18:47Z">Jul 8, 2024</time></span></div>
-            <p class="rep">Replying to @HeyArunima @SamueleOnelia</p>
-            <p>And a genius.<br><br>"Genio"</p>
-          </div>
-        </a>
-        <span class="tw-src">thread on X ↗</span>
       </div>
     </div>
   </section>

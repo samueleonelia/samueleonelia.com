@@ -754,3 +754,5 @@ Checked at about 1280px and at 375px: no sideways scroll, no console errors, mou
 **Offers heading.** "I build it for you, or I teach you to." is now "How we can collaborate", at Samuele's request.
 
 The offers heading now sits on one line at every width, with a slightly smaller size on phones.
+
+**Hypefury testimonial removed.** The "Samuele is a star" quote, the read-the-thread link and the X thread box are gone, with their styles and images (`assets/tweets/`, in git). The dark band now holds only the Yaron Brook video. The Hypefury logo and case study stay.
