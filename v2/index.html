@@ -18,19 +18,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@600;700;800;900&family=Caveat:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 <style>
 /* ==========================================================================
-   v2 — white page, black ink, after dagorenouf.com/how-to-dominate-twitter.
+   v2 — white page, teal ink, after dagorenouf.com/how-to-dominate-twitter.
    Type does the work, all monospace: Azeret Mono Black for the headline,
    section titles and offer/case titles, Azeret ExtraBold for buttons, nav and
-   labels, Space Mono for text, Caveat for the handwritten notes. Boxed black buttons, long-arrow bullets, square
-   corners, black bands for the log and the quote. One light theme.
+   labels, Space Mono for text, Caveat for the handwritten notes. Boxed teal buttons, long-arrow bullets, square
+   corners, teal bands for the log and the quote. One light theme.
    ========================================================================== */
 :root{
   color-scheme:light;
-  --bg:#FFF;--ink:#000;--paper:#FFF;--soft:#F2F2F2;
-  --muted:#2B2B2B;--dim:#6B6B6B;--line:#000;--hair:#D4D4D4;
-  --todo:#000;
-  /* hover colour: the lavender-grey gradient of the portrait backdrop (sampled from assets/portrait.jpg) */
-  --grad:linear-gradient(110deg,#DDDCE4 0%,#C3C1C8 50%,#A29FA6 100%);
+  --bg:#FFF;--ink:#0F766E;--deep:#062123;--paper:#FFF;--soft:#EEF7F6;
+  --muted:#115E59;--dim:#3F7A74;--line:#0F766E;--hair:#CDE5E2;
+  --todo:#0F766E;
+  /* hover colour: a pale teal gradient */
+  --grad:linear-gradient(110deg,#E6F6F3 0%,#CDEDE8 50%,#B2E5DE 100%);
   /* all monospace: Azeret Mono (up to Black 900) for headings, titles, buttons and labels;
      Space Mono for running text. Caveat stays for the handwritten notes. */
   --wide:"Azeret Mono",ui-monospace,Menlo,monospace;--head:var(--wide);--btn:var(--wide);
@@ -60,23 +60,20 @@ h2{font-family:var(--wide);font-weight:900;text-transform:uppercase;font-size:cl
 .band+.sec.flush{padding-top:var(--sec)}
 section[id]{scroll-margin-top:76px}
 
-/* boxed button: black block, white inner border, black outer line */
+/* boxed button: teal block, white inner border, teal outer line */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--head);font-weight:800;line-height:1.2;transition:transform .15s ease,color .15s ease,box-shadow .15s ease}
-/* black button with a white inner ring at rest; on hover the ring goes, the gradient fills it, the black border stays */
+/* teal button with a white inner ring at rest; on hover the ring goes, the gradient fills it, the teal border stays */
 .btn.solid{font-weight:800;letter-spacing:-.02em;background:var(--ink);border-color:var(--ink);color:var(--paper);border-width:3px;border-style:solid;box-shadow:inset 0 0 0 5px var(--paper);padding:15px 23px;font-size:clamp(15px,1.3vw,18px)}
-.btn.solid:hover,.btn.solid:focus-visible{transform:translateY(-2px);background:var(--grad);border-color:var(--ink);box-shadow:none;color:var(--ink)}
+.btn.solid:hover,.btn.solid:focus-visible{transform:translateY(-2px);background:var(--grad);border-color:var(--ink);box-shadow:none;color:var(--muted)}
 /* text links: a plain underline in the text colour at rest; on hover it becomes a gradient marker behind the words */
 .btn.ghost,.nav a:not(.btn),.read,.crow a,.foot-legal a{padding:2px 4px 3px;margin-inline:-4px;background:linear-gradient(currentColor,currentColor) no-repeat left bottom/100% 2px;transition:background-size .2s ease,color .15s ease}
 .btn.ghost:hover,.nav a:not(.btn):hover,.read:hover,.crow a:hover,.foot-legal a:hover,
-.btn.ghost:focus-visible,.nav a:not(.btn):focus-visible,.read:focus-visible,.crow a:focus-visible,.foot-legal a:focus-visible{background-image:var(--grad);background-size:100% 100%;color:var(--ink)}
+.btn.ghost:focus-visible,.nav a:not(.btn):focus-visible,.read:focus-visible,.crow a:focus-visible,.foot-legal a:focus-visible{background-image:var(--grad);background-size:100% 100%;color:var(--muted)}
 .btn.ghost{font-weight:700}
 .ctas{display:flex;gap:24px 32px;flex-wrap:wrap;align-items:center}
 
 /* long-arrow bullets, his list style */
-.arrows,.group ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.group li{position:relative;padding-left:76px;line-height:1.35}
-.group li::before{content:"";position:absolute;left:0;top:.68em;width:62px;height:2px;background:var(--ink)}
-.group li::after{content:"";position:absolute;left:54px;top:calc(.68em - 5px);width:10px;height:10px;border-top:2px solid var(--ink);border-right:2px solid var(--ink);transform:rotate(45deg)}
+.arrows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 
 /* handwritten notes in the margins, desktop only */
 .note{position:absolute;font-family:var(--hand);font-weight:700;font-size:30px;line-height:1;color:var(--ink);pointer-events:none;white-space:nowrap}
@@ -97,7 +94,7 @@ section[id]{scroll-margin-top:76px}
 
 /* ---------- hero ---------- */
 .hero-band{position:relative;overflow:hidden}
-/* glyph field: fixed behind the whole page, solid blocks and black bands cover it */
+/* glyph field: fixed behind the whole page, solid blocks and teal bands cover it */
 .field{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:clamp(48px,7vw,96px) clamp(48px,6vw,80px)}
 .stage img{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid var(--ink);background:var(--paper)}
@@ -110,70 +107,43 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line
 .cursor{display:inline-block;width:.42em;height:.8em;background:var(--ink);margin-left:.08em;vertical-align:-.04em;animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 
-/* the automation log: a black band; a simulation built from real automations, each line opens a details window */
-.log{width:100%;max-width:1008px;margin:clamp(48px,6vw,72px) auto 0;background:var(--ink);color:var(--paper);padding:18px 22px 12px;font-family:var(--mono);font-size:13px;text-align:left}
-.log-top{display:flex;justify-content:space-between;color:#9A9A9A;margin-bottom:10px}
-.log-top span:first-child::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--paper);margin-right:8px;animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.35}}
-.log ul{list-style:none;margin:0;padding:0;height:96px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;-webkit-mask-image:linear-gradient(transparent,#000 35%);mask-image:linear-gradient(transparent,#000 35%)}
-.log li{display:grid;grid-template-columns:52px 14px minmax(0,1fr) auto;gap:10px;padding:5px 0;color:#BDBDBD;border-top:1px solid #2A2A2A;animation:in .5s ease both;cursor:pointer}
-.log li:hover b,.log li:focus-visible b{text-decoration:underline;text-underline-offset:3px}
-.log-hint{margin-top:8px;color:#8A8A8A;font-size:12px}
-.log .t{color:#8A8A8A}
-.log .ok{color:var(--paper)}
-.log b{color:var(--paper);font-weight:600}
-.log .x{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.log .k{color:#8A8A8A}
-@media (max-width:560px){.log li{grid-template-columns:44px 14px minmax(0,1fr)}.log .k{display:none}}
-@keyframes in{from{opacity:0;transform:translateY(8px)}}
-
-/* automation details window */
-#auto{width:min(460px,calc(100vw - 32px));margin:auto;padding:30px;background:var(--paper);color:var(--ink);border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);font-family:var(--text)}
-#auto::backdrop{background:rgba(255,255,255,.75)}
-#auto .label{display:block;font-family:var(--head);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
-#auto h3{margin:10px 0 14px;font-family:var(--head);font-weight:900;font-size:20px;letter-spacing:-.03em;line-height:1.15;padding-right:28px}
-#auto .d-desc{font-size:15px;line-height:1.55}
-#auto .d-meta{display:flex;gap:12px;margin-top:14px;font-size:14px;line-height:1.5}
-#auto .d-meta span:first-child{flex:0 0 56px;font-family:var(--head);font-weight:800;font-size:12px;text-transform:uppercase;padding-top:4px}
-#auto .d-cta{margin-top:22px}
-#auto .d-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:3px solid var(--ink);background:var(--paper);color:var(--ink);font-size:20px;font-weight:700;line-height:1;cursor:pointer}
-#auto .d-close:hover{background:var(--ink);color:var(--paper)}
-
 /* ---------- logos ---------- */
-.logos{border-block:3px solid var(--ink);padding-block:30px}
-/* centred rows of equal slots: 6 per row on desktop, 3 on tablets, 2 on phones;
-   each logo is centred in its slot (object-fit), an odd last row sits in the middle */
-.logos .wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;row-gap:28px}
-@media (max-width:900px){.logos .wrap{--per:3}}
-@media (max-width:640px){.logos .wrap{--per:2}}
+/* dark strip, white logos. Wraps in centred rows until the script clones the set
+   and adds .moving: then one endless line. Each set is at least a screen wide,
+   so two of them moving left by one set loop without a gap. */
+.logos{background:var(--deep);padding-block:30px;overflow:hidden}
+.logo-set{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px 48px;padding-inline:var(--pad)}
+.logo-track.moving{display:flex;width:max-content;animation:logos 45s linear infinite}
+.logo-track.moving .logo-set{flex:0 0 auto;flex-wrap:nowrap;justify-content:space-around;min-width:100vw;gap:72px;padding-inline:36px}
+.logos:hover .logo-track{animation-play-state:paused}
+@keyframes logos{to{transform:translateX(-50%)}}
 /* each logo gets a height from its shape (inline --h) so square and wide marks carry the same visual weight */
-.logos img{flex:0 0 auto;width:calc(100% / var(--per,6));min-width:0;height:var(--h,26px);padding-inline:10px;object-fit:contain;filter:brightness(0)}
+.logos img{flex:0 0 auto;width:auto;height:var(--h,26px);filter:brightness(0) invert(1)}
 
-/* ---------- offers: stacked rows with long-arrow bullets, like his "Here's how" list ---------- */
-.offers{display:flex;flex-direction:column;gap:clamp(48px,6vw,72px)}
-.offer{display:flex;flex-direction:column;max-width:760px}
-.offer-top{display:flex;flex-direction:column;gap:10px}
-/* offer name on a black block, like the old number box */
-.offer h3{align-self:flex-start;background:var(--ink);color:var(--paper);padding:10px 18px 12px;font-family:var(--head);font-weight:900;font-size:clamp(20px,2.2vw,26px);line-height:1.15;margin:0 0 6px;text-transform:uppercase}
-.offer-top p{max-width:52ch}
-.offer-top .btn{display:none}
-.groups{display:flex;flex-direction:column;gap:18px;margin-top:22px}
-.group h4{margin:0 0 6px;font-family:var(--head);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.03em}
-.offer-foot{margin-top:22px;padding-top:14px;border-top:2px solid var(--ink);font-size:15px;color:var(--muted)}
-.offer-foot b{font-family:var(--head);font-weight:800;font-size:15px;color:var(--ink)}
-.offer-cta{margin-top:28px;align-self:flex-start}
-@media (max-width:760px){
-  .group li{padding-left:44px}
-  .group li::before{width:32px}
-  .group li::after{left:24px}
-}
+/* ---------- offers: three cards in a row, as on sosautomazioni.com, in three teal tints ---------- */
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.offer{position:relative;display:flex;flex-direction:column;gap:16px;padding:28px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.offer:nth-child(1){background:#E6F6F3}
+.offer:nth-child(2){background:#CDEDE8}
+.offer:nth-child(3){background:#B2E5DE}
+.offer-tag{font-family:var(--head);font-weight:800;font-size:12px;line-height:1;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.offer h3{margin:0;font-family:var(--head);font-weight:900;font-size:clamp(20px,2vw,24px);line-height:1.15;text-transform:uppercase}
+.offer p{margin:0;color:var(--muted)}
+.offer-foot{margin-top:auto;padding-top:16px;border-top:2px dashed var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.offer-foot > span{font-size:13px;line-height:1.3;color:var(--muted)}
+.offer-foot .btn{padding:11px 15px;font-size:14px}
+/* the card leans towards the mouse, with a soft glare */
+.offer.rv.tilting{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .08s linear}
+.offer::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.55),transparent 45%);opacity:0;transition:opacity .3s}
+.offer.tilting::after{opacity:1}
+@media (max-width:900px){.offers{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- work ---------- */
 .cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .case{min-width:0;border:3px solid var(--ink);padding:26px;display:flex;flex-direction:column;gap:18px;background:var(--paper);transition:transform .2s ease,box-shadow .2s ease}
 .case:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
 .case-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.case-top img{height:28px;width:auto;max-width:140px;object-fit:contain;filter:brightness(0)}
+.case-top img{height:28px;width:auto;max-width:140px;object-fit:contain;filter:url(#teal)}
 .tag{font-family:var(--head);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em;border:2px solid var(--ink);padding:4px 8px}
 .case h3{font-family:var(--head);font-weight:900;font-size:22px;line-height:1.15;letter-spacing:-.03em;margin:0;text-transform:uppercase}
 .ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
@@ -188,7 +158,7 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line
 @media (max-width:900px){.cases{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.ba{grid-template-columns:minmax(0,1fr)}.case{padding:20px}}
 
-/* ---------- quote: a black band, like his testimonials ---------- */
+/* ---------- quote: a teal band, like his testimonials ---------- */
 .band{background:var(--ink);color:var(--paper)}
 .band ::selection{background:var(--paper);color:var(--ink)}
 .quote{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;align-items:center}
@@ -197,12 +167,12 @@ cite{display:block;margin-top:22px;font-style:normal;font-family:var(--head);fon
 .read{display:inline-block;margin-top:18px;font-family:var(--head);font-weight:800}
 /* Yaron Brook video testimonial: video left, pull quote right; stacks on phones */
 .yaron{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:center;margin-bottom:clamp(64px,8vw,104px)}
-.vid{margin:0;border:3px solid var(--paper);background:#111}
+.vid{margin:0;border:3px solid var(--paper);background:var(--ink)}
 .vid video{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .yaron blockquote{font-size:clamp(20px,2.4vw,30px)}
 @media (max-width:900px){.yaron{grid-template-columns:minmax(0,1fr);gap:28px}}
 /* the X thread: one compact white box, a line joins the avatars like on X */
-.thread{min-width:0;width:100%;max-width:440px;justify-self:end;background:var(--paper);color:var(--ink);border:4px solid var(--paper);box-shadow:0 0 0 3px #5A5A5A;padding:16px 18px;font-family:system-ui,sans-serif}
+.thread{min-width:0;width:100%;max-width:440px;justify-self:end;background:var(--paper);color:var(--ink);border:4px solid var(--paper);box-shadow:0 0 0 3px rgba(255,255,255,.4);padding:16px 18px;font-family:system-ui,sans-serif}
 .tw{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:12px;padding-bottom:16px}
 .tw:not(:last-of-type)::before{content:"";position:absolute;left:13.5px;top:32px;bottom:2px;width:2px;background:var(--hair)}
 .av{width:28px;height:28px;border-radius:50%;border:1px solid var(--hair);object-fit:cover;background:var(--paper)}
@@ -257,12 +227,14 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}
-  .log li,.log-top span:first-child::before,.cursor{animation:none}
+  .cursor{animation:none}
   .btn.solid:hover,.case:hover,.follow a:hover{transform:none}
 }
 </style>
 </head>
 <body>
+<!-- paints a logo in the ink teal, whatever its own colours -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="teal" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .059 0 0 0 0 .463 0 0 0 0 .431 0 0 0 1 0"/></filter></svg>
 
 <header class="bar">
   <div class="wrap bar-in">
@@ -287,34 +259,29 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
       <p class="lede">I take the work your team still does by hand and rebuild it as software that runs on its own.</p>
       <div class="ctas">
         <a class="btn solid" href="#contact">Start a project <span aria-hidden="true">→</span></a>
-        <a class="btn ghost" href="#follow">or follow my work</a>
       </div>
-      <p class="note" style="left:-10px;top:120px;transform:rotate(-8deg)" aria-hidden="true">no more<br>copy-paste<svg width="120" height="12" viewBox="0 0 120 12"><path d="M2 8 C 30 3, 70 2, 118 6" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/></svg></p>
-      <p class="note" style="right:0;top:300px;transform:rotate(7deg)" aria-hidden="true">runs while<br>you sleep<svg width="120" height="12" viewBox="0 0 120 12"><path d="M2 5 C 40 9, 80 9, 118 3" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/></svg></p>
-      <svg class="doodle" style="left:40px;top:330px" width="58" height="58" viewBox="0 0 58 58" aria-hidden="true"><path d="M29 3 C 47 2, 56 15, 55 30 C 54 46, 42 56, 27 55 C 11 54, 2 42, 3 27 C 4 12, 15 3, 31 4" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/><path d="M19 21 l1 6 M37 20 l1 6" stroke="#000" stroke-width="4" stroke-linecap="round"/><path d="M16 35 C 22 45, 36 45, 42 34" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/></svg>
-      <svg class="doodle" style="right:60px;top:110px" width="52" height="52" viewBox="0 0 58 58" aria-hidden="true"><path d="M29 3 C 47 2, 56 15, 55 30 C 54 46, 42 56, 27 55 C 11 54, 2 42, 3 27 C 4 12, 15 3, 31 4" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round"/><path d="M18 23 l5 0 M36 23 l5 0" stroke="#000" stroke-width="4" stroke-linecap="round"/><path d="M19 39 l20 0" stroke="#000" stroke-width="3.5" stroke-linecap="round"/></svg>
-      <div class="log">
-        <div class="log-top"><span>running</span><span id="log-count">automations.log</span></div>
-        <ul id="log" aria-label="Automations I've built"></ul>
-        <p class="log-hint">// tap a line to see what it does</p>
-      </div>
+      <p class="note" style="left:-10px;top:120px;transform:rotate(-8deg)" aria-hidden="true">no more<br>copy-paste<svg width="120" height="12" viewBox="0 0 120 12"><path d="M2 8 C 30 3, 70 2, 118 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></p>
+      <p class="note" style="right:0;top:300px;transform:rotate(7deg)" aria-hidden="true">runs while<br>you sleep<svg width="120" height="12" viewBox="0 0 120 12"><path d="M2 5 C 40 9, 80 9, 118 3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></p>
+      <svg class="doodle" style="left:40px;top:330px" width="58" height="58" viewBox="0 0 58 58" aria-hidden="true"><path d="M29 3 C 47 2, 56 15, 55 30 C 54 46, 42 56, 27 55 C 11 54, 2 42, 3 27 C 4 12, 15 3, 31 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M19 21 l1 6 M37 20 l1 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M16 35 C 22 45, 36 45, 42 34" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+      <svg class="doodle" style="right:60px;top:110px" width="52" height="52" viewBox="0 0 58 58" aria-hidden="true"><path d="M29 3 C 47 2, 56 15, 55 30 C 54 46, 42 56, 27 55 C 11 54, 2 42, 3 27 C 4 12, 15 3, 31 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 23 l5 0 M36 23 l5 0" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M19 39 l20 0" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
     </div>
   </div>
 
-  <div class="logos">
-    <div class="wrap">
-      <span class="label">// trusted by</span>
-      <img style="--h:30px" src="assets/logos/hypefury.png" alt="Hypefury" loading="lazy">
-      <img style="--h:56px" src="assets/logos/yaronbrookshow.png" alt="The Yaron Brook Show" loading="lazy">
-      <img style="--h:26px" src="assets/logos/financer.svg" alt="Financer.com" loading="lazy">
-      <img style="--h:23px" src="assets/logos/fiscozen.svg" alt="Fiscozen" loading="lazy">
-      <img style="--h:35px" src="assets/logos/fattureincloud.png" alt="Fatture in Cloud" loading="lazy">
-      <img style="--h:66px" src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency" loading="lazy">
-      <img style="--h:33px" src="assets/logos/lacofacceria.png" alt="La Cofacceria" loading="lazy">
-      <img style="--h:56px" src="assets/logos/grillpark.png" alt="Grill Park Ferrara" loading="lazy">
-      <img style="--h:47px" src="assets/logos/acarent.png" alt="Acarent" loading="lazy">
-      <img style="--h:28px" src="assets/logos/bmark.png" alt="Bmark" loading="lazy">
-      <img style="--h:26px" src="assets/logos/fbisol.svg" alt="F. Bisol" loading="lazy">
+  <div class="logos" aria-label="Trusted by">
+    <div class="logo-track">
+      <div class="logo-set">
+        <img style="--h:30px" src="assets/logos/hypefury.png" alt="Hypefury">
+        <img style="--h:56px" src="assets/logos/yaronbrookshow.png" alt="The Yaron Brook Show">
+        <img style="--h:26px" src="assets/logos/financer.svg" alt="Financer.com">
+        <img style="--h:23px" src="assets/logos/fiscozen.svg" alt="Fiscozen">
+        <img style="--h:35px" src="assets/logos/fattureincloud.png" alt="Fatture in Cloud">
+        <img style="--h:66px" src="assets/logos/dreamtravel.svg" alt="Dream Travel Agency">
+        <img style="--h:33px" src="assets/logos/lacofacceria.png" alt="La Cofacceria">
+        <img style="--h:56px" src="assets/logos/grillpark.png" alt="Grill Park Ferrara">
+        <img style="--h:47px" src="assets/logos/acarent.png" alt="Acarent">
+        <img style="--h:28px" src="assets/logos/bmark.png" alt="Bmark">
+        <img style="--h:26px" src="assets/logos/fbisol.svg" alt="F. Bisol">
+      </div>
     </div>
   </div>
 
@@ -325,72 +292,26 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
         <p>Either way we start from one real process in your business, and we agree on the result before any work begins.</p>
       </div>
       <div class="offers">
-
         <article class="offer rv">
-          <div class="offer-top">
-            <h3>AI Employees</h3>
-            <p>AI agents that do a job in your business around the clock: they answer customers, sort requests and write content, using your own data.</p>
-          </div>
-          <div class="groups">
-            <div class="group">
-              <h4>Customer support</h4>
-              <ul><li>Answers customers on WhatsApp and on your website chat, day and night</li><li>Replies come from your own documents and data, not from guesses</li></ul>
-            </div>
-            <div class="group">
-              <h4>Back office</h4>
-              <ul><li>Reads incoming messages and sends each one to the right person</li><li>Researches a market and delivers a finished report</li><li>Drafts posts in your brand's voice</li></ul>
-            </div>
-            <div class="group">
-              <h4>You stay in control</h4>
-              <ul><li>A human checks before anything important goes out</li></ul>
-            </div>
-          </div>
-          <p class="offer-foot"><b>Built for</b> businesses that answer the same questions every day.</p>
-          <a class="btn solid offer-cta" href="#contact">Hire an AI employee <span aria-hidden="true">→</span></a>
+          <span class="offer-tag">Works for you</span>
+          <h3>AI Employees</h3>
+          <p>AI agents that do a job in your business around the clock: they answer customers, sort requests and write content, using your own data.</p>
+          <div class="offer-foot"><span>A human checks what matters</span><a class="btn solid" href="#contact">Hire an AI employee <span aria-hidden="true">→</span></a></div>
         </article>
 
         <article class="offer rv">
-          <div class="offer-top">
-            <h3>AI Training</h3>
-            <p>You learn to automate one of your processes yourself, with me beside you. A 4-week sprint, one process, a fixed price, and you keep the know-how.</p>
-          </div>
-          <div class="groups">
-            <div class="group">
-              <h4>Before we start</h4>
-              <ul><li>A free 30-minute diagnosis: we map your process on my template, estimate what it needs and pick the right level</li><li>The result written in one sentence, for example "requests from the website land in the CRM already sorted and get a first reply on their own"</li></ul>
-            </div>
-            <div class="group">
-              <h4>The 4 weeks</h4>
-              <ul><li>A 90-minute kickoff</li><li>3 working sessions of 60 minutes</li><li>I review your workflows within 24 hours, between sessions</li></ul>
-            </div>
-            <div class="group">
-              <h4>After</h4>
-              <ul><li>A delivery checklist</li><li>30 days of support</li></ul>
-            </div>
-          </div>
-          <p class="offer-foot"><b>Built for</b> teams that want to own their automations instead of depending on a consultant. <b>Fixed price,</b> one process, 4 weeks.</p>
-          <a class="btn solid offer-cta" href="#contact">Book the free diagnosis <span aria-hidden="true">→</span></a>
+          <span class="offer-tag">You learn</span>
+          <h3>AI Training</h3>
+          <p>You learn to automate one of your processes yourself, with me beside you. A 4-week sprint, one process, a fixed price, and you keep the know-how.</p>
+          <div class="offer-foot"><span>Free 30-minute diagnosis</span><a class="btn solid" href="#contact">Book the diagnosis <span aria-hidden="true">→</span></a></div>
         </article>
 
         <article class="offer rv">
-          <div class="offer-top">
-            <h3>Process automations</h3>
-            <p>Mini-apps that automate one specific process. Your tools get connected, and orders, invoices and reports move on their own.</p>
-          </div>
-          <div class="groups">
-            <div class="group">
-              <h4>Connect your tools</h4>
-              <ul><li>I work with the tools you already use, so nothing has to be replaced</li><li>Data moves between them without anyone retyping it</li></ul>
-            </div>
-            <div class="group">
-              <h4>CRMs and reports</h4>
-              <ul><li>Customers, orders, costs and invoices in one place, built around how you work</li><li>A clear report every month, with nobody assembling it</li></ul>
-            </div>
-          </div>
-          <p class="offer-foot"><b>Built for</b> small teams buried in admin. <b>Seen at</b> La Cofacceria, Dream Travel Agency, Bmark, F. Bisol, Grill Park Ferrara, Acarent, Hypefury.</p>
-          <a class="btn solid offer-cta" href="#contact">Automate a process <span aria-hidden="true">→</span></a>
+          <span class="offer-tag">Runs on its own</span>
+          <h3>Process automations</h3>
+          <p>Mini-apps that automate one specific process. Your tools get connected, and orders, invoices and reports move on their own.</p>
+          <div class="offer-foot"><span>Nothing has to be replaced</span><a class="btn solid" href="#contact">Automate a process <span aria-hidden="true">→</span></a></div>
         </article>
-
       </div>
     </div>
   </section>
@@ -580,15 +501,6 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
   </section>
 </main>
 
-<dialog id="auto" aria-labelledby="auto-title">
-  <button class="d-close" type="button" aria-label="Close">×</button>
-  <span class="d-kind label"></span>
-  <h3 id="auto-title"></h3>
-  <p class="d-desc"></p>
-  <p class="d-meta"><span>tools</span><span class="d-tools"></span></p>
-  <p class="d-meta d-client" hidden><span>client</span><span></span></p>
-  <a class="btn ghost d-cta" href="#contact">I want one like this →</a>
-</dialog>
 
 <footer>
   <div class="wrap foot">
@@ -613,9 +525,9 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
      the whole page, a dense grid of tiny teal dots, rings and squares drawn in
      one WebGL call. Slow waves of brightness travel across it, it shifts a
      little against the mouse, and the mouse draws a lit line that fades in
-     ~0.5 s. Dots clear softly behind any text, so copy stays readable. Black
+     ~0.5 s. Dots clear softly behind any text, so copy stays readable. Teal
      bands simply cover it. Mouse only; still for reduced motion.
-     Its own function so its names can't clash with the log code below. */
+     Its own function so its names can't clash with the code below. */
   (function(){
   var cv = document.createElement("canvas");
   cv.className = "field"; cv.setAttribute("aria-hidden", "true");
@@ -703,14 +615,14 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
       var packed = new Float32Array(72), LIFE = 500;
 
       /* One mask box per block of text: the union of its lines, so a paragraph
-         clears as one piece. Black bands are skipped, the canvas is behind them. */
+         clears as one piece. Teal bands are skipped, the canvas is behind them. */
       var blocks = new Map(), walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
       var blockOf = function(el){
         while (el.parentElement && getComputedStyle(el).display === "inline") el = el.parentElement;
         return el;
       };
       for (var tn = walker.nextNode(); tn; tn = walker.nextNode()){
-        if (!tn.textContent.trim() || tn.parentElement.closest("script,style,svg,canvas,noscript,.band,.log,footer")) continue;
+        if (!tn.textContent.trim() || tn.parentElement.closest("script,style,svg,canvas,noscript,.band,footer")) continue;
         var bl = blockOf(tn.parentElement);
         if (!blocks.has(bl)) blocks.set(bl, []);
         blocks.get(bl).push(tn);
@@ -804,125 +716,29 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
   } else { cv.remove(); }
   })();
 
-  /* the automation log. A simulation, but every line is a real automation
-     Samuele has built: it picks entries from AUTOMATIONS at random, stamps the
-     current time, and each line opens a small window explaining it.
-     Client names are off by default; fill an entry's `client` to show one. */
-  var AUTOMATIONS = [
-    // [id, what, result, kind, tools, description, client]
-    ["deal-sync", "Deal update", "copied to company record", "Automation", "Pipedrive", "When a deal changes in the CRM, its latest details are copied onto the company record, so sales sees the current picture without opening every deal.", ""],
-    ["invoice-match", "New invoices", "matched to deals", "Automation", "Pipedrive · Google Sheets · Invoicing API", "Every day new invoices are pulled from the invoicing software and attached to the right deal, so revenue per customer is always up to date.", ""],
-    ["sales-sync", "Sales, quotes and products", "synced to CRM", "Automation", "Pipedrive · Management software API", "Sales, quotes, invoices and products from the management software stay in sync with the CRM, with no double entry.", ""],
-    ["course-reminder", "Course about to expire", "reminder sent", "Automation", "Google Sheets · Mailchimp", "Customers whose training course is about to expire get a reminder email, without anyone checking dates by hand.", ""],
-    ["customer-status", "Customer status", "recalculated in CRM", "Automation", "Pipedrive", "Each customer's status (active, lapsed, at risk) is recalculated on a schedule from their purchase history.", ""],
-    ["company-import", "Company list", "imported into CRM", "Automation", "Google Drive · Pipedrive · Gmail", "Company lists dropped into a Drive folder are read and imported into the CRM, then a summary email says what was added.", ""],
-    ["year-rollover", "New year", "sales sheets rolled over", "Automation", "Google Sheets", "On 1 January the yearly sales sheets are archived and fresh ones are set up, ready for the new year.", ""],
-    ["wa-agent", "WhatsApp message", "answered by AI agent", "AI agent", "WhatsApp · OpenAI · Excel", "An AI agent answers customers on WhatsApp around the clock, looking up answers in the business's own data.", ""],
-    ["web-agent", "Website chat", "answered by AI agent", "AI agent", "Chat widget · OpenAI · Excel", "The same kind of AI agent on the website chat. It remembers the conversation and answers from the company's own documents.", ""],
-    ["paper-research", "New research papers", "found and summarised by AI", "AI agent", "Perplexity · Notion", "Every day new scientific papers on chosen topics are searched, summarised by AI and saved to a Notion library.", ""],
-    ["paper-digest", "Paper digest", "emailed to subscribers", "Automation", "Notion · Brevo", "Subscribers get an email with the newest summarised papers, built straight from the Notion library.", ""],
-    ["linkedin-agent", "LinkedIn post", "drafted by AI", "AI agent", "OpenAI", "An AI agent drafts LinkedIn posts on a schedule, in the brand's voice, ready for a quick human review.", ""],
-    ["market-report", "Market research report", "generated by AI", "AI agent", "Perplexity · Google Search · OpenAI · Google Drive", "Fill in a short form and an AI pipeline researches the market, then delivers a finished report to Google Drive.", ""],
-    ["ad-contract", "Advertising deal", "contract generated", "Automation", "Google Sheets · Document API", "Advertising deals logged in a sheet become ready-to-sign contracts, with checks that stop anything incomplete.", ""],
-    ["form-analysis", "Questionnaire", "analysed by AI", "AI agent", "Jotform · Claude · Google Drive · Gmail", "Answers from an online questionnaire are read by Claude, turned into a summary document and emailed to the team.", ""],
-    ["deal-analysis", "Open negotiations", "analysed by AI", "AI agent", "Claude · Google Drive · Gmail", "Claude reviews ongoing negotiations and emails a short analysis with suggested next steps.", ""],
-    ["wa-order", "WhatsApp order", "filed in CRM", "Automation", "WhatsApp · Notion", "Orders sent on WhatsApp are read and recorded in the CRM, without anyone retyping them.", ""],
-    ["email-order", "Email order", "filed in CRM", "Automation", "Gmail · Notion", "Orders arriving by email are read from the message, split into lines and filed in the CRM.", ""],
-    ["order-check", "New order", "checked", "Automation", "Notion", "Each new order is checked against the catalogue and the customer's details. Anything missing is flagged before it ships.", ""],
-    ["order-notify", "Order confirmed", "customer notified on WhatsApp", "Automation", "WhatsApp", "Customers get a WhatsApp message as soon as their order is confirmed.", ""],
-    ["catalogue-sync", "Catalogue and customers", "synced to Notion", "Automation", "Google Sheets · Google Drive · Notion", "Product and customer lists are uploaded to Notion every day, and outdated records are cleaned up.", ""],
-    ["wa-router", "WhatsApp message", "routed to the right flow", "Automation", "WhatsApp", "Every WhatsApp message the business receives is sorted and sent to the right flow: bookings, staff shifts or customer feedback.", ""],
-    ["survey", "Guest survey", "processed", "Automation", "Gmail · Booking platform", "Post-visit surveys from the booking platform are read automatically, and low scores start a follow-up.", ""],
-    ["unhappy-guest", "Low score", "guest contacted on WhatsApp", "Automation", "WhatsApp", "When a guest leaves a low score, they get a personal WhatsApp message asking what went wrong.", ""],
-    ["reply-classify", "Guest reply", "classified by AI", "AI agent", "Claude", "Claude reads the guest's reply and sorts it (complaint, suggestion, praise) so the right person handles it.", ""],
-    ["guest-thanks", "Issue resolved", "guest thanked", "Automation", "WhatsApp · Email", "Once the issue is handled, the guest gets a thank-you message by WhatsApp and email.", ""],
-    ["booking-sync", "Booking or cancellation", "synced to booking system", "Automation", "TheFork · Restoo · Gmail", "Bookings and cancellations from the online platforms are copied into the restaurant's own booking system.", ""],
-    ["guest-contact", "New guest", "saved to contacts", "Automation", "Google Contacts", "Every new booking adds the guest to the phone's contacts, so staff recognise them when they write on WhatsApp.", ""],
-    ["peak-spread", "Busy evening", "bookings spread out", "Automation", "WhatsApp · Notion", "The system spots peak times and asks some guests on WhatsApp whether they'd move to a quieter slot.", ""],
-    ["shift-poll", "Weekly shifts", "availability collected", "Automation", "WhatsApp polls", "Every week staff get a WhatsApp poll for their availability, with reminders for anyone who hasn't answered.", ""],
-    ["staff-callin", "Shift", "staff called in", "Automation", "WhatsApp", "Waiters and dishwashers are called in automatically, based on their availability and the expected covers.", ""],
-    ["staff-calc", "Tomorrow's bookings", "staff needed calculated", "Automation", "Notion · Booking system", "Expected bookings are turned into the number of staff needed for each day.", ""],
-    ["missed-call", "Missed call", "followed up on WhatsApp", "Automation", "Phone system · WhatsApp", "When a call goes unanswered, the caller gets a WhatsApp message straight away.", ""],
-    ["maps-leads", "Leads", "collected from Google Maps", "Automation", "Google Maps · Notion", "Pick a type of business and an area: every result lands in Notion with contact details, ready for outreach.", ""],
-    ["site-videos", "Website", "updated with latest videos", "Automation", "YouTube · Instagram", "A website sidebar always shows the latest YouTube videos and reels, with nobody updating it.", ""],
-    ["calendar-sync", "Event dates", "synced to Google Calendar", "Automation", "Notion · Google Calendar", "Event dates kept in Notion stay in sync, both ways, with a shared Google Calendar.", ""],
-    ["yt-short", "YouTube Short", "published", "Automation", "Notion · YouTube", "Short videos queued in Notion are uploaded to YouTube on schedule, with title and description.", ""],
-    ["ig-reel", "Instagram reel", "published", "Automation", "Notion · Instagram", "Reels planned in Notion are published to Instagram on schedule.", ""],
-    ["ig-comment-dm", "Instagram comment", "answered by DM", "Automation", "Instagram · Notion", "Comments on reels are logged in Notion, and each commenter gets a DM with the resource they asked for.", ""],
-    ["site-forms", "Website form", "filed and confirmed", "Automation", "Website · Gmail", "Every form on a website goes through one workflow: the request is filed and a confirmation email goes out.", ""],
-    ["idea-backlog", "Video idea", "added to content plan", "Automation", "Todoist · Notion", "Video ideas jotted down in Todoist are moved into the Notion content plan.", ""],
-    ["payment-reminder", "Payment due", "reminder sent", "Automation", "Notion · Gmail", "Members with an upcoming payment get a reminder email, picked from the list automatically.", ""],
-    ["backup", "Workflows and credentials", "backed up", "Automation", "n8n · Google Drive", "Every automation and its settings are backed up to Google Drive every night.", ""],
-    ["error-alert", "Failed run", "alert sent", "Automation", "Gmail · Brevo", "If any automation fails, an email alert goes out with the details, so problems are fixed before anyone notices.", ""],
-    ["enrol-close", "Sign-up link", "closed when full", "Automation", "Notion · Brevo", "Trip sign-up links close themselves as soon as the last place is taken.", ""],
-    ["email-archive", "Sent email", "archived on the customer record", "Automation", "Brevo · Notion", "Every email sent to a customer is saved on their record in the CRM, so the full history is in one place.", ""],
-    ["deal-stage", "School negotiation", "moved to next stage", "Automation", "Notion · Google Drive", "Negotiations move through their stages automatically, with folders and tasks created at each step.", ""],
-    ["postcode", "Postcode", "province filled in", "Automation", "Notion", "Each contact's province is filled in from their postcode, so lists can be filtered by area.", ""],
-    ["enrolment", "New enrolment", "contact created", "Automation", "Website form · Notion · Brevo", "When someone enrols, their contact is created in the CRM and a confirmation email goes out.", ""],
-    ["discount", "Siblings enrolled", "discount applied", "Automation", "Notion", "Family and under-age discounts are applied to the enrolment automatically.", ""],
-    ["booking-export", "Participants", "exported to booking software", "Automation", "Notion · Google Drive · Brevo", "Trip participants are exported in the exact format the booking software needs, saved to Drive and emailed.", ""],
-    ["receipt", "Payment", "receipt created and sent", "Automation", "Notion · Google Drive · Brevo", "Receipts are generated, saved to Google Drive and emailed to the customer.", ""],
-    ["instalments", "Instalment plan", "emailed to the family", "Automation", "Notion · Brevo", "Families paying in instalments get their plan and the reminders by email.", ""],
-    ["trip-list", "Trip", "participant list built", "Automation", "Notion · Google Sheets", "Participant lists for each trip are built in Google Sheets for the school and the insurer.", ""],
-    ["flight-cost", "Flight", "cost recorded", "Automation", "Notion", "Flight costs are recorded per trip, with the airline name looked up automatically.", ""],
-    ["teacher-proposal", "Trip proposal", "sent to teachers", "Automation", "Notion · Brevo", "Trip proposals go out to teachers by email straight from the CRM.", ""]
-  ];
+  /* logos: a second, hidden-from-readers set makes the line endless */
+  var track = document.querySelector(".logo-track");
+  if (track && !reduce){
+    var twin = track.firstElementChild.cloneNode(true);
+    twin.setAttribute("aria-hidden", "true");
+    twin.querySelectorAll("img").forEach(function(im){ im.alt = ""; });
+    track.appendChild(twin);
+    track.classList.add("moving");
+  }
 
-  var log = document.getElementById("log");
-  var count = document.getElementById("log-count");
-  var dlg = document.getElementById("auto");
-  var clock = new Intl.DateTimeFormat(undefined, {hour: "2-digit", minute: "2-digit", hour12: false});
-  var bag = [], paused = false;
-  if (count) count.textContent = AUTOMATIONS.length + " automations";
-
-  /* shuffled bag: every automation shows once before any repeats */
-  function next(){
-    if (!bag.length){
-      bag = AUTOMATIONS.slice();
-      for (var j = bag.length - 1; j > 0; j--){ var r = (Math.random() * (j + 1)) | 0, x = bag[j]; bag[j] = bag[r]; bag[r] = x; }
-    }
-    return bag.pop();
-  }
-  function open(a){
-    dlg.querySelector(".d-kind").textContent = "// " + a[3].toLowerCase();
-    dlg.querySelector("h3").textContent = a[1] + " → " + a[2];
-    dlg.querySelector(".d-desc").textContent = a[5];
-    dlg.querySelector(".d-tools").textContent = a[4];
-    var c = dlg.querySelector(".d-client");
-    c.hidden = !a[6];
-    c.querySelector("span").textContent = a[6] || "";
-    paused = true;
-    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
-  }
-  function add(){
-    var a = next();
-    var li = document.createElement("li");
-    li.setAttribute("role", "button");
-    li.tabIndex = 0;
-    li.setAttribute("aria-label", a[1] + " → " + a[2] + ". Show details");
-    var t = document.createElement("span"); t.className = "t"; t.textContent = clock.format(new Date());
-    var ok = document.createElement("span"); ok.className = "ok"; ok.textContent = "✓";
-    var txt = document.createElement("span"); txt.className = "x";
-    var b = document.createElement("b"); b.textContent = a[1];
-    txt.appendChild(b); txt.appendChild(document.createTextNode(" → " + a[2]));
-    var k = document.createElement("span"); k.className = "k"; k.textContent = a[3].toLowerCase();
-    li.appendChild(t); li.appendChild(ok); li.appendChild(txt); li.appendChild(k);
-    li.addEventListener("click", function(){ open(a); });
-    li.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); open(a); } });
-    log.appendChild(li);
-    while (log.children.length > 5) log.removeChild(log.firstChild);
-  }
-  if (log && dlg){
-    for (var k = 0; k < 5; k++) add();
-    if (!reduce) setInterval(function(){ if (!paused && !document.hidden) add(); }, 2600);
-    /* hold the log still while someone is pointing at it or reading a window */
-    var stage = log.closest(".log");
-    stage.addEventListener("mouseenter", function(){ paused = true; });
-    stage.addEventListener("mouseleave", function(){ if (!dlg.open) paused = false; });
-    dlg.addEventListener("close", function(){ paused = false; });
-    dlg.querySelector(".d-close").addEventListener("click", function(){ dlg.close(); });
-    dlg.querySelector(".d-cta").addEventListener("click", function(){ dlg.close(); });
-    dlg.addEventListener("click", function(e){ if (e.target === dlg) dlg.close(); });
+  /* offer cards lean towards the cursor, same as sosautomazioni.com. Mouse only. */
+  if (!reduce && window.matchMedia && window.matchMedia("(pointer: fine)").matches){
+    document.querySelectorAll(".offer").forEach(function(el){
+      el.addEventListener("pointermove", function(e){
+        var r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        el.style.setProperty("--ry", ((px - .5) * 10).toFixed(2) + "deg");
+        el.style.setProperty("--rx", ((.5 - py) * 10).toFixed(2) + "deg");
+        el.style.setProperty("--mx", (px * 100) + "%");
+        el.style.setProperty("--my", (py * 100) + "%");
+        el.classList.add("tilting");
+      });
+      el.addEventListener("pointerleave", function(){ el.classList.remove("tilting"); });
+    });
   }
 
   /* scroll reveal */

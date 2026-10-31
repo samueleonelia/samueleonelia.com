@@ -728,3 +728,11 @@ Dots are stronger than on SOS (.08–.53 alpha, not .025–.175), because teal i
 Bug on the way: nothing drew, because the log code later in the same function also declares `var count`, which overwrote the dot count. Fixed by giving the field its own function.
 
 Checked at about 1280px and at 375px: no sideways scroll, no console errors, mouse line works. The phone preview artifact has not been rebuilt, so it doesn't show this yet.
+
+**White and teal everywhere.** Samuele chose to turn the black parts teal too. Ink, bands, buttons, footer and hand-drawn notes are now #0F766E on white, greys became teal tints, and the hover gradient is pale teal with darker text (#115E59) so it stays readable. #0D9488 was too light for white text, so the ink is the deeper #0F766E. Every text on the page passed a 4.5:1 contrast check before the offers were rebuilt. An inline SVG filter (`#teal`) paints the case-study logos.
+
+**Logos: auto-scroll, white on dark.** One endless line on a dark teal strip (#062123, the same dark as sosautomazioni.com). The script clones the set; each set is at least a screen wide, so nothing gaps on big screens. Pauses on hover. Without JS or with reduced motion it stays as still, centred rows.
+
+**Removed.** The "running" automations.log widget with its details window, the script and the 56 entries (still in git, and in `plans/automation-catalog.md`). Also the hero's "or follow my work" link. The Follow section and nav link stay, Samuele only named the link.
+
+**Offers like sosautomazioni.com.** Three cards in a row, stacked under 900px: tag, title, short text, dashed line, one small line, button. Three teal tints instead of SOS's pink, sky and mint. Square corners to match the rest of this site. Same mouse tilt and glare. The bullet lists are gone from the cards, the old version is in git. The tags and the small lines ("A human checks what matters", "Free 30-minute diagnosis", "Nothing has to be replaced") are new short wording taken from the old copy, Samuele should check them.

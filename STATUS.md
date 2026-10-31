@@ -15,30 +15,28 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 |---|---|
 | Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
 | 1. Brief | Done — AI + automation only, for clients and followers |
-| 2–3. Structure + design | Done — white page after dagorenouf.com, all monospace (Azeret Mono heavy + Space Mono text), grey gradient on hover only, teal dot field behind the whole page (as on sosautomazioni.com) |
+| 2–3. Structure + design | Done — white and teal, all monospace (Azeret Mono heavy + Space Mono text), pale teal gradient on hover only, teal dot field behind the whole page (as on sosautomazioni.com) |
 | 4. Build into `v2/` | Done — checked at 1280px and 375px |
 | 4b. Real content in the dashed boxes | **Waiting on Samuele** |
-| 4c. Automation log | Done — simulated, 56 real automations, each line opens a details window |
+| 4c. Automation log | Removed 2026-10-31 at Samuele's request (in git before that date) |
 | 5. Check (real phone, Safari, OG image) | Not started |
 | 6. Launch (publish `v2`, deploy, tag v2.0) | Not started |
 
 ## v2 page sections
 
-Hero (colour portrait, headline, handwritten notes) · black automations.log bar ·
-11 client logos (incl. The Yaron Brook Show) · 3 offers (AI Employees, AI Training, Process automations) ·
-8 case studies · black band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
+Hero (colour portrait, headline, handwritten notes, one button) · 11 client logos, white, scrolling on a dark teal strip ·
+3 offer cards in a row, as on sosautomazioni.com (AI Employees, AI Training, Process automations) ·
+8 case studies · teal band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
 
 ## Next
 
-1. Samuele reviews the teal dot field, decides if the black parts turn teal too, and keeps sending changes. The phone preview needs a rebuild to show the field.
+1. Samuele reviews the teal redesign and keeps sending changes. The phone preview needs a rebuild to show it.
 2. Samuele supplies: result per project, price + timeline answers, newsletter / YouTube / podcast links.
-3. Samuele checks the 56 automation descriptions and picks any client names to show (`plans/automation-catalog.md`).
-4. OG share image, then real-phone + Safari check.
+3. OG share image, then real-phone + Safari check.
 
 ## Blocked on Samuele
 
 - Dashed-box content (results, FAQ price/timeline, follow links).
-- Automation descriptions and client names.
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.
 - Tell Yannick Veys the X thread is on the site.
@@ -46,6 +44,6 @@ Hero (colour portrait, headline, handwritten notes) · black automations.log bar
 ## Known issues
 
 - "Before" lines on project cards are Claude's wording from v1 text; Samuele should check them.
-- Hover colours don't show on phones (no hover there): the site is black and white on mobile.
+- Hover colours, the card tilt and the mouse line don't show on phones (no mouse there).
 - Deploys are manual: `netlify deploy --prod --dir v1` (v2 only at launch).
 - v1 and v2 not yet tested on a real phone or in Safari.
