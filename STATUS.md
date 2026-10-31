@@ -1,8 +1,8 @@
 # STATUS — samueleonelia.com
 
-Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-31
+Phase: **v2 live since 2026-10-31, contact form not delivering yet** · Branch: `v2` · Folders: `v2/` live, `v1/` old · Last updated: 2026-10-31
 
-- Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
+- Live (v2): https://samueleonelia.com — tag `v2.0`. Old site: `v1/`, tag `v1.0`
 - v2 page: `v2/index.html` · phone preview (rebuild with `tools/build-mockup.py`): https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
 - v2 plan and decisions: `plans/v2.md`
 - Repo: https://github.com/samueleonelia/samueleonelia.com (private)
@@ -19,8 +19,8 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 | 4. Build into `v2/` | Done — checked at 1280px and 375px |
 | 4b. Real content in the dashed boxes | Dropped 2026-10-31 — result lines removed from all case studies |
 | 4c. Automation log | Removed 2026-10-31 at Samuele's request (in git before that date) |
-| 5. Check (real phone, Safari, OG image) | Not started |
-| 6. Launch (publish `v2`, deploy, tag v2.0) | Not started — contact form needs Netlify setup: turn on form detection, add an email notification, send a test message |
+| 5. Check (real phone, Safari, OG image) | Not done — launched without it at Samuele's request |
+| 6. Launch (publish `v2`, deploy, tag v2.0) | Done 2026-10-31 — except the form: Netlify form detection is off, no email notification yet |
 
 ## v2 page sections
 
@@ -30,11 +30,12 @@ Past projects: 9 compact rows with the CV's names, copy and order, expand downwa
 
 ## Next
 
-1. Samuele reviews the redesign and keeps sending changes. The phone preview needs a rebuild to show it.
+1. Turn on Netlify form detection, redeploy, add the email notification, send a test message.
 2. OG share image, then real-phone + Safari check.
 
 ## Blocked on Samuele
 
+- Form setup on Netlify (see Next), and check the privacy policy covers the form.
 - Which phone number is right: the site shows +39 348 584 3362, the CV shows +39 392 595 7421.
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.
@@ -42,5 +43,6 @@ Past projects: 9 compact rows with the CV's names, copy and order, expand downwa
 ## Known issues
 
 - Hover colours, the card tilt and the mouse line don't show on phones (no mouse there). Project rows open with a tap.
-- Deploys are manual: `netlify deploy --prod --dir v1` (v2 only at launch).
-- v1 and v2 not yet tested on a real phone or in Safari.
+- Deploys are manual: `netlify deploy --prod --dir v2`, from the repo root.
+- The contact form can't send yet: visitors should see the fallback with the email address.
+- No share image (OG) yet. Not tested on a real phone or in Safari.
