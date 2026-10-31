@@ -776,3 +776,5 @@ The offers heading now sits on one line at every width, with a slightly smaller 
 **Contact headline.** "Tell me the job nobody wants to do." is now "Let's talk about the hours wasted.", which picks up the hero's question. Not deployed yet.
 
 **Contact headline, simpler.** Now just "Contact", at Samuele's request. Not deployed yet.
+
+**Hero notes removed.** "no more copy-paste", "runs while you sleep" and the two hand-drawn faces are gone, they didn't match the tone. The Caveat font went with them. Not deployed yet.

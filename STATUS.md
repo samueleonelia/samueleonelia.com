@@ -24,7 +24,7 @@ Phase: **v2 live since 2026-10-31, contact form not delivering yet** · Branch: 
 
 ## v2 page sections
 
-Dark green header · Hero (colour portrait, headline, handwritten notes, one button) · "I've worked with": 10 logos, white, scrolling on a dark green strip ·
+Dark green header · Hero (colour portrait, headline, one button) · "I've worked with": 10 logos, white, scrolling on a dark green strip ·
 2 offer cards, as on sosautomazioni.com (Process automation, AI Training), both booking a free call ·
 Past projects: 9 compact rows with the CV's names, copy and order, expand downward on hover or tap · dark band: Yaron Brook video testimonial · contact form (Netlify Forms) · footer (only place with Padova).
 

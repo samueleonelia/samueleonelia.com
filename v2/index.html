@@ -15,13 +15,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@600;700;800;900&family=Caveat:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@600;700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 <style>
 /* ==========================================================================
    v2 — white page, dark green ink, teal only on clickable things, after dagorenouf.com/how-to-dominate-twitter.
    Type does the work, all monospace: Azeret Mono Black for the headline,
    section titles and offer/case titles, Azeret ExtraBold for buttons, nav and
-   labels, Space Mono for text, Caveat for the handwritten notes. Boxed teal buttons, long-arrow bullets, square
+   labels, Space Mono for text. Boxed teal buttons, long-arrow bullets, square
    corners, a dark band for the quote. One light theme.
    ========================================================================== */
 :root{
@@ -33,10 +33,9 @@
   /* hover colour: a pale teal gradient */
   --grad:linear-gradient(110deg,#E6F6F3 0%,#CDEDE8 50%,#B2E5DE 100%);
   /* all monospace: Azeret Mono (up to Black 900) for headings, titles, buttons and labels;
-     Space Mono for running text. Caveat stays for the handwritten notes. */
+     Space Mono for running text. */
   --wide:"Azeret Mono",ui-monospace,Menlo,monospace;--head:var(--wide);--btn:var(--wide);
   --text:"Space Mono",ui-monospace,Menlo,monospace;--sub:var(--text);--mono:var(--text);
-  --hand:"Caveat",cursive;
   --pad:clamp(16px,4vw,36px);
   --sec:clamp(80px,10vw,140px);
 }
@@ -78,11 +77,6 @@ section[id]{scroll-margin-top:76px}
 /* long-arrow bullets, his list style */
 .arrows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 
-/* handwritten notes in the margins, desktop only */
-.note{position:absolute;font-family:var(--hand);font-weight:700;font-size:30px;line-height:1;color:var(--ink);pointer-events:none;white-space:nowrap}
-.note svg{display:block;margin-top:2px}
-.doodle{position:absolute;pointer-events:none}
-@media (max-width:1100px){.note,.doodle{display:none}}
 
 /* ---------- header ---------- */
 .bar{position:sticky;top:0;z-index:20;background:var(--ink);color:var(--paper)}
@@ -238,10 +232,6 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
       <div class="ctas">
         <a class="btn solid" href="#contact">Start a project <span aria-hidden="true">→</span></a>
       </div>
-      <p class="note" style="left:-10px;top:120px;transform:rotate(-8deg)" aria-hidden="true">no more<br>copy-paste<svg width="120" height="12" viewBox="0 0 120 12"><path d="M2 8 C 30 3, 70 2, 118 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></p>
-      <p class="note" style="right:0;top:300px;transform:rotate(7deg)" aria-hidden="true">runs while<br>you sleep<svg width="120" height="12" viewBox="0 0 120 12"><path d="M2 5 C 40 9, 80 9, 118 3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></p>
-      <svg class="doodle" style="left:40px;top:330px" width="58" height="58" viewBox="0 0 58 58" aria-hidden="true"><path d="M29 3 C 47 2, 56 15, 55 30 C 54 46, 42 56, 27 55 C 11 54, 2 42, 3 27 C 4 12, 15 3, 31 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M19 21 l1 6 M37 20 l1 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M16 35 C 22 45, 36 45, 42 34" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
-      <svg class="doodle" style="right:60px;top:110px" width="52" height="52" viewBox="0 0 58 58" aria-hidden="true"><path d="M29 3 C 47 2, 56 15, 55 30 C 54 46, 42 56, 27 55 C 11 54, 2 42, 3 27 C 4 12, 15 3, 31 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 23 l5 0 M36 23 l5 0" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M19 39 l20 0" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
     </div>
   </div>
 
