@@ -740,3 +740,9 @@ Checked at about 1280px and at 375px: no sideways scroll, no console errors, mou
 **Dark green text, teal for clickable things only.** Samuele's rule, replacing the all-teal ink. Text, headings, borders and bands are now #062123 (the logos strip's dark), softer text #2A4345. Teal #0F766E stays on buttons, nav and text links, FAQ questions, Follow cards and the names in the X thread. On dark bands links use the lighter #7FD6CB, since teal on dark can't be read. Checked: every text passes 4.5:1, and no non-clickable text is teal. The dot field and the offer card tints stay teal, they are background, not text. The name at the top left links home but stays dark, as branding.
 
 **Two offers, plain copy.** Samuele cut AI Employees and asked for the SOS way, no fluff. Cards are now Process automation and AI Training, with copy taken from the sosautomazioni.com cards, in first person. Both end in "Free call" and "Book a call", which opens the SOS free-call calendar (`tidycal.com/so/esplorativa`) in a new tab. The section's intro paragraph is gone, and the FAQ "Which offer" answer now covers only these two. This drops the "4-week sprint, fixed price" wording from AI Training. "Video guide and 15 days of support" comes from the SOS offer and now also applies here.
+
+**Offers matched to the live SOS site.** The copy in the entry above came from an old local copy, which still had three cards. Live sosautomazioni.com has two, with shorter text and no tags. Cards now translate the live text, tags removed, and "video guide and 15 days of support" is gone again.
+
+**FAQ and Follow removed.** Both sections, their nav links and styles. The nav is Offers, Work, Let's talk. This also clears the waiting-on-content items for price, timeline and follow links.
+
+**Logos.** Strip now has the title "I've worked with" (same idea as SOS's "Abbiamo collaborato con", and it doesn't claim everyone was a client). Fiscozen removed, logo file deleted, 10 logos left.
