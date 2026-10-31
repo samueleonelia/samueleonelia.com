@@ -97,10 +97,8 @@ section[id]{scroll-margin-top:76px}
 
 /* ---------- hero ---------- */
 .hero-band{position:relative;overflow:hidden}
-/* workflow background, now in black ink: a faint dot grid with nodes joined
-   by right-angle wires, signals travelling between them. Faded at the bottom. */
-#flow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.8;
-  -webkit-mask-image:linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.5) 60%,transparent 100%);mask-image:linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.5) 60%,transparent 100%)}
+/* glyph field: fixed behind the whole page, solid blocks and black bands cover it */
+.field{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:clamp(48px,7vw,96px) clamp(48px,6vw,80px)}
 .stage img{width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid var(--ink);background:var(--paper)}
 h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line-height:1.05;letter-spacing:-.06em;margin:28px 0 10px;max-width:14ch;text-transform:uppercase}
@@ -282,7 +280,6 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
 <main id="top">
 
   <div class="hero-band">
-    <canvas id="flow" aria-hidden="true"></canvas>
     <div class="wrap hero">
       <div class="stage"><img src="assets/portrait.jpg" alt="Samuele Onelia" width="900" height="900"></div>
       <h1>I automate the <span class="hl">boring</span> work<span class="cursor" aria-hidden="true"></span></h1>
@@ -612,111 +609,200 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
   var y = document.getElementById("yr");
   if (y) y.textContent = new Date().getFullYear();
 
-  /* workflow background. Nodes sit on a 48px grid, each wired to its nearest
-     neighbours with an L-shaped path. A signal travels a wire, lights the
-     node it reaches, and often carries on down one of that node's wires, so
-     small chains run across the hero. Black ink on the white page.
-     Runs only while the hero is on screen; static for reduced motion. */
-  var cv = document.getElementById("flow");
-  if (cv && cv.getContext){
-    var ctx = cv.getContext("2d"), G = 48, w = 0, h = 0;
-    var nodes = [], edges = [], pulses = [], running = false, lastT = 0, spawnAt = 0;
-    function ink(a){ return "rgba(0,0,0," + a + ")"; }
-    function wire(a, b){
-      var mid = Math.random() < .5 ? {x: b.x, y: a.y} : {x: a.x, y: b.y};
-      return {from: a, to: b, pts: [a, mid, b], len: Math.abs(a.x - b.x) + Math.abs(a.y - b.y)};
-    }
-    function build(){
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = cv.clientWidth; h = cv.clientHeight;
-      cv.width = w * dpr; cv.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var cols = Math.floor(w / G), rows = Math.floor(h / G);
-      var n = Math.max(8, Math.round(cols * rows / 14)), used = {};
-      nodes = []; edges = []; pulses = [];
-      for (var k = 0; k < n * 4 && nodes.length < n; k++){
-        var c = 1 + ((Math.random() * (cols - 1)) | 0), r = 1 + ((Math.random() * (rows - 1)) | 0);
-        if (used[c + "," + r]) continue;
-        used[c + "," + r] = 1;
-        nodes.push({x: c * G, y: r * G, f: 0});
+  /* glyph field, same technique as sosautomazioni.com: one fixed canvas behind
+     the whole page, a dense grid of tiny teal dots, rings and squares drawn in
+     one WebGL call. Slow waves of brightness travel across it, it shifts a
+     little against the mouse, and the mouse draws a lit line that fades in
+     ~0.5 s. Dots clear softly behind any text, so copy stays readable. Black
+     bands simply cover it. Mouse only; still for reduced motion.
+     Its own function so its names can't clash with the log code below. */
+  (function(){
+  var cv = document.createElement("canvas");
+  cv.className = "field"; cv.setAttribute("aria-hidden", "true");
+  document.body.prepend(cv);
+  var gl = cv.getContext("webgl", {alpha: true, antialias: false, depth: false, stencil: false, premultipliedAlpha: true});
+  if (gl){
+    var VS = `
+      precision highp float;
+      attribute vec3 aP;                 // x, y, random 0..1
+      uniform vec2 uSize, uShift;
+      uniform float uTime, uDpr, uCell, uOpen;
+      uniform vec3 uTrail[24];           // x, y, life 0..1
+      varying float vA, vHeat, vKind;
+      varying vec2 vUV;                  // where the point lands, 0..1, for the text mask
+      float segDist(vec2 p, vec2 a, vec2 b) {
+        vec2 ab = b - a; float t = clamp(dot(p - a, ab) / max(dot(ab, ab), .001), 0., 1.);
+        return length(p - a - ab * t);
       }
-      nodes.forEach(function(a, i){
-        nodes.map(function(b, j){ return {j: j, d: Math.abs(a.x - b.x) + Math.abs(a.y - b.y)}; })
-          .filter(function(o){ return o.j !== i; })
-          .sort(function(p, q){ return p.d - q.d; })
-          .slice(0, 2)
-          .forEach(function(o){ edges.push(wire(a, nodes[o.j])); });
-      });
-    }
-    function at(e, d){
-      var a = e.pts[0], m = e.pts[1], b = e.pts[2];
-      var l1 = Math.abs(m.x - a.x) + Math.abs(m.y - a.y);
-      if (d <= l1){ var t = l1 ? d / l1 : 0; return {x: a.x + (m.x - a.x) * t, y: a.y + (m.y - a.y) * t}; }
-      var l2 = e.len - l1, t2 = l2 ? (d - l1) / l2 : 1;
-      return {x: m.x + (b.x - m.x) * t2, y: m.y + (b.y - m.y) * t2};
-    }
-    function spawn(e){ if (e && pulses.length < 14) pulses.push({e: e, d: 0, v: 90 + Math.random() * 60}); }
-    function carryOn(node){
-      var out = edges.filter(function(e){ return e.from === node; });
-      if (out.length) spawn(out[(Math.random() * out.length) | 0]);
-    }
-    function draw(dt){
-      ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = ink(.07);
-      for (var x = G; x < w; x += G) for (var y = G; y < h; y += G) ctx.fillRect(x - 1, y - 1, 2, 2);
-      ctx.strokeStyle = ink(.09); ctx.lineWidth = 1; ctx.beginPath();
-      edges.forEach(function(e){
-        ctx.moveTo(e.pts[0].x + .5, e.pts[0].y + .5);
-        ctx.lineTo(e.pts[1].x + .5, e.pts[1].y + .5);
-        ctx.lineTo(e.pts[2].x + .5, e.pts[2].y + .5);
-      });
-      ctx.stroke();
-      pulses = pulses.filter(function(p){
-        p.d += dt * p.v;
-        if (p.d >= p.e.len){ p.e.to.f = 1; if (Math.random() < .65) carryOn(p.e.to); return false; }
-        ctx.strokeStyle = ink(.5); ctx.lineWidth = 1.5; ctx.beginPath();
-        for (var s = 0; s <= 6; s++){
-          var q = at(p.e, Math.max(0, p.d - 6 * s));
-          if (s) ctx.lineTo(q.x + .5, q.y + .5); else ctx.moveTo(q.x + .5, q.y + .5);
+      void main() {
+        vec2 p = aP.xy + uShift;
+        float wave = .5 + .3 * sin(p.x * .011 + p.y * .008 - uTime * .7) + .2 * sin(-p.x * .007 + p.y * .012 - uTime * .45);
+        float a = .08 + .45 * pow(wave, 1.7);
+        if (uOpen >= 0.) {
+          float r = uOpen * length(uSize) * .35, d = length(p - uSize * vec2(.5, .45));
+          float ring = exp(-pow((d - r) / 60., 2.)) * (1. - smoothstep(1.6, 2.6, uOpen));
+          a = a * mix(1. - smoothstep(r - 80., r + 80., d), 1., smoothstep(1.4, 2.4, uOpen)) + ring * .2;
         }
-        ctx.stroke();
-        var hd = at(p.e, p.d);
-        ctx.fillStyle = ink(.95); ctx.fillRect(hd.x - 1.5, hd.y - 1.5, 3, 3);
-        return true;
-      });
-      nodes.forEach(function(nd){
-        nd.f = Math.max(0, nd.f - dt * 1.2);
-        ctx.fillStyle = ink(.04 + nd.f * .55); ctx.fillRect(nd.x - 4, nd.y - 4, 8, 8);
-        ctx.strokeStyle = ink(.2 + nd.f * .6); ctx.lineWidth = 1; ctx.strokeRect(nd.x - 3.5, nd.y - 3.5, 7, 7);
-      });
-    }
-    function loop(t){
-      if (!running) return;
-      requestAnimationFrame(loop);
-      var dt = Math.min(.05, (t - (lastT || t)) / 1000);
-      lastT = t;
-      if (t > spawnAt && edges.length){
-        spawn(edges[(Math.random() * edges.length) | 0]);
-        spawnAt = t + 500 + Math.random() * 800;
+        float heat = 0.;
+        for (int i = 0; i < 23; i++) {
+          float life = min(uTrail[i].z, uTrail[i + 1].z);
+          if (life <= 0.) continue;
+          float d = segDist(p, uTrail[i].xy, uTrail[i + 1].xy);
+          heat = max(heat, life * (step(d, 3.5) + .3 * exp(-pow(d / 14., 2.))));
+        }
+        vA = a;
+        vHeat = min(heat, 1.);
+        vUV = p / uSize;
+        vKind = floor(aP.z * 3.);
+        gl_Position = vec4(p.x / uSize.x * 2. - 1., 1. - p.y / uSize.y * 2., 0., 1.);
+        gl_PointSize = (min(uCell * .8, 5.) + vHeat * 1.2) * uDpr;
+      }`;
+    var FS = `
+      precision mediump float;
+      uniform vec3 uBase, uHot;
+      uniform float uHotA;
+      uniform sampler2D uMask;           // white wherever there is text
+      varying float vA, vHeat, vKind;
+      varying vec2 vUV;
+      void main() {
+        float m = smoothstep(.04, .55, texture2D(uMask, vUV).r);
+        float heat = vHeat * (1. - m);   // no lit line over any text
+        vec2 p = gl_PointCoord - .5; float d = length(p), g;
+        if (vKind < .5) g = 1. - smoothstep(.16, .24, d);
+        else if (vKind < 1.5) g = (1. - smoothstep(.34, .42, d)) * smoothstep(.12, .2, d);
+        else g = 1. - smoothstep(.23, .33, max(abs(p.x), abs(p.y)));
+        float a = g * mix(vA, uHotA, heat) * (1. - m);
+        gl_FragColor = vec4(mix(uBase, uHot, heat) * a, a);
+      }`;
+    var compile = function(type, src){
+      var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(s));
+      return s;
+    };
+    try {
+      var prog = gl.createProgram();
+      gl.attachShader(prog, compile(gl.VERTEX_SHADER, VS));
+      gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FS));
+      gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(prog));
+      gl.useProgram(prog);
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      var aP = gl.getAttribLocation(prog, "aP");
+      gl.enableVertexAttribArray(aP); gl.vertexAttribPointer(aP, 3, gl.FLOAT, false, 0, 0);
+      var U = {};
+      ["uSize", "uShift", "uTime", "uDpr", "uCell", "uOpen", "uTrail[0]", "uMask", "uBase", "uHot", "uHotA"]
+        .forEach(function(n){ U[n] = gl.getUniformLocation(prog, n); });
+      gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.uniform3f(U.uBase, .051, .58, .533);    /* teal #0D9488 */
+      gl.uniform3f(U.uHot, 0, .71, .678);        /* bright teal #00B5AD */
+      gl.uniform1f(U.uHotA, 1);
+
+      var fine = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+      var W = 1, H = 1, dpr = 1, cell = 7, count = 0, raf = 0, last = 0, time = 0, born = performance.now();
+      var dirty = true, measured = 0, trail = [], tx = 0, ty = 0, sx = 0, sy = 0;
+      var packed = new Float32Array(72), LIFE = 500;
+
+      /* One mask box per block of text: the union of its lines, so a paragraph
+         clears as one piece. Black bands are skipped, the canvas is behind them. */
+      var blocks = new Map(), walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      var blockOf = function(el){
+        while (el.parentElement && getComputedStyle(el).display === "inline") el = el.parentElement;
+        return el;
+      };
+      for (var tn = walker.nextNode(); tn; tn = walker.nextNode()){
+        if (!tn.textContent.trim() || tn.parentElement.closest("script,style,svg,canvas,noscript,.band,.log,footer")) continue;
+        var bl = blockOf(tn.parentElement);
+        if (!blocks.has(bl)) blocks.set(bl, []);
+        blocks.get(bl).push(tn);
       }
-      draw(dt);
-    }
-    build();
-    draw(0);
-    if (!reduce){
-      if ("IntersectionObserver" in window){
-        new IntersectionObserver(function(es){
-          var on = es[0].isIntersecting;
-          if (on && !running){ running = true; lastT = 0; requestAnimationFrame(loop); }
-          else if (!on) running = false;
-        }).observe(cv);
-      } else { running = true; requestAnimationFrame(loop); }
-    }
-    var rt;
-    window.addEventListener("resize", function(){
-      clearTimeout(rt); rt = setTimeout(function(){ build(); draw(0); }, 200);
-    });
-  }
+      var controls = Array.prototype.slice.call(document.querySelectorAll("input:not([type=hidden]),textarea,select"));
+      var range = document.createRange(), mask = document.createElement("canvas"), mctx = mask.getContext("2d");
+      var tex = gl.createTexture();
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      var measure = function(){
+        var q = 4, pad = 24, reach = 160;
+        if (mask.width !== Math.ceil(W / q) || mask.height !== Math.ceil(H / q)){ mask.width = Math.ceil(W / q); mask.height = Math.ceil(H / q); }
+        mctx.fillStyle = "#000"; mctx.fillRect(0, 0, mask.width, mask.height);
+        mctx.fillStyle = "#fff";
+        /* each box is drawn off the canvas and only its shadow lands on it: a pure blur, no hard edge */
+        var off = mask.width + 400;
+        var box = function(r){
+          if (!r.width || r.bottom < -reach || r.top > H + reach || r.right < -reach || r.left > W + reach) return;
+          mctx.fillRect((r.left - pad) / q - off, (r.top - pad) / q, (r.width + 2 * pad) / q, (r.height + 2 * pad) / q);
+        };
+        mctx.shadowColor = "#fff"; mctx.shadowBlur = 24; mctx.shadowOffsetX = off;
+        blocks.forEach(function(nodes){
+          var x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+          nodes.forEach(function(n){
+            range.selectNodeContents(n);
+            Array.prototype.forEach.call(range.getClientRects(), function(r){
+              if (!r.width) return;
+              x0 = Math.min(x0, r.left); y0 = Math.min(y0, r.top); x1 = Math.max(x1, r.right); y1 = Math.max(y1, r.bottom);
+            });
+          });
+          if (x1 > x0) box({left: x0, top: y0, right: x1, bottom: y1, width: x1 - x0, height: y1 - y0});
+        });
+        controls.forEach(function(el){ box(el.getBoundingClientRect()); });
+        mctx.shadowBlur = 0; mctx.shadowOffsetX = 0;
+        gl.bindTexture(gl.TEXTURE_2D, tex);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, mask);
+      };
+      var wake = function(){ if (!raf){ last = 0; raf = requestAnimationFrame(frame); } };
+      var size = function(){
+        W = innerWidth; H = innerHeight;
+        dpr = Math.min(devicePixelRatio || 1, 1.5);
+        cell = Math.max(fine ? 6 : 8, Math.sqrt(W * H / 60000));
+        cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+        gl.viewport(0, 0, cv.width, cv.height);
+        var pts = [], seed = 7;
+        for (var py = -cell; py < H + cell; py += cell) for (var px = -cell; px < W + cell; px += cell){
+          seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+          pts.push(px, py, seed / 4294967296);
+        }
+        count = pts.length / 3;
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(pts), gl.STATIC_DRAW);
+        measure(); wake();
+      };
+      var frame = function(now){
+        raf = 0;
+        var dt = last ? Math.min((now - last) / 1000, .05) : 0; last = now;
+        if (!reduce) time += dt;
+        var k = 1 - Math.exp(-dt * 7);
+        sx += (tx - sx) * k; sy += (ty - sy) * k;
+        trail = trail.filter(function(p){ return now - p.t < LIFE; });
+        if (dirty || trail.length || now - measured > 300){ measure(); dirty = false; measured = now; }
+        packed.fill(0);
+        trail.forEach(function(p, i){ packed.set([p.x, p.y, 1 - (now - p.t) / LIFE], i * 3); });
+        var open = reduce ? -1 : (now - born) / 1000;
+        gl.uniform2f(U.uSize, W, H); gl.uniform2f(U.uShift, sx, sy);
+        gl.uniform1f(U.uTime, time); gl.uniform1f(U.uDpr, dpr); gl.uniform1f(U.uCell, cell);
+        gl.uniform1f(U.uOpen, open < 3 ? open : -1);
+        gl.uniform3fv(U["uTrail[0]"], packed); gl.uniform1i(U.uMask, 0);
+        gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.POINTS, 0, count);
+        if (!reduce && !document.hidden) raf = requestAnimationFrame(frame);
+      };
+      if (!reduce){
+        window.addEventListener("pointermove", function(e){
+          if (e.pointerType === "touch") return;
+          var now = performance.now(), prev = trail[trail.length - 1];
+          tx = (e.clientX / W - .5) * -10; ty = (e.clientY / H - .5) * -8;
+          if (!prev || Math.hypot(e.clientX - prev.x, e.clientY - prev.y) > 4 || now - prev.t > 40){
+            trail.push({x: e.clientX, y: e.clientY, t: now}); if (trail.length > 24) trail.shift();
+          }
+        }, {passive: true});
+        document.addEventListener("visibilitychange", wake);
+      }
+      window.addEventListener("resize", size);
+      window.addEventListener("scroll", function(){ dirty = true; wake(); }, {passive: true});
+      size();
+    } catch (err) { cv.remove(); }
+  } else { cv.remove(); }
+  })();
 
   /* the automation log. A simulation, but every line is a real automation
      Samuele has built: it picks entries from AUTOMATIONS at random, stamps the

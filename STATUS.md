@@ -1,6 +1,6 @@
 # STATUS — samueleonelia.com
 
-Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-21
+Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Folders: `v1/` live, `v2/` new · Last updated: 2026-10-31
 
 - Live (v1): https://samueleonelia.com — frozen at tag `v1.0`
 - v2 page: `v2/index.html` · phone preview (rebuild with `tools/build-mockup.py`): https://claude.ai/artifact/NAkDbkCXfK8ZojfeVb8qGx
@@ -15,7 +15,7 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 |---|---|
 | Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
 | 1. Brief | Done — AI + automation only, for clients and followers |
-| 2–3. Structure + design | Done — white page after dagorenouf.com, all monospace (Azeret Mono heavy + Space Mono text), grey gradient on hover only |
+| 2–3. Structure + design | Done — white page after dagorenouf.com, all monospace (Azeret Mono heavy + Space Mono text), grey gradient on hover only, teal dot field behind the whole page (as on sosautomazioni.com) |
 | 4. Build into `v2/` | Done — checked at 1280px and 375px |
 | 4b. Real content in the dashed boxes | **Waiting on Samuele** |
 | 4c. Automation log | Done — simulated, 56 real automations, each line opens a details window |
@@ -24,13 +24,13 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 
 ## v2 page sections
 
-Hero (colour portrait, headline, handwritten notes, workflow background) · black automations.log bar ·
+Hero (colour portrait, headline, handwritten notes) · black automations.log bar ·
 11 client logos (incl. The Yaron Brook Show) · 3 offers (AI Employees, AI Training, Process automations) ·
 8 case studies · black band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
 
 ## Next
 
-1. Samuele keeps reviewing the phone preview and sends changes.
+1. Samuele reviews the teal dot field, decides if the black parts turn teal too, and keeps sending changes. The phone preview needs a rebuild to show the field.
 2. Samuele supplies: result per project, price + timeline answers, newsletter / YouTube / podcast links.
 3. Samuele checks the 56 automation descriptions and picks any client names to show (`plans/automation-catalog.md`).
 4. OG share image, then real-phone + Safari check.

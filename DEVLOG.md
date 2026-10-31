@@ -718,3 +718,13 @@ Then the X thread avatars (Yannick, Arunima) in colour too; the flow image in th
 **Yaron Brook video testimonial.** 34 s clip from his show (Samuele's edit, `yaron-on-sam-v4-web.mp4`, subtitles burned in so they show on every phone) in `v2/assets/testimonials/`, with a clean poster frame. Sits at the top of the black quote band: video left, pull quote right ("Sam has done an amazing job…"), stacked on phones. `preload="none"` so the 5.7 MB file loads only on play. `tools/build-mockup.py` now also inlines `poster=` and `.vtt` files.
 
 **The Yaron Brook Show in the logos.** Wordmark cut from the show's own logo (yaronbrookshow.com), white card removed, saved as `v2/assets/logos/yaronbrookshow.png`; placed after Hypefury. The strip is now centred rows of equal slots (6 per row desktop, 3 tablet, 2 phone) so an odd last row sits in the middle.
+
+## 2026-10-31
+
+**Teal dot field instead of the workflow wires.** Samuele asked for the sosautomazioni.com background in white and teal. Ported the WebGL glyph field from `sos-home.js` (`goodbyeElementor`, branch `page/chi-siamo-youtube`, not on its `main`) into `v2/index.html`: one fixed canvas behind the whole page, teal dots, rings and squares (#0D9488) on white, slow waves, slight shift against the mouse, a brighter teal line (#00B5AD) that follows the mouse and fades in 0.5 s. Dots fade out behind text. Black bands cover it. The blue box "cta" mode was not ported. The old `#flow` wires are gone (in git if wanted back). Teal is on the background only: text, buttons and bands stay black.
+
+Dots are stronger than on SOS (.08–.53 alpha, not .025–.175), because teal is lighter than SOS's dark ink and looked washed out on white.
+
+Bug on the way: nothing drew, because the log code later in the same function also declares `var count`, which overwrote the dot count. Fixed by giving the field its own function.
+
+Checked at about 1280px and at 375px: no sideways scroll, no console errors, mouse line works. The phone preview artifact has not been rebuilt, so it doesn't show this yet.
