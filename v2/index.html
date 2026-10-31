@@ -30,7 +30,6 @@
   /* teal is for clickable things only; --link-dark is the same idea on dark bands */
   --link:#0F766E;--link-dark:#7FD6CB;
   --muted:#2A4345;--dim:#4A6264;--line:#062123;--hair:#CDE5E2;
-  --todo:#062123;
   /* hover colour: a pale teal gradient */
   --grad:linear-gradient(110deg,#E6F6F3 0%,#CDEDE8 50%,#B2E5DE 100%);
   /* all monospace: Azeret Mono (up to Black 900) for headings, titles, buttons and labels;
@@ -150,15 +149,10 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line
 .case-top img{height:28px;width:auto;max-width:140px;object-fit:contain;filter:url(#ink)}
 .tag{font-family:var(--head);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em;border:2px solid var(--ink);padding:4px 8px}
 .case h3{font-family:var(--head);font-weight:900;font-size:22px;line-height:1.15;letter-spacing:-.03em;margin:0;text-transform:uppercase}
-.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ba{flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .ba div{padding:14px 16px;font-size:14px;line-height:1.5;border:2px solid var(--ink)}
 .ba span{display:block;font-family:var(--head);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
 .ba .after{background:var(--ink);color:var(--paper)}
-.res{margin-top:auto;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 12px;padding-top:16px;border-top:2px solid var(--ink)}
-.res b{font-family:var(--wide);font-weight:900;font-size:28px;letter-spacing:-.04em}
-.res span{color:var(--muted)}
-/* TODO marker: a number Samuele still has to supply. Remove before launch. */
-.todo{outline:2px dashed var(--todo);outline-offset:4px}
 @media (max-width:900px){.cases{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.ba{grid-template-columns:minmax(0,1fr)}.case{padding:20px}}
 
@@ -294,56 +288,48 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
           <div class="case-top"><img src="assets/logos/lacofacceria.png" alt="" loading="lazy"><span class="tag">CRM · WhatsApp bot</span></div>
           <h3>La Cofacceria</h3>
           <div class="ba"><div><span>// before</span>Orders arrived on WhatsApp and were retyped by hand.</div><div class="after"><span>// after</span>A chatbot takes the order and files it in a custom CRM.</div></div>
-          <div class="res"><b class="todo">[00]</b><span>orders a week, zero retyping</span></div>
         </article>
 
         <article class="case rv">
           <div class="case-top"><img src="assets/logos/hypefury.png" alt="" loading="lazy"><span class="tag">Email automation</span></div>
           <h3>Hypefury</h3>
           <div class="ba"><div><span>// before</span>Onboarding, campaigns and a weekly newsletter for a large list, with no one owning them.</div><div class="after"><span>// after</span>Automated onboarding flows on Customer.io, plus every campaign and newsletter, written by me.</div></div>
-          <div class="res"><b class="todo">[00k]</b><span>people on the list</span></div>
         </article>
 
         <article class="case rv">
           <div class="case-top"><img src="assets/logos/dreamtravel.svg" alt="" loading="lazy"><span class="tag">CRM · Invoicing</span></div>
           <h3>Dream Travel Agency</h3>
           <div class="ba"><div><span>// before</span>Enrolments, trips, costs, revenue and invoices tracked by hand.</div><div class="after"><span>// after</span>A CRM built from scratch handles all of it on its own.</div></div>
-          <div class="res"><b class="todo">[00h]</b><span>saved each month</span></div>
         </article>
 
         <article class="case rv">
           <div class="case-top"><img src="assets/logos/grillpark.png" alt="" loading="lazy"><span class="tag">Staffing · Bookings</span></div>
           <h3>Grill Park Ferrara</h3>
           <div class="ba"><div><span>// before</span>Daily staff needs worked out by hand; bookings piled up at peak times.</div><div class="after"><span>// after</span>Staff needs calculated and staff contacted; bookings spread across the evening.</div></div>
-          <div class="res"><b class="todo">[−00%]</b><span>customer wait time</span></div>
         </article>
 
         <article class="case rv">
           <div class="case-top"><img src="assets/logos/acarent.png" alt="" loading="lazy"><span class="tag">AI content · Scraping</span></div>
           <h3>Acarent</h3>
           <div class="ba"><div><span>// before</span>LinkedIn and Instagram posts written by hand; prospects found one by one.</div><div class="after"><span>// after</span>AI writes and publishes the posts; a Google Maps scraper feeds prospecting.</div></div>
-          <div class="res"><b class="todo">[00]</b><span>posts a month, no one writing them</span></div>
         </article>
 
         <article class="case rv">
           <div class="case-top"><img src="assets/logos/bmark.png" alt="" loading="lazy"><span class="tag">Reporting</span></div>
           <h3>Bmark</h3>
           <div class="ba"><div><span>// before</span>Someone assembled every client's Facebook Ads report by hand.</div><div class="after"><span>// after</span>Results are tracked and every client gets a monthly report automatically.</div></div>
-          <div class="res"><b class="todo">[00h]</b><span>saved each month</span></div>
         </article>
 
         <article class="case rv">
           <div class="case-top"><img src="assets/logos/fbisol.svg" alt="" loading="lazy"><span class="tag">Sales data</span></div>
           <h3>F. Bisol</h3>
           <div class="ba"><div><span>// before</span>Sales data scattered; hard to see how each salesperson was doing.</div><div class="after"><span>// after</span>Data collected and analysed into a clear monthly report per salesperson.</div></div>
-          <div class="res"><b class="todo">[00]</b><span>salespeople tracked</span></div>
         </article>
 
         <article class="case rv">
           <div class="case-top"><img src="assets/logos/financer.svg" alt="" loading="lazy"><span class="tag">Content · Migration</span></div>
           <h3>Financer.com</h3>
           <div class="ba"><div><span>// before</span>Italian and US sites running on WordPress.</div><div class="after"><span>// after</span>I owned the Italian content, worked on the US site, and oversaw both moves to Ghost.</div></div>
-          <div class="res"><b>2</b><span>sites migrated to Ghost</span></div>
         </article>
 
       </div>

@@ -17,7 +17,7 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 | 1. Brief | Done — AI + automation only, for clients and followers |
 | 2–3. Structure + design | Done — white page, dark green text (#062123), teal only on clickable things (#0F766E), all monospace (Azeret Mono heavy + Space Mono text), pale teal gradient on hover only, teal dot field behind the whole page (as on sosautomazioni.com) |
 | 4. Build into `v2/` | Done — checked at 1280px and 375px |
-| 4b. Real content in the dashed boxes | **Waiting on Samuele** |
+| 4b. Real content in the dashed boxes | Dropped 2026-10-31 — result lines removed from all case studies |
 | 4c. Automation log | Removed 2026-10-31 at Samuele's request (in git before that date) |
 | 5. Check (real phone, Safari, OG image) | Not started |
 | 6. Launch (publish `v2`, deploy, tag v2.0) | Not started — contact form needs Netlify setup: turn on form detection, add an email notification, send a test message |
@@ -31,12 +31,10 @@ Dark green header · Hero (colour portrait, headline, handwritten notes, one but
 ## Next
 
 1. Samuele reviews the redesign and keeps sending changes. The phone preview needs a rebuild to show it.
-2. Samuele supplies the result per project.
-3. OG share image, then real-phone + Safari check.
+2. OG share image, then real-phone + Safari check.
 
 ## Blocked on Samuele
 
-- Dashed-box content (the result on each project).
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.
 
