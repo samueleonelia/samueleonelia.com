@@ -780,3 +780,5 @@ The offers heading now sits on one line at every width, with a slightly smaller 
 **Hero notes removed.** "no more copy-paste", "runs while you sleep" and the two hand-drawn faces are gone, they didn't match the tone. The Caveat font went with them. Not deployed yet.
 
 **Deployed.** New subtitle, "Contact" heading and the hero without notes are live, deploy `6ae63d4a4d3b8e56f2650a2f`. The live page is byte-for-byte `v2/index.html`. Form setup on Netlify is still open.
+
+**Contact form set up on Netlify.** With Samuele's OK: form detection turned on (`ignore_html_forms: false`), redeployed (deploy `6ae63e96644c697ff580a40c`), Netlify registered the `contact` form, and an email notification on new submissions now goes to samueleonelia@gmail.com. No test message sent yet, so real delivery is still unproven. Samuele sends the first one.
