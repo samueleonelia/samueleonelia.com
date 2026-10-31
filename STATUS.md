@@ -15,7 +15,7 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 |---|---|
 | Setup (`v1/` + `v2/` folders, tag v1.0, plan) | Done |
 | 1. Brief | Done — AI + automation only, for clients and followers |
-| 2–3. Structure + design | Done — white and teal, all monospace (Azeret Mono heavy + Space Mono text), pale teal gradient on hover only, teal dot field behind the whole page (as on sosautomazioni.com) |
+| 2–3. Structure + design | Done — white page, dark green text (#062123), teal only on clickable things (#0F766E), all monospace (Azeret Mono heavy + Space Mono text), pale teal gradient on hover only, teal dot field behind the whole page (as on sosautomazioni.com) |
 | 4. Build into `v2/` | Done — checked at 1280px and 375px |
 | 4b. Real content in the dashed boxes | **Waiting on Samuele** |
 | 4c. Automation log | Removed 2026-10-31 at Samuele's request (in git before that date) |
@@ -24,13 +24,13 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 
 ## v2 page sections
 
-Hero (colour portrait, headline, handwritten notes, one button) · 11 client logos, white, scrolling on a dark teal strip ·
+Hero (colour portrait, headline, handwritten notes, one button) · 11 client logos, white, scrolling on a dark green strip ·
 3 offer cards in a row, as on sosautomazioni.com (AI Employees, AI Training, Process automations) ·
-8 case studies · teal band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
+8 case studies · dark band: Yaron Brook video testimonial + Hypefury quote and X thread · FAQ · follow along · contact · footer (only place with Padova).
 
 ## Next
 
-1. Samuele reviews the teal redesign and keeps sending changes. The phone preview needs a rebuild to show it.
+1. Samuele reviews the redesign and keeps sending changes, and checks the short new wording on the offer cards. The phone preview needs a rebuild to show it.
 2. Samuele supplies: result per project, price + timeline answers, newsletter / YouTube / podcast links.
 3. OG share image, then real-phone + Safari check.
 
