@@ -26,7 +26,7 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 
 Dark green header · Hero (colour portrait, headline, handwritten notes, one button) · "I've worked with": 10 logos, white, scrolling on a dark green strip ·
 2 offer cards, as on sosautomazioni.com (Process automation, AI Training), both booking a free call ·
-Past projects: 9 rows as on v1, open on hover or tap · dark band: Yaron Brook video testimonial · contact form (Netlify Forms) · footer (only place with Padova).
+Past projects: 9 rows with the CV's copy and order, open on hover or tap · dark band: Yaron Brook video testimonial · contact form (Netlify Forms) · footer (only place with Padova).
 
 ## Next
 
@@ -35,12 +35,12 @@ Past projects: 9 rows as on v1, open on hover or tap · dark band: Yaron Brook v
 
 ## Blocked on Samuele
 
+- Which phone number is right: the site shows +39 348 584 3362, the CV shows +39 392 595 7421.
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.
 
 ## Known issues
 
-- Project rows use v1's text, which still mentions copywriting and ghostwriting; v2's positioning is AI and automation only.
 - Hover colours, the card tilt and the mouse line don't show on phones (no mouse there). Project rows open with a tap.
 - Deploys are manual: `netlify deploy --prod --dir v1` (v2 only at launch).
 - v1 and v2 not yet tested on a real phone or in Safari.
