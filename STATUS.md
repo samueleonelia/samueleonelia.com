@@ -24,7 +24,7 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 
 ## v2 page sections
 
-Hero (colour portrait, headline, handwritten notes, one button) · "I've worked with": 10 logos, white, scrolling on a dark green strip ·
+Dark green header · Hero (colour portrait, headline, handwritten notes, one button) · "I've worked with": 10 logos, white, scrolling on a dark green strip ·
 2 offer cards, as on sosautomazioni.com (Process automation, AI Training), both booking a free call ·
 8 case studies · dark band: Yaron Brook video testimonial + Hypefury quote and X thread · contact · footer (only place with Padova).
 
