@@ -134,8 +134,7 @@ h1{font-family:var(--head);font-weight:900;font-size:clamp(36px,6.2vw,74px);line
 .offer:nth-child(2){background:#CDEDE8}
 .offer h3{margin:0;font-family:var(--head);font-weight:900;font-size:clamp(20px,2vw,24px);line-height:1.15;text-transform:uppercase}
 .offer p{margin:0;color:var(--muted)}
-.offer-foot{margin-top:auto;padding-top:16px;border-top:2px dashed var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
-.offer-foot > span{font-size:13px;line-height:1.3;color:var(--muted)}
+.offer-foot{margin-top:auto;padding-top:16px;border-top:2px dashed var(--ink);display:flex;justify-content:flex-end}
 .offer-foot .btn{padding:11px 15px;font-size:14px}
 /* the card leans towards the mouse, with a soft glare */
 .offer.rv.tilting{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .08s linear}
@@ -178,7 +177,17 @@ cite{display:block;margin-top:22px;font-style:normal;font-family:var(--head);fon
 /* ---------- contact ---------- */
 .contact{text-align:center;border-top:3px solid var(--ink)}
 .contact h2{margin:0 auto 40px;max-width:18ch;font-size:clamp(28px,5vw,60px)}
-.contact .ctas{justify-content:center}
+.form{display:flex;flex-direction:column;gap:18px;max-width:560px;margin-inline:auto;text-align:left}
+.form label{display:flex;flex-direction:column;gap:6px;font-family:var(--head);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.form input,.form textarea{width:100%;padding:12px 14px;border:3px solid var(--link);border-radius:0;background:var(--paper);color:var(--ink);font-family:var(--text);font-size:16px;font-weight:400;text-transform:none;letter-spacing:0}
+.form textarea{resize:vertical}
+.form .btn{align-self:flex-start;cursor:pointer}
+.form .trap{position:absolute;left:-9999px}
+.form-note{font-size:13px;color:var(--muted)}
+.form-note a{color:var(--link);text-decoration:underline}
+.form-msg:empty{display:none}
+.form-msg{font-family:var(--head);font-weight:800}
+.form-msg a{color:var(--link);text-decoration:underline}
 .crows{display:flex;justify-content:center;flex-wrap:wrap;gap:20px 48px;margin-top:52px}
 .crow{display:flex;flex-direction:column;gap:4px}
 .crow span{font-family:var(--head);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
@@ -261,13 +270,13 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
         <article class="offer rv">
           <h3>Process automation</h3>
           <p>Too many hours on repetitive work? You tell me the problem, I build the automation.</p>
-          <div class="offer-foot"><span>Free call</span><a class="btn solid" href="https://tidycal.com/so/esplorativa" target="_blank" rel="noopener">Book a call <span aria-hidden="true">→</span></a></div>
+          <div class="offer-foot"><a class="btn solid" href="#contact">Email me <span aria-hidden="true">→</span></a></div>
         </article>
 
         <article class="offer rv">
           <h3>AI Training</h3>
           <p>Don't know where to start with AI? I teach you and your team to use it in your daily work, on your own.</p>
-          <div class="offer-foot"><span>Free call</span><a class="btn solid" href="https://tidycal.com/so/esplorativa" target="_blank" rel="noopener">Book a call <span aria-hidden="true">→</span></a></div>
+          <div class="offer-foot"><a class="btn solid" href="#contact">Email me <span aria-hidden="true">→</span></a></div>
         </article>
       </div>
     </div>
@@ -361,10 +370,20 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
     <div class="wrap rv">
       <span class="label"><b>// 06</b> · contact</span>
       <h2>Tell me the job <span class="hl">nobody</span> wants to do.</h2>
-      <div class="ctas">
-        <a class="btn solid" href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com <span aria-hidden="true">→</span></a>
-      </div>
+      <!-- Netlify Forms: Netlify reads this form when the site is deployed and emails
+           each message. The hidden `company` field is a trap for spam bots. -->
+      <form id="contact-form" class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="trap" aria-hidden="true"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></p>
+        <label>Name<input name="name" autocomplete="name" required></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required></label>
+        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <button class="btn solid" type="submit">Send <span aria-hidden="true">→</span></button>
+        <p class="form-note">I only use this to reply to you. <a href="https://www.iubenda.com/privacy-policy/10145367" target="_blank" rel="noopener">Privacy Policy</a></p>
+        <p id="form-msg" class="form-msg" role="status"></p>
+      </form>
       <div class="crows">
+        <div class="crow"><span>email</span><a href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a></div>
         <div class="crow"><span>phone</span><a href="tel:+393485843362">+39 348 584 3362</a></div>
         <div class="crow"><span>linkedin</span><a href="https://www.linkedin.com/in/samueleonelia/" target="_blank" rel="noopener">in/samueleonelia</a></div>
         <div class="crow"><span>languages</span><p>Italian, English</p></div>
@@ -597,6 +616,27 @@ footer{background:var(--ink);color:var(--paper);font-size:13px}
     track.appendChild(twin);
     track.classList.add("moving");
   }
+
+  /* contact form: sends in the background and answers on the page. If sending
+     fails, the message offers the plain email address instead. */
+  var form = document.getElementById("contact-form");
+  if (form) form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var msg = document.getElementById("form-msg"), send = form.querySelector("button");
+    send.disabled = true;
+    msg.textContent = "Sending…";
+    fetch("/", {
+      method: "POST",
+      headers: {"Content-Type": "application/x-www-form-urlencoded"},
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function(r){
+      if (!r.ok) throw Error(r.status);
+      form.reset();
+      msg.textContent = "Thanks, message sent. I'll reply by email.";
+    }).catch(function(){
+      msg.innerHTML = 'That didn\'t send. Please write to <a href="mailto:samueleonelia@gmail.com">samueleonelia@gmail.com</a>.';
+    }).then(function(){ send.disabled = false; });
+  });
 
   /* offer cards lean towards the cursor, same as sosautomazioni.com. Mouse only. */
   if (!reduce && window.matchMedia && window.matchMedia("(pointer: fine)").matches){

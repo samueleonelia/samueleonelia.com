@@ -20,13 +20,13 @@ Phase: **v2 — built, being refined, waiting on content** · Branch: `v2` · Fo
 | 4b. Real content in the dashed boxes | **Waiting on Samuele** |
 | 4c. Automation log | Removed 2026-10-31 at Samuele's request (in git before that date) |
 | 5. Check (real phone, Safari, OG image) | Not started |
-| 6. Launch (publish `v2`, deploy, tag v2.0) | Not started |
+| 6. Launch (publish `v2`, deploy, tag v2.0) | Not started — contact form needs Netlify setup: turn on form detection, add an email notification, send a test message |
 
 ## v2 page sections
 
 Dark green header · Hero (colour portrait, headline, handwritten notes, one button) · "I've worked with": 10 logos, white, scrolling on a dark green strip ·
 2 offer cards, as on sosautomazioni.com (Process automation, AI Training), both booking a free call ·
-8 case studies · dark band: Yaron Brook video testimonial · contact · footer (only place with Padova).
+8 case studies · dark band: Yaron Brook video testimonial · contact form (Netlify Forms) · footer (only place with Padova).
 
 ## Next
 
@@ -37,7 +37,6 @@ Dark green header · Hero (colour portrait, headline, handwritten notes, one but
 ## Blocked on Samuele
 
 - Dashed-box content (the result on each project).
-- Decide if "Book a call" keeps using the SOS TidyCal calendar (`so/esplorativa`, Italian page).
 - Verify an email on the Netlify account so pushes auto-deploy.
 - Confirm Dream Travel Agency and Bmark logos are the right companies.
 
