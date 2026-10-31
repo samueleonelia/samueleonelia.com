@@ -772,3 +772,5 @@ The offers heading now sits on one line at every width, with a slightly smaller 
 **Open: the form doesn't deliver yet.** Netlify has form detection off for this site (`ignore_html_forms: true`), and no forms were registered in this deploy. After it's turned on, the site needs a redeploy and an email notification. The phone number on the site is still the old 348 one until Samuele confirms.
 
 **Hero subtitle.** Now the question from the sosautomazioni.com hero, in English: "How many hours do you and your team spend on work AI can do faster and for less?" Not deployed yet.
+
+**Contact headline.** "Tell me the job nobody wants to do." is now "Let's talk about the hours wasted.", which picks up the hero's question. Not deployed yet.
