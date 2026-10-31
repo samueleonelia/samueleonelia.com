@@ -748,3 +748,5 @@ Checked at about 1280px and at 375px: no sideways scroll, no console errors, mou
 **Logos.** Strip now has the title "I've worked with" (same idea as SOS's "Abbiamo collaborato con", and it doesn't claim everyone was a client). Fiscozen removed, logo file deleted, 10 logos left.
 
 **Dark green header.** The top bar is now #062123 with the name in white, a white ring on the avatar and the lighter teal on menu links. The "Let's talk" button stays teal.
+
+**White menu links.** Offers and Work are white on the dark header, at Samuele's request, instead of the lighter teal.
