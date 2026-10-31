@@ -752,3 +752,5 @@ Checked at about 1280px and at 375px: no sideways scroll, no console errors, mou
 **White menu links.** Offers and Work are white on the dark header, at Samuele's request, instead of the lighter teal.
 
 **Offers heading.** "I build it for you, or I teach you to." is now "How we can collaborate", at Samuele's request.
+
+The offers heading now sits on one line at every width, with a slightly smaller size on phones.
