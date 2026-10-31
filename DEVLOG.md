@@ -770,3 +770,5 @@ The offers heading now sits on one line at every width, with a slightly smaller 
 **v2 launched.** Samuele asked to update the site with this version. `netlify.toml` now publishes `v2`, deployed with `netlify deploy --prod --dir v2`, deploy `6ae63377ff90ac789a84e5ec`, tagged `v2.0`, `main` fast-forwarded to `v2`. Checked live: page and assets load, security headers present, `.netlify.app` redirects, `DEVLOG.md`, `STATUS.md`, `netlify.toml` and `v1/` all 404, no console errors. Launched without the real-phone, Safari and share-image checks.
 
 **Open: the form doesn't deliver yet.** Netlify has form detection off for this site (`ignore_html_forms: true`), and no forms were registered in this deploy. After it's turned on, the site needs a redeploy and an email notification. The phone number on the site is still the old 348 one until Samuele confirms.
+
+**Hero subtitle.** Now the question from the sosautomazioni.com hero, in English: "How many hours do you and your team spend on work AI can do faster and for less?" Not deployed yet.
